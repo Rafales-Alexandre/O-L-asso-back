@@ -1,0 +1,1 @@
+npm install eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y @graphql-eslint/eslint-plugin @ni/eslint-config-javascript eslint-plugin-sql --save-dev

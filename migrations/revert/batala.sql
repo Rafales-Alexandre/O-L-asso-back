@@ -2,6 +2,7 @@
 
 BEGIN;
 
-DROP TABLE instrument, suit, user_has_suit CASCADE;
+TRUNCATE "suit";
+TRUNCATE "instrument";
 
 COMMIT;
