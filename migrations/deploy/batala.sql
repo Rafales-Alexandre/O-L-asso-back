@@ -1,8 +1,7 @@
 BEGIN;
 
-TRUNCATE instrument, suit, user_has_suit RESTART IDENTITY;
 
-INSERT INTO "instrument" ('code', 'pupitre', 'observation', 'profondeur', 'tirants', 'poids', 'sticker', 'user_id') VALUES
+INSERT INTO "instrument" ("code", "pupitre", "observation", "profondeur", "tirants", "poids", "sticker", "user_id") VALUES
 ('B1-01', 'Basse1', '', null, 8, 6.6, 'TRUE',1),
 ('B1-02', 'Basse1', 'très lourd avec pieds fixes', null, 8, 8, 'FALSE',2),
 ('B1-03', 'Basse1', '', null, 8, 7.2, 'TRUE',3),
@@ -42,7 +41,7 @@ INSERT INTO "instrument" ('code', 'pupitre', 'observation', 'profondeur', 'tiran
 ('2B-08','Dobra', '', null, null, null, 'TRUE', 33),
 ('2B-09', 'Dobra', '', null, null, null, 'TRUE', 34),
 ('2B-10', 'Dobra', '', null, null, null, 'TRUE', 35),
-('2B-11', 'Dobra', '', null, null, 4,65, 'TRUE', 36),
+('2B-11', 'Dobra', '', null, null, 4.65, 'TRUE', 36),
 ('2B-12', 'Dobra', 'A supprimer', null, null, null, 'TRUE', null),
 ('2B-13', 'Dobra', '', null, null, null, 'TRUE', 37),
 ('2B-14', 'Dobra', 'noté 2B-27 à corriger', null, null, null, 'TRUE', 38),
@@ -57,7 +56,7 @@ INSERT INTO "instrument" ('code', 'pupitre', 'observation', 'profondeur', 'tiran
 ('R-02', 'Repinique', '', null, 6, null, 'TRUE', 46),
 ('R-03', 'Repinique', '', 28, 8, 3.15, 'TRUE', 47),
 ('R-04', 'Repinique', 'hs',null, 6, 2.75, 'TRUE', 48),
-('R-05', 'Repinique', '', null, 3.15, 'TRUE', 49),
+('R-05', 'Repinique', '', null, 3, 15, 'TRUE', 49),
 ('R-06', 'Repinique', '', null, 8, 2.75, 'TRUE', 50),
 ('R-07', 'Repinique', 'essais tirants à crochets', null, 8, 2.6, 'TRUE', 51),
 ('R-08', 'Repinique', '', null, 6, null, 'TRUE', 52),
@@ -75,9 +74,9 @@ INSERT INTO "instrument" ('code', 'pupitre', 'observation', 'profondeur', 'tiran
 ('CC-09', 'Caixa', '',null, null, null, 'FALSE', null),
 ('CC-10', 'Caixa', '',null, null, null, 'FALSE', 70);
 
-INSERT INTO "suit"('label','gender', 'observation', 'quantity_s', 'quantity_m', 'quantity_l', 'quantity_xl', 'quantity_xxl', 'quantity_xxxl') VALUES
+INSERT INTO "suit"("label","gender", "observation", "quantity_s", "quantity_m", "quantity_l", "quantity_xl", "quantity_xxl", "quantity_xxxl") VALUES
 ('portefeuille noir', 'Mixte', 'Distribué aux confirmés', null, null, 42, null, null, null),
-('top_pupitre_H', 'M', '', null, 15,6,1,1),
+('top_pupitre_H', 'M', '', null, 15,6,1,1, null),
 ('top_pupitre_F', 'F', '', 2, 35, 20, 4, 2, null);
 
 
