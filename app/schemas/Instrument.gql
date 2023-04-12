@@ -1,0 +1,11 @@
+type Instrument {
+   id: Int 
+    code: String
+    pupitre: String 
+    observation: String  
+    depth: Int
+    draught: Int
+    weight:Int
+    sticker: Boolean
+    user_id: User
+}
