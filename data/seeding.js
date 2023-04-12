@@ -1,7 +1,7 @@
 /**
  * This file aim to seed datas into the database for dev. time.
  * this script uses fakerjs to seed the table "user"
- * this script is called in package.json script "resetDB" : npm run resetDB
+ * this script is called in package.json script "resetDB" : npm run resetDB ?
  */
 require('dotenv').config();
 const { faker } = require('@faker-js/faker');
@@ -11,6 +11,7 @@ const db = require('../app/db/pg');
 faker.locale = 'fr';
 
 const NB_USERS = 70;
+
 
 function pgQuoteEscape(row) {
     const newRow = {};
@@ -49,12 +50,12 @@ async function generateUsers(nbUsers) {
             role: faker.helpers.arrayElement(['adherent', 'bureau', 'admin'])
         };
         users.push(user);
+        console.log(user)
         
     }
    
     return users;
 }
-
 async function insertUsers(users) {
     await db.query('TRUNCATE TABLE "user" RESTART IDENTITY CASCADE');
     const usersValues = users.map((user) => {
@@ -107,6 +108,7 @@ async function insertUsers(users) {
         RETURNING id
     `;
     const result = await db.query(queryStr);
+    console.log("données insérées")
     return result.rows;
 }
 
@@ -119,4 +121,5 @@ async function insertUsers(users) {
     debug(`${insertedUsers.length} users inserted`);
     const userIds = insertedUsers.map((user) => user.id);
     //db.originalClient.end();
+    console.log("bonjour ?")
 })();

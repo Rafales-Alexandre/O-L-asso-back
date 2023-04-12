@@ -1,6 +1,6 @@
-MIT License 
+MIT License for use sqitch_script.sh
 
-Copyright (c) 2023 AUDEBERT Jean-Charles, GOTCH Stanislas, IGHIL-CARDOSO Anaëlle, MARTINEZ Camille,RAFALES Alexandre
+Copyright (c) 2023 Kévin HESSE
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

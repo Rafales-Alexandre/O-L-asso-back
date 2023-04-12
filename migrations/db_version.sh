@@ -1,2 +1,2 @@
-sqitch add init -n "initialisation"
-sqitch add batala -n "batala seeding instruments and suits"
+sqitch add init_db -n "initialisation of the database"
+sqitch add init_tables -n "init tables"

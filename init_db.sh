@@ -2,13 +2,8 @@
 export PGUSER=spedata
 
 # Je supprime la BDD ocolis et l'utilisateur admin_ocolis
-dropdb batala
-echo "BDD supprimée"
-dropuser batala
-echo "admin batala supprimé"
+sudo -i -u postgres psql
 
-# Je crèe la BDD ocolis et l'utilisateur admin_ocolis
-createuser batala -P
-echo "admin batala créé"
-createdb batala -O batala
-echo "BDD créée"
+CREATE USER spedata WITH PASSWORD 'spedata';
+CREATE DATABASE batala WITH OWNER spedata;
+
