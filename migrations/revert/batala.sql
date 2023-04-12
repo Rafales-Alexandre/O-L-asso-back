@@ -9,5 +9,7 @@ TRUNCATE "suit" CASCADE;
 
 TRUNCATE "instrument" ;
 
+TRUNCATE "user_has_suit" CASCADE;
+
 
 COMMIT;
