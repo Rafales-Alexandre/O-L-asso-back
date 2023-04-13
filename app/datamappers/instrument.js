@@ -1,9 +1,9 @@
-const Coredatamapper = require ("./coreDatamapper");
+const CoreDatamapper = require ("./coreDatamapper");
 
 const client = require ("../db/pg");
 
-class Instrument extends Coredatamapper {
+class Instrument extends CoreDatamapper {
     tableName = 'instrument';
 }
 
-module.exports = new Instrument(client)
+module.exports = new Instrument(client);

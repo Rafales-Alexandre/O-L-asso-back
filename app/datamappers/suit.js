@@ -1,8 +1,8 @@
-const Coredatamapper = require ("./coreDatamapper");
+const CoreDatamapper = require ("./coreDatamapper");
 
 const client = require ("../db/pg");
 
-class Suit extends Coredatamapper {
+class Suit extends CoreDatamapper {
     tableName = 'suit';
 }
 

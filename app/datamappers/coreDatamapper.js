@@ -1,4 +1,4 @@
-class Coredatamapper {
+class CoreDatamapper {
     tableName;
 
     constructor(client){
@@ -17,18 +17,18 @@ class Coredatamapper {
         }
         return result.rows[0];
     }
+
     async findAll(params){
         let filter = '';
         const values = [];
-        if (params?.$where){
+        if (params?.$where) {
             const filters = [];
-            let indexPlaceholder = 1
-;
+            let indexPlaceholder = 1;
 
-Object.entries(params.$where).forEach(([param, value])=>{
-    if (param === '$or'){
+Object.entries(params.$where).forEach(([param, value]) => {
+    if (param === '$or') {
         const filtersOr = [];
-        Object.entries(value).forEach(([key, val])=>{
+        Object.entries(value).forEach(([key, val]) => {
             filtersOr.push(`"${key}"= $${indexPlaceholder}`);
             values.push(val);
             indexPlaceholder += 1;
@@ -41,7 +41,6 @@ Object.entries(params.$where).forEach(([param, value])=>{
     }
 });
 filter = `WHERE ${filters.join(' AND ')}`;
-
 }
 
 const baseQuery = {
@@ -109,4 +108,4 @@ async delete(id){
 
 }
 
-module.exports = Coredatamapper;
+module.exports = CoreDatamapper;

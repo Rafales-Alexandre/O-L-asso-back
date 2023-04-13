@@ -1,13 +1,8 @@
 const express = require('express');
 
-// const app = express();
-
-// // <- indique à express que j'accepte de recevoir un format JSON au travers d'un POST
-// app.use(express.json());
-
 
 const { ApolloServer } = require('@apollo/server');
-const { startStandaloneServer } = require('@apollo/server/standalone');
+
 const { expressMiddleware } = require('@apollo/server/express4');
 
 const cors = require('cors')
