@@ -1,21 +1,32 @@
 # projet-01-o-lasso-back
 
-## It's ALIVE !
+## Initialisation !
 
-To begin,  ``` bash init_esLint.sh```
+To begin the project ,type   ``` bash init_esLint.sh```
+ and run ``` esLint --init ```
 
-Then ``` bash init_db.sh ```
-
-and ```bash sqitch_script.sh```
+Then run  ```bash sqitch_script.sh```
 
 Run deploy > all
 
-IF it doesn't work :
+Then, run Node data/seeding.js
+
+If it doesn't work :
 Take a break, breath. Don't burn your keyboard.
 
-Can't run esLint_sh ; are you in the good directory ? You should be at the root.
-Cant't run sqitch_script ? Verify the value you enter in it; batala, batala, batala.
-Can't deploy a specific versions ? where working on it. It's a well know issue. If you need value to work with, follow the method ;
+*Can't run esLint_sh*; are you in the good directory ? You should be at the root.
+*Cant't run sqitch_script*
+Comment the init_db file. Run the following command :
+
+sudo -i -u postgres psql
+CREATE ROLE "spedata" WITH PASSWORD 'batala'
+CREATE DATABASE "batala" WITH OWNER "spedata"
+
+And re-run sqitch_script, deploy > All 
+
+Can't deploy a specific versions ? where working on it. It's a well know issue.
+
+ If you need value to work with a very specific files or version, follow the method ;
 sudo -U -i psql;
 #-> CREATE USER batala WITH PASSWORD batala ;
 #-> CREATE DATABASE batala WITH Owner batala ;
@@ -23,4 +34,4 @@ sudo -U -i psql;
 psql -U batala -d batala -f script/init.sql
 \q
 psql -U batala -d batala -f script/batala.sql
-
+node data/seeding.js
