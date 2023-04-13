@@ -1,4 +1,4 @@
-const { readFileSync, readFile }= require("fs");
+const { readFileSync }= require ("fs");
 const path = require ("path");
 
 const userSchema = readFileSync(path.join(__dirname, "./User.gql"));

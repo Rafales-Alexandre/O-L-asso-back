@@ -1,39 +1,36 @@
-/**
- * Initialisation of express and dotenv
- * Why we use them ? Why not !
- */
-const express = require("express");
-require("dotenv").config();
-/* const debug = require("debug")('Server:init') */
-/**
- * Initialisation of Apollo
-*/
+const express = require('express');
 
-const { ApolloServer } = require("@apollo/server");
-const { startStandaloneServer } = require ("@apollo/server/standalone");
-const { expressMiddleware } = require ("@apollo/server/express4");
-const { app, apolloConfig } = require("./app/index");
+// const app = express();
+
+// // <- indique à express que j'accepte de recevoir un format JSON au travers d'un POST
+// app.use(express.json());
 
 
-const apolloServer = new ApolloServer(apolloConfig);
+const { ApolloServer } = require('@apollo/server');
+const { startStandaloneServer } = require('@apollo/server/standalone');
+const { expressMiddleware } = require('@apollo/server/express4');
+
 const cors = require('cors')
-/**
- * Creation of the http server on PORT 3000
-*/
+require("dotenv").config();
+
+const {app,apolloConfig} = require("./app");
+const apolloServer = new ApolloServer(apolloConfig);
+
+
 const http = require("http");
 const serverHTTP = http.createServer(app);
-const PORT = process.env.PORT ?? 3000 ; 
-
-/**
- * Lauching of the server
-*/
+const PORT = process.env.PORT ?? 3000;
 
 
-(async ()=> {
-	await apolloServer.start();
-	app.use('/graphql', cors(), express.json(), expressMiddleware(apolloServer, apolloConfig));
-	
-	serverHTTP.listen(PORT, ()=>{
-		console.log(`Let's Drum ! on port ${PORT}`);
-	});
-})();
+ (async ()=>{
+
+    await apolloServer.start();
+
+    app.use("/graphql",cors(),express.json(),expressMiddleware(apolloServer,apolloConfig));
+
+    serverHTTP.listen(PORT,()=>{
+        console.log(`Listening on ${PORT}`);
+    });
+
+})(); 
+

@@ -4,7 +4,7 @@ type Instrument {
     pupitre: String 
     observation: String  
     depth: Int
-    draught: Int
+    rods: Int
     weight:Int
     sticker: Boolean
     user_id: User
