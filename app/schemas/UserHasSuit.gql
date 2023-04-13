@@ -1,0 +1,5 @@
+type User {
+    id: !Int
+    user_id: Int!
+    suit_id: Int!
+}
