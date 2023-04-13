@@ -31,7 +31,7 @@ const PORT = process.env.PORT ?? 3000 ;
 
 (async ()=> {
 	await apolloServer.start();
-	app.use("/graphql", cors(), express.json(), expressMiddleware(apolloServer, apolloConfig));
+	app.use('/graphql', cors(), express.json(), expressMiddleware(apolloServer, apolloConfig));
 	
 	serverHTTP.listen(PORT, ()=>{
 		console.log(`Let's Drum ! on port ${PORT}`);
