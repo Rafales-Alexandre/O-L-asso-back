@@ -3,8 +3,8 @@
 ## Initialisation !
 
 To begin the project ,type   ``` bash init_esLint.sh```
- and run ``` eslint --init ```
-
+ and run ``` esLint --init ```
+e
 Then run  ```bash sqitch_script.sh```
 
 Run deploy > all
@@ -19,16 +19,18 @@ Take a break, breath. Don't burn your keyboard.
 Comment the init_db file. Run the following command :
 
 sudo -i -u postgres psql
-CREATE ROLE spedata WITH PASSWORD 'batala';
-CREATE DATABASE "batala" WITH OWNER "spedata";
+CREATE USER spedata WITH PASSWORD 'batala';
+CREATE DATABASE batala WITH OWNER spedata;
 
 And re-run sqitch_script, deploy > All 
+
+The admin requested is the super user of your specific installation of postgresql
 
 Can't deploy a specific versions ? where working on it. It's a well know issue.
 
  If you need value to work with a very specific files or version, follow the method ;
 sudo -U -i psql;
-#-> CREATE USER batala WITH PASSWORD batala ;
+#-> CREATE USER batala WITH PASSWORD 'batala' ;
 #-> CREATE DATABASE batala WITH Owner batala ;
 \q
 psql -U batala -d batala -f script/init.sql
