@@ -1,5 +1,0 @@
-%syntax-version=1.0.0
-%project=batala
-
-init 2023-04-12T09:08:34Z Etudiant O'clock <student@teleporter> # initialisation
-batala 2023-04-12T09:10:20Z Etudiant O'clock <student@teleporter> # batala seeding instruments and suits
