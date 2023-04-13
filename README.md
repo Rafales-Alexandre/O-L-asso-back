@@ -3,7 +3,7 @@
 ## Initialisation !
 
 To begin the project ,type   ``` bash init_esLint.sh```
- and run ``` esLint --init ```
+ and run ``` eslint --init ```
 
 Then run  ```bash sqitch_script.sh```
 
@@ -19,8 +19,8 @@ Take a break, breath. Don't burn your keyboard.
 Comment the init_db file. Run the following command :
 
 sudo -i -u postgres psql
-CREATE ROLE "spedata" WITH PASSWORD 'batala'
-CREATE DATABASE "batala" WITH OWNER "spedata"
+CREATE ROLE spedata WITH PASSWORD 'batala';
+CREATE DATABASE "batala" WITH OWNER "spedata";
 
 And re-run sqitch_script, deploy > All 
 

@@ -1,5 +1,6 @@
 const instrumentDatamapper = require ("../datamappers/instrument");
 const userDatamapper = require ("../datamappers/user");
+const suitDatamapper = require ("../datamappers/suit");
 
 const resolverQuery = {
     getAllUser (){
@@ -10,6 +11,15 @@ const resolverQuery = {
     },
     getAllInstrument(){
         return instrumentDatamapper.findAll();
+    },
+    getInstrumentById(id){
+        return instrumentDatamapper.findByPk(id);
+    },
+    getAllSuit (){
+        return suitDatamapper.findAll();
+    },
+    getSuitById(id){
+        return suitDatamapper.findByPk(id);
     }
 };
 

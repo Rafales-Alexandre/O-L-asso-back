@@ -1,3 +1,9 @@
 type Query {
     getAllInstrument : [Instrument]
+    getAllUser : [User]
+    getAllSuit: [Suit]
+
+    getInstrumentById (id: Int!): Instrument
+    getUserById (id: Int!): User 
+    getSuitById (id: Int!): Suit  
 }

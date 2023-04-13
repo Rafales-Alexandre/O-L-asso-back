@@ -1,7 +1,7 @@
 type Suit {
     id: Int 
-    label: TEXT NOT NULL
-    gender: gender
+    label: String
+    gender: String
     observation: String 
     quantity_s: Int
     quantity_m: Int
