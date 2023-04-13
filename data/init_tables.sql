@@ -27,7 +27,7 @@ CHECK(
 CREATE TYPE "gender" AS ENUM('F', 'M', 'Mixte');
 CREATE TYPE "size" AS ENUM('S','M','L','XL','XXL','XXXL');
 CREATE TYPE "pupitre" AS ENUM('Basse1', 'Basse2', 'Dobra', 'Repinique', 'Caixa');
-CREATE TYPE "role" AS ENUM('adherent', 'bureau', 'admin');
+CREATE TYPE "role" AS ENUM('member', 'board', 'admin');
 
 CREATE TABLE "user"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -58,9 +58,9 @@ CREATE TABLE "instrument"(
     "code" TEXT NOT NULL,
     "pupitre" pupitre,
     "observation" TEXT,
-    "profondeur" INT,
-    "tirants" INT,
-    "poids" FLOAT,
+    "depth" INT,
+    "rods" INT,
+    "weight" FLOAT,
     "sticker" BOOLEAN,
     "user_id" INT REFERENCES "user" ("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
