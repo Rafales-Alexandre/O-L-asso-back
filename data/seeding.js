@@ -52,11 +52,6 @@ async function generateUsers(nbUsers) {
             role: faker.helpers.arrayElement(['member', 'board', 'admin'])
         };
         users.push(user);
-<<<<<<< HEAD
-        console.log(user)
-        
-=======
->>>>>>> ebfd3d8ccf2c8bba8add6c138ae41edb01b8ab65
     }
 
     return users;
@@ -113,9 +108,6 @@ async function insertUsers(users) {
         RETURNING id
     `;
     const result = await db.query(queryStr);
-<<<<<<< HEAD
-    console.log("données insérées")
-=======
     console.log("données user insérées")
     return result.rows;
 }
@@ -262,7 +254,6 @@ async function insertUserHasSuit(usersIds = [], suitsIds = []) {
 `;
     const result = await db.query(queryStr);
     console.log("données user_has_suit insérées");
->>>>>>> ebfd3d8ccf2c8bba8add6c138ae41edb01b8ab65
     return result.rows;
 }
 
@@ -274,15 +265,9 @@ async function insertUserHasSuit(usersIds = [], suitsIds = []) {
     const insertedUsers = await insertUsers(users);
     debug(`${insertedUsers.length} users inserted`);
     const userIds = insertedUsers.map((user) => user.id);
-<<<<<<< HEAD
-    //db.originalClient.end();
-    console.log("bonjour ?")
-})();
-=======
     const insertedInstruments = await insertInstuments(userIds);
     const insertedSuits = await insertSuits();
     const suitIds = insertedSuits.map((suit) => suit.id);
     const insertedUsersHasSuits = await insertUserHasSuit(userIds, suitIds);
 
 })();
->>>>>>> ebfd3d8ccf2c8bba8add6c138ae41edb01b8ab65

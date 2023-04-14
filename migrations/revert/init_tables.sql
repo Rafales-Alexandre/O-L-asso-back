@@ -1,16 +1,7 @@
--- Revert batala:init_table from pg
+-- Revert batala:init_tables from pg
 
 BEGIN;
 
-DROP TABLE "user_has_suit";
-DROP TABLE "suit";
-DROP TABLE "instrument";
-DROP TABLE "user";
-DROP TYPE "role" ;
-DROP TYPE "pupitre" ;
-DROP TYPE "size" ;
-DROP TYPE "gender" ;
-DROP DOMAIN "email" ;
-DROP DOMAIN "postal_code_fr";
+-- XXX Add DDLs here.
 
 COMMIT;
