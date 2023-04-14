@@ -1,0 +1,12 @@
+type Suit {
+    id: Int 
+    label: String
+    gender: String
+    observation: String 
+    quantity_s: Int
+    quantity_m: Int
+    quantity_l:Int
+    quantity_xl: Int
+    quantity_xxl: Int
+    quantity_xxxl: Int
+}

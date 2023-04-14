@@ -3,7 +3,7 @@
  */
 
 
-const debug = require('debug')('SQL:log');
+const debug = require('debug')('SQL:log'); 
 
 const { Pool } = require('pg');
 

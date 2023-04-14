@@ -2,7 +2,7 @@
 
 BEGIN;
 
-/* SHOW DATABASE 'batala' WHERE false;
-SHOW ROLE spedata WHERE false; */
+ SHOW DATABASE 'batala' WHERE false;
+SHOW ROLE spedata WHERE false; 
 
 ROLLBACK;

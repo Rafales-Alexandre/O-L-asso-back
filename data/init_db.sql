@@ -2,8 +2,8 @@
 
 BEGIN;
  
---CREATE ROLE "batala" WITH LOGIN PASSWORD 'batala';
+CREATE ROLE "spedata" WITH LOGIN PASSWORD 'batala';
 
--- CREATE DATABASE "batala" WITH OWNER = "batala";
+ CREATE DATABASE "batala" WITH OWNER = "batala";
 
 COMMIT;
