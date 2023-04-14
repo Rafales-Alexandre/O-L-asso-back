@@ -1,7 +1,94 @@
 POST http://localhost:3001/graphql
+<!-- Opérationel --!>
 
-query Query{
-    getAllInstrument {
-        id
+query GetAllInstrument {
+  getAllInstrument {
+    code
+    depth
+    id
+    observation
+    pupitre
+    rods
+    sticker
+    user_id
+    weight
+  }
+}
+
+query GetAllSuit {
+  getAllSuit {
+    gender
+    label
+    id
+    observation
+    quantity_l
+    quantity_m
+    quantity_xxl
+    quantity_xl
+    quantity_s
+    quantity_xxxl
+  }
+}
+// me retourne que 3 valeurs 
+
+query GetAllUser {
+  getAllUser {
+    address
+    address_2
+    email
+    deposit
+    created_at
+    city
+    bottom_size
+    birthdate
+    firstname
+    gender
+    id
+    lastname
+    nickname
+    password
+    phone
+    role
+    subscription
+    top_size
+    updated_at
+    url_img
+    zip_code
+  }
+}
+
+<--! Non fonctionnels --!>
+uery GetAllUserWithSuit($getAllUserWithSuitId: Int!) {
+  getAllUserWithSuit(id: $getAllUserWithSuitId) {
+    id
+    suit {
+      id
     }
+    suit_id
+    user {
+      id
+    }
+    user_id
+  }
+}
+
+query GetInstrumentById($getInstrumentByIdId: Int!) {
+  getInstrumentById(id: $getInstrumentByIdId) {
+    code
+    depth
+    id
+    observation
+  }
+}
+
+query GetInstrumentByUser($getInstrumentByUserId: Int!) {
+  getInstrumentByUser(id: $getInstrumentByUserId) {
+    code
+  }
+}
+
+query GetSuitById($getSuitByIdId: Int!) {
+  getSuitById(id: $getSuitByIdId) {
+    gender
+  }
 }

@@ -1,5 +1,5 @@
 type Instrument {
-   id: Int 
+    id: Int 
     code: String
     pupitre: String 
     observation: String  
@@ -7,5 +7,6 @@ type Instrument {
     rods: Int
     weight:Int
     sticker: Boolean
-    user_id: User
+    user_id: Int
+    user : [User]
 }

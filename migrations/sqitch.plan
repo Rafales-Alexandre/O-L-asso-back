@@ -1,4 +1,5 @@
 %syntax-version=1.0.0
 %project=batala
 
-init_tables 2023-04-14T08:56:53Z Etudiant O'clock <student@teleporter> # initialisation
+init_tables 2023-04-14T09:58:38Z Etudiant O'clock <student@teleporter> # initialisation
+init 2023-04-14T09:58:38Z Etudiant O'clock <student@teleporter> # initialisation

@@ -5,5 +5,11 @@ type Query {
 
     getInstrumentById (id: Int!): Instrument
     getUserById (id: Int!): User 
-    getSuitById (id: Int!): Suit  
+    getSuitById (id: Int!): Suit 
+
+    getAllUserWithSuit ( id: Int! ): [UserHasSuit]
+    getThisUserHasThisSuit (id : Int!): UserHasSuit
+
+    getInstrumentByUser (id:Int!): Instrument
+    getUserByInstrument (id: Int!): User
 }

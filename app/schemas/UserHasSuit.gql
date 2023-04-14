@@ -1,5 +1,7 @@
-type User {
-    id: !Int
+type UserHasSuit {
+    id: Int!
     user_id: Int!
     suit_id: Int!
+    user: [User]
+    suit: [Suit]
 }

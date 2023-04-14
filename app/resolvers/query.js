@@ -26,7 +26,7 @@ const resolverQuery = {
         return userHasSuitDatamapper.findAll();
     },
     getThisUserHasThisSuit(id){
-        return userHasSuitDatamapper.findByPk(id)
+        return userHasSuitDatamapper.findByPk(id);
     }
 };
 
