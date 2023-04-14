@@ -1,5 +1,5 @@
 type User {
-    id: Int 
+    id: ID 
     url_img:String
     lastname:String 
     firstname: String 

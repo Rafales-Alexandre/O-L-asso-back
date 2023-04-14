@@ -1,5 +1,5 @@
 type Suit {
-    id: Int 
+    id: ID 
     label: String
     gender: String
     observation: String 

@@ -1,7 +1,7 @@
 type UserHasSuit {
-    id: Int!
-    user_id: Int!
-    suit_id: Int!
+    id: ID
+    user_id: ID
+    suit_id: ID
     user: [User]
     suit: [Suit]
 }

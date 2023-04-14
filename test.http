@@ -92,3 +92,20 @@ query GetSuitById($getSuitByIdId: Int!) {
     gender
   }
 }
+
+query Query($getThisUserHasThisSuitId: Int!) {
+  getThisUserHasThisSuit(id: $getThisUserHasThisSuitId) {
+    id
+  }
+}
+query Query($getUserByIdId: Int!) {
+  getUserById(id: $getUserByIdId) {
+    address
+  }
+}
+query Query($getUserByInstrumentId: Int!) {
+  getUserByInstrument(id: $getUserByInstrumentId) {
+    birthdate
+    id
+  }
+}
