@@ -21,7 +21,7 @@ type User {
   nickname: String
   email: String!
   password: String
-  birthdate: String
+  birthdate: Int
   phone: String
   address: String
   address_2: String
@@ -36,6 +36,5 @@ type User {
   created_at: String
   updated_at: String
   instruments: [Instrument]
-  instrument: Instrument
-  
+  suits: [Suit]
 }

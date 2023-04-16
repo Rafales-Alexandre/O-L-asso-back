@@ -15,4 +15,7 @@ It uses tables *instruments*, *suits*, *users* and provide dashboards for member
 
 ### Sqitch :
 - ` sqitch init batala --engine pg --top-dir migrations ` 
-- 
+
+
+npm install @apollo/server graphql
+npm install @apollo/server graphql express cors body-parser

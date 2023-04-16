@@ -10,4 +10,6 @@ type Query {
   getAllUserWithSuit(id: ID!): [UserHasSuit]
   getThisUserHasThisSuit(id: ID!): UserHasSuit
 
+  getInstrumentByUser(id: ID!): Instrument
+  getUserByInstrument(id: ID!): User
 }

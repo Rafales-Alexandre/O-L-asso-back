@@ -1,11 +1,13 @@
 type Instrument {
-   id: Int 
-    code: String
-    pupitre: String 
-    observation: String  
-    depth: Int
-    rods: Int
-    weight:Int
-    sticker: Boolean
-    user_id: User
+  id: ID!
+  code: String!
+  pupitre: String
+  observation: String
+  depth: Int
+  rods: Int
+  weight: Int
+  sticker: Boolean
+  user: User
+  created_at: String!
+  updated_at: String
 }

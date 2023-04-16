@@ -1,33 +1,27 @@
 const instrumentDatamapper = require ("../datamappers/instrument");
 const userDatamapper = require ("../datamappers/user");
 const suitDatamapper = require ("../datamappers/suit");
-const userHasSuitDatamapper = require ("../datamappers/userHasSuit");
+
 
 const resolverQuery = {
-	getAllUser (){
+	getAllUsers (){
 		return userDatamapper.findAll();
 	},
-	getUserById(id){
-		return userDatamapper.findByPk(id);
+	getUserById(_, args){
+		return userDatamapper.findByPk(args.id);
 	},
-	getAllInstrument(){
+	getAllInstruments(){
 		return instrumentDatamapper.findAll();
 	},
-	getInstrumentById(id){
-		return instrumentDatamapper.findByPk(id);
+	getInstrumentById(_, args){
+		return instrumentDatamapper.findByPk(args.id);
 	},
-	getAllSuit (){
+	getAllSuits (){
 		return suitDatamapper.findAll();
 	},
-	getSuitById(id){
-		return suitDatamapper.findByPk(id);
-	},
-    getAllUserWithSuit(){
-        return userHasSuitDatamapper.findAll();
-    },
-    getThisUserHasThisSuit(id){
-        return userHasSuitDatamapper.findByPk(id)
-    }
+	getSuitById(_,args){
+		return suitDatamapper.findByPk(args.id);
+	}
 };
 
 module.exports = resolverQuery;

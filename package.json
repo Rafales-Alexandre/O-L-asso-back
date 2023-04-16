@@ -1,0 +1,42 @@
+{
+  "name": "projet-01-o-lasso-back",
+  "version": "1.0.0",
+  "description": "## Initialisation !",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e js,mjs,json,gql server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Ohm/projet-01-o-lasso-back.git",
+    "dev":"DEBUG=*  node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Ohm/projet-01-o-lasso-back/issues"
+  },
+  "homepage": "https://github.com/O-clock-Ohm/projet-01-o-lasso-back#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@graphql-eslint/eslint-plugin": "^3.18.0",
+    "@ni/eslint-config-javascript": "^4.2.1",
+    "eslint": "^8.38.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-sql": "^2.3.2"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.6.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "graphql": "^16.6.0",
+    "pg": "^8.10.0"
+  }
+}
