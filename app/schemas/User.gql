@@ -21,7 +21,7 @@ type User {
   nickname: String
   email: String!
   password: String
-  birthdate: String
+  birthdate: Date
   phone: String
   address: String
   address_2: String
@@ -33,9 +33,31 @@ type User {
   subscription: Boolean
   deposit: Boolean
   role: String
-  created_at: String
-  updated_at: String
+  created_at: DateTime
+  updated_at: DateTime
   instruments: [Instrument]
   instrument: Instrument
   
+}
+
+input UserInput{
+  url_img: String
+  lastname: String!
+  firstname: String
+  nickname: String
+  email: String!
+  password: String
+  birthdate: Date
+  phone: String
+  address: String
+  address_2: String
+  zip_code: String
+  city: String
+  gender: Gender
+  top_size: Size
+  bottom_size: Size
+  subscription: Boolean
+  deposit: Boolean
+  role: String
+  instrument_id: ID
 }

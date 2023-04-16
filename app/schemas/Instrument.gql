@@ -8,6 +8,16 @@ type Instrument {
   weight: Int
   sticker: Boolean
   user: User
-  created_at: String!
-  updated_at: String
+  created_at: DateTime!
+  updated_at: DateTime
+}
+
+input InstrumentInput {
+  code: String!
+  pupitre: String
+  observation: String
+  depth: Int
+  rods: Int
+  weight: Int
+  sticker: Boolean
 }

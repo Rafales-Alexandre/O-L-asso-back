@@ -4,7 +4,7 @@ const Instrument = require ("./instrument");
 const UserHasSuit = require ("./userHasSuit");
 const Suit = require ("./suit");
 //const customScalars = require("./customScalarsResolvers");
-
+const Mutation = require("./mutation");
 
 module.exports = {
 	/*customScalars, */
@@ -12,5 +12,6 @@ module.exports = {
 	User,
 	Instrument,
 	UserHasSuit,
-	Suit
+	Suit,
+	Mutation
 };
