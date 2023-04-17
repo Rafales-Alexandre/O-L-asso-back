@@ -3,6 +3,7 @@ type Query {
   getAllUsers: [User]
   getAllSuits: [Suit]
 
+<<<<<<< HEAD
   getInstrumentById(id: ID!): Instrument
   getUserById(id: ID!): User
   getSuitById(id: ID!): Suit
@@ -11,3 +12,15 @@ type Query {
   getThisUserHasThisSuit(id: ID!): UserHasSuit
 
 }
+=======
+    getInstrumentById (id: Int!): Instrument
+    getUserById(id: Int!):User 
+    getSuitById (id: Int!): Suit 
+
+    getAllUserWithSuit ( id: Int! ): [UserHasSuit]
+    getThisUserHasThisSuit (id : Int!): UserHasSuit
+
+    getInstrumentByUser (id:Int!): Instrument
+    getUserByInstrument (id: Int!): User
+}
+>>>>>>> main
