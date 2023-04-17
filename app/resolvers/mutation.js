@@ -11,5 +11,9 @@ module.exports = {
     },
     addSuit(_,args){
         return suitDatamapper.create(args.input);
-    }
+    },
+    updateUser(id, args){
+        console.log("id", id , "args : ", args)
+        return userDatamapper.update(args.input);
+    },
 }

@@ -24,7 +24,7 @@ const PORT = process.env.PORT ?? 3000;
     app.use("/graphql",cors(),express.json(),expressMiddleware(apolloServer,apolloConfig));
 
     serverHTTP.listen(PORT,()=>{
-        console.log(`Listening on ${PORT}`);
+        console.log(`Listening on ${PORT}/graphql`);
     });
 
 })(); 
