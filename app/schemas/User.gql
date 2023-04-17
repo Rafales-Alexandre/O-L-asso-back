@@ -14,7 +14,6 @@ enum Size {
 }
 
 type User {
-<<<<<<< HEAD
   id: ID!
   url_img: String
   lastname: String!
@@ -62,29 +61,3 @@ input UserInput{
   role: String
   instrument_id: ID
 }
-=======
-    id: ID 
-    url_img:String
-    lastname:String 
-    firstname: String 
-    nickname: String 
-    email: String
-    password: String 
-    birthdate: Int 
-    phone: String
-    address: String 
-    address_2: String 
-    zip_code: String
-    city: String
-    gender: String
-    top_size: String
-    bottom_size:String
-    subscription: Boolean
-    deposit: Boolean
-    role: String
-    created_at: Int
-    updated_at: Int
-    instrument : [Instrument]
-    userHasSuit: [UserHasSuit]
-}
->>>>>>> main

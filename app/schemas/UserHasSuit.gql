@@ -1,16 +1,7 @@
 type UserHasSuit {
-<<<<<<< HEAD
   id: ID!
   user_id: User
   suit_id: Suit
   user: [User]
   suit: [Suit]
 }
-=======
-    id: ID
-    user_id: ID
-    suit_id: ID
-    user: [User]
-    suit: [Suit]
-}
->>>>>>> main
