@@ -28,5 +28,4 @@ input SuitInput {
     quantity_xl: Int
     quantity_xxl: Int
     quantity_xxxl: Int
-    user : [User]
 }

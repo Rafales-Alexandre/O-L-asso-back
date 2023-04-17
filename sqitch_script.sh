@@ -43,7 +43,7 @@ version_file_name=db_version
 
 # Use this variable for development environment to avoid the prompt or comment them if you don't need them
 # Design the user of the sql server who own the database of the project
-db_user=batala
+db_user=<dbuser>
 # Represent the database of the project
 database=<dbbase>
 # The password of the sql user
