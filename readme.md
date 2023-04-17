@@ -6,6 +6,9 @@
 To begin the project ,type   ``` bash init_esLint.sh```
  and run ``` esLint --init ```
 e
+> creation bdd via command lines ?
+
+
 Then run  ```bash sqitch_script.sh```
 
 Run init > The admin requested is the super user of your specific installation of postgresql

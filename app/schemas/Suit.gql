@@ -1,42 +1,31 @@
 enum Gender {
-  F
-  M
-  Mixte
+    F
+    M
+    Mixte
 }
 
 type Suit {
-  id: ID!
-  label: String!
-  gender: Gender
-  observation: String
-  quantity_s: Int
-  quantity_m: Int
-  quantity_l: Int
-  quantity_xl: Int
-  quantity_xxl: Int
-  quantity_xxxl: Int
+    id: ID! 
+    label: String!
+    gender: Gender
+    observation: String 
+    quantity_s: Int
+    quantity_m: Int
+    quantity_l:Int
+    quantity_xl: Int
+    quantity_xxl: Int
+    quantity_xxxl: Int
+      
 }
 
 input SuitInput {
-  label: String!
-  gender: Gender
-  observation: String
-  quantity_s: Int
-  quantity_m: Int
-  quantity_l: Int
-  quantity_xl: Int
-  quantity_xxl: Int
-  quantity_xxxl: Int
-}
-
-input SuitUpdateInput {
-  label: String
-  gender: Gender
-  observation: String
-  quantity_s: Int
-  quantity_m: Int
-  quantity_l: Int
-  quantity_xl: Int
-  quantity_xxl: Int
-  quantity_xxxl: Int
+    label: String!
+    gender: Gender
+    observation: String 
+    quantity_s: Int
+    quantity_m: Int
+    quantity_l:Int
+    quantity_xl: Int
+    quantity_xxl: Int
+    quantity_xxxl: Int
 }

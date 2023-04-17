@@ -6,6 +6,7 @@ class Suit extends CoreDatamapper {
     tableName = 'suit';
 
     deleteSuit(id){
+        
         return this.delete(id);
     }
 }
