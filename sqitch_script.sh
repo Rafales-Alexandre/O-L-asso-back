@@ -45,9 +45,9 @@ version_file_name=db_version
 # Design the user of the sql server who own the database of the project
 db_user=postgres
 # Represent the database of the project
-database=batala
+database=<dbbase>
 # The password of the sql user
-db_password=batala
+db_password=<dbpassword>
 
 #Allow you to configure which database engine you want to use for your project.
 #Uncomment the one needed
