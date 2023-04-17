@@ -39,10 +39,10 @@ CREATE TABLE "user"(
     "password" TEXT NOT NULL,
     "birthdate" DATE,
     "phone" TEXT,
-    "address" TEXT NOT NULL,
+    "address" TEXT,
     "address_2" TEXT,
     "zip_code" postal_code_fr,
-    "city" TEXT NOT NULL,
+    "city" TEXT,
     "gender" gender,
     "top_size" size,
     "bottom_size" size,
@@ -82,7 +82,7 @@ CREATE TABLE "suit"(
 
 CREATE TABLE "user_has_suit" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "user_id" INT NOT NULL REFERENCES "user"("id"),
+    "user_id" INT REFERENCES "user"("id"),
     "suit_id" INT REFERENCES "suit"("id")
 );
 

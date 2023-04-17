@@ -7,7 +7,7 @@ const Suit = require ("./suit");
 const Mutation = require("./mutation");
 
 module.exports = {
-	/*customScalars, */
+	//customScalars,
 	Query,
 	User,
 	Instrument,
