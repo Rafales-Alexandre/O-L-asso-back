@@ -4,9 +4,12 @@ const suitDatamapper = require ("../datamappers/suit");
 
 module.exports = { 
     user:(suit)=>{
+        console.log(suit)
         return userDatamapper.findByPk(suit.user_id);
     },
     suit:(user)=>{
-        return suitDatamapper.findByPk(user.suit_id)
+        console.log(user)
+        return suitDatamapper.findByPk(user.suit_id);
+        
     }
 };

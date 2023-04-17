@@ -5,3 +5,4 @@ type UserHasSuit {
   user: [User]
   suit: [Suit]
 }
+

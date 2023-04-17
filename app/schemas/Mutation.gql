@@ -1,7 +1,16 @@
-type Mutation{
+type Mutation {
     addUser(input: UserInput): User
     addInstrument(input: InstrumentInput): Instrument
     addSuit(input: SuitInput): Suit
 
-   updateUser ( id : ID! , input : UserInput): User
+        updateUser ( id : ID! , input : UserInput): User
+        updateInstrument(id : ID!, input : InstrumentInput): Instrument
+        updateSuit(id : ID!, input : SuitInput) : Suit
+        
+
+            deleteUser(input : UserInput) : User
+            deleteInstrument(input: InstrumentInput) : Instrument
+            deleteSuit(input : SuitInput): Suit
+            
 }
+    

@@ -12,8 +12,16 @@ module.exports = {
     addSuit(_,args){
         return suitDatamapper.create(args.input);
     },
-    updateUser(id, args){
-        console.log("id", id , "args : ", args)
+    updateUser(_,args){
+        console.log("tadam : ", args);
         return userDatamapper.update(args.input);
+    }, 
+    /*  updateUser(_,{id, inputData}){
+        console.log("tadoum : ", inputData);
+        return userDatamapper.update(id, inputData);
+    },  */
+    deleteUser (_, args){
+        console.log("deleted");
+        return userDatamapper.delete(args.input); 
     },
 }
