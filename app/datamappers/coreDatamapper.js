@@ -102,7 +102,7 @@ class CoreDatamapper {
     }
 
     async delete(id) {
-        const result = await this.client.query(`DELETE FROM "${this.tableName}" WHERE id= $1`, [id])
+        const result = await this.client.query(`DELETE FROM "${this.tableName}" WHERE id= $1 CASCADE `, [id] )
         return !!result.rowCount;
     }
 

@@ -2,6 +2,7 @@ type Mutation {
     addUser(input: UserInput): User
     addInstrument(input: InstrumentInput): Instrument
     addSuit(input: SuitInput): Suit
+<<<<<<< HEAD
 
         updateUser ( id : ID! , input : UserInput): User
         updateInstrument(id : ID!, input : InstrumentInput): Instrument
@@ -14,3 +15,10 @@ type Mutation {
             
 }
     
+=======
+    
+    deleteSuit( id: ID!) : Boolean!
+    deleteUser( id: ID!) : Boolean!
+    
+}
+>>>>>>> origin/main

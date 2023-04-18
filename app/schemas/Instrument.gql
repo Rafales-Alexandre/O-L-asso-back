@@ -5,7 +5,7 @@ type Instrument {
   observation: String
   depth: Int
   rods: Int
-  weight: Int
+  weight: Float
   sticker: Boolean
   user: User
   created_at: DateTime!
@@ -18,6 +18,6 @@ input InstrumentInput {
   observation: String
   depth: Int
   rods: Int
-  weight: Int
+  weight: Float
   sticker: Boolean
 }
