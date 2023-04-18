@@ -5,7 +5,7 @@
 ###################################################
  
 #Set the value of variable
-database=<database> 
+database=batala 
  
 #Execute few psql commands: 
 #Note: you can also add -h hostname -U username in the below commands. 
