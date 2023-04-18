@@ -1,9 +1,3 @@
-/**
- * Probleme; comment définir les roles, en plus du sql ? 
- * On fait un mix avec un schema en gql et du js ? Ou full js direct ??
- * 
- */
-
 const erroHandler = require ("../services/errorHandler");
 
 function isLoggedIn(req, res, next){
