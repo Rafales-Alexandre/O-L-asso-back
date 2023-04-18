@@ -1,6 +1,7 @@
 const userDatamapper = require('../datamappers/user');
 const instrumentDatamapper = require('../datamappers/instrument');
 const suitDatamapper = require('../datamappers/suit');
+const userHasSuit = require('../datamappers/userHasSuit');
 
 module.exports = {
     addUser(_, args) {
@@ -17,6 +18,12 @@ module.exports = {
     },
     deleteUser(parent, {id}){
         return userDatamapper.deleteUser(id);
+    },
+    deleteInstrument(_, {id}){
+        return instrumentDatamapper.deleteInstrument(id);
+    },
+    deleteUserHasSuit(_,{id}){
+        return userHasSuit.deleteUserHasSuit(id);
     }
 
 };
