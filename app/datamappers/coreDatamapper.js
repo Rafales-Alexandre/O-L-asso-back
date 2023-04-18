@@ -1,4 +1,4 @@
-const APIError = require("./service/error/APIError");
+const APIError = require("../services/error/APIerror");
 
 class CoreDatamapper {
     tableName;

@@ -6,18 +6,16 @@ const securityService = {
  * @param {*} next 
  */
    async function check(req, res, next) {
-
-
     if (req.session.user && req.session.user.role == "admin"||"board"||"member") {
 
         next();
     }
     else {
-        // sinon redirect vers la page de login   
-        res.redirect("/login");
+        // sinon redirect vers une autre page... 
+        res.redirect("/");
     }
 }
-}}
+}
 ;
 
 

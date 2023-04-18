@@ -1,4 +1,4 @@
-const APIError = require("./APIError");
+const APIError = require("./APIerror");
 const debug = require("debug")("error");
 const path = require("path");
 const fs = require('fs').promises;

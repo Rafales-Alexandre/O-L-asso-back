@@ -1,9 +1,10 @@
-/* const session = require('express-session');
+ const session = require('express-session');
 
 /**
  *  !secret is deprecated, need to find alternative!
  * First, I create the session and his little cookies 
  */
+
 const setupSession = session({
     secret : process.env.TOKEN_SECRET,
     resave:false,
@@ -27,7 +28,5 @@ async function addUserToLocals(req,res,next){
 
 module.exports = {
     setupSession,
-    check,
-    securityService,
     addUserToLocals
 }

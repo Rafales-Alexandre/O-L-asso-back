@@ -2,15 +2,6 @@ const CoreDatamapper = require("./coreDatamapper");
 const client = require("../db/pg")
 
 
-<<<<<<< HEAD
-class User extends CoreDatamapper {
-    tableName = 'user';
-
-   
-}
-
-module.exports = new User(client)
-=======
 class Suit extends CoreDatamapper {
     tableName = 'suit';
 
@@ -29,4 +20,3 @@ class Suit extends CoreDatamapper {
 }
 
 module.exports = new Suit(client)
->>>>>>> main

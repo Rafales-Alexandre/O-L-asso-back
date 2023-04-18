@@ -1,21 +1,15 @@
-<<<<<<< HEAD
-const erroHandler = require ("../services/errorHandler");
-=======
-/**
- * Probleme; comment définir les roles, en plus du sql ? 
- * On fait un mix avec un schema en gql et du js ? Ou full js direct ??
- * 
- */
-
-//const erroHandler = require ("../services/errorHandler");
->>>>>>> main
+const erroHandler = require ("../error/errorHandler");
+const APIError = require("../error/APIerror")
 
 function isLoggedIn(req, res, next){
     if(!req.session.user){
         return erroHandler
     } next();
 }
-
+/**
+ *  Those may be very useless. 
+ * 
+ */
 function isBureau(){
     if(!req.session.user){
         return errorHandler
@@ -37,4 +31,4 @@ function isUser(){
     if(req.session.user.role !== "User"){}
 };
 
-//module.export = {isLoggedIn, isBureau, isUser};
+module.export = {isLoggedIn, isBureau, isUser, isAdmin};
