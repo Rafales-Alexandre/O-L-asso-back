@@ -37,6 +37,7 @@ type User {
   updated_at: DateTime
   instruments: [Instrument]
   instrument: Instrument
+  suits: [Suit]
 }
 
 input UserInput{

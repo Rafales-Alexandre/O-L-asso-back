@@ -15,7 +15,8 @@ type Suit {
     quantity_xl: Int
     quantity_xxl: Int
     quantity_xxxl: Int
-      
+    users: [User]
+    total: Int
 }
 
 input SuitInput {

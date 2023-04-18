@@ -7,9 +7,5 @@ type Query {
   getUserById(id: ID!): User
   getSuitById(id: ID!): Suit
 
-  getAllUserWithSuit(id: ID!): [UserHasSuit]
-  getThisUserHasThisSuit(id: ID!): UserHasSuit
-
-  getUserWithSuit(id: ID!): [UserHasSuit]
-  
+  getSuitsByUser(id: ID!): [Suit]
 }

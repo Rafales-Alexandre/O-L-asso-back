@@ -6,6 +6,6 @@ class Instrument extends CoreDatamapper {
 
 
     }
-}
+
 
 module.exports = new Instrument(client);

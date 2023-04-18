@@ -1,4 +1,4 @@
-const session = require('espress-session');
+/* const session = require('express-session');
 
 /**
  * EN COURS DE TEST 
@@ -21,10 +21,11 @@ async function addUserToLocals(req,res,next){
      */
     req.session.user = user;
     res.locals.user= user;
-    next()
+    next();
 }
 
 module.exports = {
     setupSession,
     addUserToLocals
 }
+ */

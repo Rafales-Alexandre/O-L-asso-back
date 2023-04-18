@@ -6,10 +6,8 @@ type Mutation {
     deleteSuit( id: ID!) : Boolean!
     deleteUser( id: ID!) : Boolean!
     deleteInstrument( id: ID!): Boolean!
-    deleteUserHasSuit( id: ID!): Boolean!
     
     updateSuit(id: ID!, input : SuitInput): Suit
     updateUser(id: ID!, input: UserInput): User
     updateInstrument(id: ID!, input: InstrumentInput): Instrument
-    updateUserHasSuit(id:ID!, input: UserHasSuitInput ): UserHasSuit
 }

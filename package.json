@@ -10,7 +10,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/O-clock-Ohm/projet-01-o-lasso-back.git",
-    "dev":"DEBUG=*  node ."
+    "dev": "DEBUG=*  node ."
   },
   "keywords": [],
   "author": "",
@@ -35,6 +35,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "fs": "^0.0.1-security",
     "graphql": "^16.6.0",
     "pg": "^8.10.0"
