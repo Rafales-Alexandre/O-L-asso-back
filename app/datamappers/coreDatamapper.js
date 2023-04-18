@@ -1,3 +1,5 @@
+const APIError = require("./service/error/APIError");
+
 class CoreDatamapper {
     tableName;
 
@@ -13,6 +15,7 @@ class CoreDatamapper {
         const result = await this.client.query(baseQuery);
 
         if (!result.rows[0]) {
+            new APIError ("Erreur lors de la récupération des données", 500)
             return null;
         }
         return result.rows[0];
@@ -49,8 +52,12 @@ class CoreDatamapper {
             values,
         };
         const result = await this.client.query(baseQuery);
+        if (!result.rows ){
 
-        return result.rows;
+        }else {
+            return result.rows;
+        }
+
 
     }
 
