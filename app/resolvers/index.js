@@ -3,7 +3,7 @@ const User = require ("./user");
 const Instrument = require ("./instrument");
 
 const Suit = require ("./suit");
-//const customScalars = require("./customScalarsResolvers");
+//const customScalars = require("./customScalars");
 const Mutation = require("./mutation");
 
 module.exports = {
