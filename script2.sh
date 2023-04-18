@@ -1,20 +1,23 @@
-#!/bin/bash
- 
-###################################################
-# My Second Bash Shell script to execute those fucking psql command 
-###################################################
- 
-#Set the value of variable
-database=<database> 
- 
-#Execute few psql commands: 
-#Note: you can also add -h hostname -U username in the below commands. 
- 
-DROP IF EXISTS DATABASE batala;
-DROP IF EXISTS USER batala;
-CREATE USER batala WITH PASSWORD 'batala';
-CREATE DATABASE batala OWNER batala;
-exit
- 
-#Print the value of variable
-echo "First half done ! "
+echo 'Here we Go !'
+
+chmod +x script.sh
+echo 'God Mod '
+
+./script.sh
+
+touch .env
+echo 'env created'
+
+echo '
+PGHOST=localhost
+PGPORT=5432
+PGDATABASE=batala
+PGUSER=batala
+PGPASSWORD=batala
+PORT=3000' >>/var/www/html/00-Apotheose/projet-01-o-lasso-back/.env
+
+npm i
+echo 'npm done'
+
+node ./data/seeding.js
+echo 'seeding.done'
