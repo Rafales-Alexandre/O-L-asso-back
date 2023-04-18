@@ -1,9 +1,9 @@
-const session = require('espress-session');
+const session = require('express-session');
 
 /**
  * EN COURS DE TEST 
  * Utiliser le schéma du User donc définir un User type/role 
-const { User } = require("../")
+const { Role } = require("../")
  */
 
 const setupSession = session({
