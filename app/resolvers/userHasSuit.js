@@ -1,4 +1,4 @@
-/* const userDatamapper = require("../datamappers/user");
+const userDatamapper = require("../datamappers/user");
 const suitDatamapper = require ("../datamappers/suit");
 
 
@@ -13,4 +13,4 @@ module.exports = {
         
     }
 };
- */
+ 

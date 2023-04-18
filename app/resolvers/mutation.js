@@ -24,6 +24,16 @@ module.exports = {
     },
     deleteUserHasSuit(_,{id}){
         return userHasSuit.deleteUserHasSuit(id);
-    }
+    },
+    updateSuit(_,{id, input}){
+        return suitDatamapper.update({id}, input)
+    },
+    updateUser(_,{id, input}){
+        return userDatamapper.update({id}, input )
+    },
+    updateInstrument(_, {id, input}){
+        return instrumentDatamapper.update({id}, input)
+    },
+    
 
 };
