@@ -1,7 +1,0 @@
-type UserHasSuit {
-  id: ID!
-  user_id: User
-  suit_id: Suit
-  user: [User]
-  suit: [Suit]
-}

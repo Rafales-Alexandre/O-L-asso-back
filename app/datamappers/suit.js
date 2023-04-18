@@ -1,13 +1,21 @@
-const CoreDatamapper = require ("./coreDatamapper");
+const CoreDatamapper = require("./coreDatamapper");
+const client = require("../db/pg")
 
-const client = require ("../db/pg");
 
 class Suit extends CoreDatamapper {
     tableName = 'suit';
 
-    deleteSuit(id){
-        
-        return this.delete(id);
+    async findByUser(userId) {
+        const baseQuery = {
+            text: ` 
+            SELECT s.* FROM "${this.tableName}" as s
+            LEFT JOIN "user_has_suit" as us ON s.id = us.suit_id 
+            WHERE us.user_id = ${userId}
+            `
+        };
+        const result = await this.client.query(baseQuery);
+
+        return result.rows;
     }
 }
 

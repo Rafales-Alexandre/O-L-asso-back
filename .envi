@@ -1,0 +1,6 @@
+PGHOST=localhost
+        PGPORT=5432
+        PGDATABASE=batala
+        PGUSER=batala
+        PGPASSWORD=batala
+        PORT=3000

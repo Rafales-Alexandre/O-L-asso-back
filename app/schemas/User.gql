@@ -37,7 +37,7 @@ type User {
   updated_at: DateTime
   instruments: [Instrument]
   instrument: Instrument
-  
+  suits: [Suit]
 }
 
 input UserInput{
@@ -61,3 +61,4 @@ input UserInput{
   role: String
   instrument_id: ID
 }
+

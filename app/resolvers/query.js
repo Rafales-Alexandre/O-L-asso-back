@@ -3,6 +3,7 @@ const userDatamapper = require ("../datamappers/user");
 const suitDatamapper = require ("../datamappers/suit");
 
 
+
 const resolverQuery = {
 	getAllUsers (){
 		return userDatamapper.findAll();
@@ -21,6 +22,9 @@ const resolverQuery = {
 	},
 	getSuitById(_,args){
 		return suitDatamapper.findByPk(args.id);
+	},
+	getSuitsByUser(_,args) {
+		return suitDatamapper.findByUser(args.id);
 	}
 };
 

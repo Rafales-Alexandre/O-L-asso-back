@@ -1,9 +1,13 @@
-type Mutation{
+type Mutation {
     addUser(input: UserInput): User
     addInstrument(input: InstrumentInput): Instrument
     addSuit(input: SuitInput): Suit
     
     deleteSuit( id: ID!) : Boolean!
     deleteUser( id: ID!) : Boolean!
+    deleteInstrument( id: ID!): Boolean!
     
+    updateSuit(id: ID!, input : SuitInput): Suit
+    updateUser(id: ID!, input: UserInput): User
+    updateInstrument(id: ID!, input: InstrumentInput): Instrument
 }
