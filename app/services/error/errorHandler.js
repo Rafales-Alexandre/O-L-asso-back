@@ -10,6 +10,9 @@ const errorModule = {
         errorModule.log(err, req.url);
 
         switch(err.code){
+            case 401:
+                res.status(401).json("Unauthenticaded User");
+                break;
             case 400:
                 res.status(400).json("Bad request");
                 break;
