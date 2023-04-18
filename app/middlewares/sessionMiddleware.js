@@ -1,5 +1,4 @@
-const session = require('express-session');
-/* const { Role } = require("./Models/Role"); */
+/* const session = require('express-session');
 
 /**
  *  !secret is deprecated, need to find alternative!

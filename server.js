@@ -16,14 +16,14 @@ const http = require("http");
 const serverHTTP = http.createServer(app);
 const PORT = process.env.PORT ?? 3000;
 
-app.use(middelwares.setupSession);
-app.use(middelwares.addUserToLocals);
+//app.use(middelwares.setupSession);
+//app.use(middelwares.addUserToLocals);
 
  (async ()=>{
 
     await apolloServer.start();
 
-    app.use("/graphql",cors(),express.json(),expressMiddleware(apolloServer,apolloConfig), loggingMiddleware());
+    app.use("/graphql",cors(),express.json(),expressMiddleware(apolloServer,apolloConfig), );
 
     serverHTTP.listen(PORT,()=>{
         console.log(`Listening on ${PORT}/graphql`);

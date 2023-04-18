@@ -21,4 +21,4 @@ const securityService = {
 ;
 
 
-module.exports = securityService;
+module.exports = securityService; 

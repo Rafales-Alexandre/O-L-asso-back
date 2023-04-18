@@ -1,7 +1,10 @@
  const userDatamapper = require ("../datamappers/user");
 
 module.exports = {
-    user(parent){
-        return userDatamapper.findByPk(user.id)
+    users(suit){
+        return userDatamapper.findBySuit(suit.id);
+    },
+    total(suit) {
+        return userDatamapper.findBySuitTotal(suit.id);
     }
 } 
