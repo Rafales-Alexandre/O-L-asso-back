@@ -34,6 +34,7 @@ app.use(middlewares.schema);
 app.use(middlewares.security);
 app.use(middlewares.rightsMiddleware);
 app.use(middlewares.addUserToLocals);
+* ! rajouter un middleware b-crypt
  */
 
  (async ()=>{
