@@ -5,7 +5,6 @@ class User extends CoreDatamapper {
     tableName = 'user';
 
     async findBySuit(suitId) {
-
         const baseQuery = {
             text: ` 
             SELECT u.* FROM "${this.tableName}" as u
@@ -30,6 +29,8 @@ class User extends CoreDatamapper {
         const result = await this.client.query(baseQuery);
         return result.rows[0].count;
     }
+
+    
 }
 
 

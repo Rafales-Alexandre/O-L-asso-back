@@ -1,6 +1,7 @@
 const instrumentDatamapper = require ("../datamappers/instrument");
 const userDatamapper = require ("../datamappers/user");
 const suitDatamapper = require ("../datamappers/suit");
+const { GraphQLError } = require("graphql");
 
 
 
@@ -9,6 +10,13 @@ const resolverQuery = {
 		return userDatamapper.findAll();
 	},
 	getUserById(_, args){
+		/* if (!args){
+			throw new GraphQLError('Invalid_Input', {
+				extensions : {
+					code : 'BAD_USER_INPUT',
+				}
+			})
+		} */
 		return userDatamapper.findByPk(args.id);
 	},
 	getAllInstruments(){
@@ -25,7 +33,8 @@ const resolverQuery = {
 	},
 	getSuitsByUser(_,args) {
 		return suitDatamapper.findByUser(args.id);
-	}
+	},
+	
 };
 
 module.exports = resolverQuery;

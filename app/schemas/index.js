@@ -11,7 +11,7 @@ const mutationSchema = readFileSync(path.join(__dirname,"./Mutation.gql"));
 
 
 const typeDefs = `#graphql
-${customScalars}
+ ${customScalars}
 ${userSchema}
 ${instrumentSchema}
 ${suitSchema}

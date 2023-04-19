@@ -11,7 +11,6 @@ module.exports = {
 	Query,
 	User,
 	Instrument,
-	
 	Suit,
 	Mutation
 };

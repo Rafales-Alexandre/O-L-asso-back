@@ -1,8 +1,7 @@
-const APIError = require("../error/APIerror")
 
 function isLoggedIn(req, res, next){
     if(!req.session.user){
-       next( new APIError(error.message, 401))
+
     } next();
 }
 /**

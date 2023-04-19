@@ -8,4 +8,6 @@ type Query {
   getSuitById(id: ID!): Suit
 
   getSuitsByUser(id: ID!): [Suit]
+
+
 }
