@@ -38,6 +38,7 @@
     "express-session": "^1.17.3",
     "fs": "^0.0.1-security",
     "graphql": "^16.6.0",
+    "graphql-scalars": "^1.21.3",
     "pg": "^8.10.0"
   }
 }
