@@ -1,20 +1,17 @@
-#!/bin/bash
+#!/bin/sh
  
 ###################################################
 # My First Bash Shell script to execute those fucking psql command 
 ###################################################
  
-#Set the value of variable
-database=batala 
+#Execute the commands
+
+sudo -u postgres psql -f init.sql
+ echo "drop and recreate table"
+
+
  
-#Execute few psql commands: 
-#Note: you can also add -h hostname -U username in the below commands. 
- 
-DROP IF EXISTS DATABASE batala;
-DROP IF EXISTS USER batala;
-CREATE USER batala WITH PASSWORD 'batala';
-CREATE DATABASE batala OWNER batala;
+
+echo "First half done ! "
 exit
  
-#Print the value of variable
-echo "First half done ! "

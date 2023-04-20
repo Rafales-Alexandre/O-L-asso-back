@@ -1,9 +1,10 @@
+#!/bin/sh
+
 echo 'Here we Go !'
 
-chmod +x script.sh
-echo 'God Mod '
+sudo -u postgres psql -f init.sql
+ echo "drop and recreate table"
 
-./script.sh
 
 touch .env
 echo 'env created'
@@ -16,10 +17,12 @@ PGUSER=batala
 PGPASSWORD=batala
 PORT=3000" >>.env
 
+echo ".env effective !"
 npm i
-echo 'npm done'
+echo 'npm init done'
 
 psql -U batala -d batala -h localhost -f migrations/deploy/init_tables.sql
+
 echo 'tables created !'
 
 node ./data/seeding.js
