@@ -5,9 +5,15 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 
 const { expressMiddleware } = require('@apollo/server/express4');
+
+
 const { json } = require ("body-parser")
 const cors = require('cors');
+const { ApolloServerPluginDrainHttpServer} = require('@apollo/server/plugin/drainHttpServer')
 
+/**
+ * app and ApolloConfig are the context ! 
+ */
 const {app,apolloConfig} = require("./app");
 
 const http = require("http");
@@ -19,8 +25,13 @@ const server = new ApolloServer(apolloConfig);
 
 (async ()=>{
     await server.start();
-        app.use("/graphql",cors(),json(),expressMiddleware(server,apolloConfig, {
-            context : async ({ req }) => ({ token: req.headers.token }),
+        app.use("/graphql",cors(),json(),expressMiddleware(server,apolloConfig,
+            // {plugins :[ ApolloServerPluginDrainHttpServer({ serverHTTP}) ]} , 
+            { context : async ({ req, res }) => { 
+                const token = req.headers.authorization || ''; 
+                const user = await getUser(token); 
+                return { user}
+            },
         }),
          );
     
