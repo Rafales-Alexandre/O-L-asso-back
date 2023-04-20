@@ -1,7 +1,5 @@
-const {setupSession, addUserToLocals} = require('./sessionMiddleware');
-const { isLoggedIn, isAdmin, isBureau, IsUser} = require ('./rightsMiddleware');
-const {loginSchema, signingSchema } = require ('./schemas');
-
+/* //const {setupSession, addUserToLocals} = require('./sessionMiddleware');
+//const { isLoggedIn, isAdmin, isBureau, IsUser} = require ('./rightsMiddleware');
 
 module.exports = {
     setupSession,
@@ -9,8 +7,7 @@ module.exports = {
     isLoggedIn,
     isAdmin,
     isBureau,
-    IsUser,
-    loginSchema,
-    signingSchema
+    IsUser
 };
 
+ */

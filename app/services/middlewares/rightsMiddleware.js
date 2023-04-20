@@ -1,46 +1,36 @@
+/**
+ * Probleme; comment définir les roles, en plus du sql ? 
+ * On fait un mix avec un schema en gql et du js ? Ou full js direct ??
+ * 
+ */
+
+//const erroHandler = require ("../services/errorHandler");
 
 function isLoggedIn(req, res, next){
     if(!req.session.user){
-
+        return erroHandler
     } next();
 }
-/**
- * need to verify if it goes through every path of verification of status.role 
-*/
-function isUser(){
-    if(!req.session.user){
-        next( new APIError(error.message, 401));
-    }
-    // elseif ?
-    if(req.session.user.role !== "User"){
-        return res.json('Bienvenue Utilisateur')
-        
-    } else {
-        next()
-    }
-}
 
-function isBureau(req, res, next){
+function isBureau(){
     if(!req.session.user){
-        next( new APIError(error.message, 401));
+        return errorHandler
     } 
-    if(req.session.user.role !== "desk"){
-        return res.json('Utilisateur de rang Bureau')
-    }else {
-        next()
-    }
+    if(req.session.user.role !== "Bureau"){}
 };
 
 function isAdmin(){
     if(!req.session.user){
-        next( new APIError(error.message, 401));
+        errorHandler
     }
-    if(req.session.user.role !== "Admin"){
-        return res.json('Gloire à l\'Administrateur')
-    }
+    if(req.session.user.role !== "Admin"){}
 };
 
-/**
- * it may appear to be more effective to have all of this in One big function 
- */
-module.export = {isLoggedIn, isBureau, isUser, isAdmin};
+function isUser(){
+    if(!req.session.user){
+        errorHandler
+    }
+    if(req.session.user.role !== "User"){}
+};
+
+//module.export = {isLoggedIn, isBureau, isUser};

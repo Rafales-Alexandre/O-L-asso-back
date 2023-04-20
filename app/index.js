@@ -6,9 +6,6 @@ const app = express();
 const typeDefs = require("./schemas");
 const resolvers = require("./resolvers");
 
-//const error = require("./errors")
-const { ApolloServerErrorCode } = require('@apollo/server/errors');
-
 const apolloConfig = {
     typeDefs,
     resolvers,

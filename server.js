@@ -5,6 +5,10 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { startStandaloneServer } = require('@apollo/server/standalone');
 const { expressMiddleware } = require('@apollo/server/express4');
+<<<<<<< HEAD
+=======
+const middelwares = require ("./app/services/middlewares")
+>>>>>>> 0bce98134cc4a5133c0f8d4eb1bfe463b23bc6c7
 
 const cors = require('cors')
 
@@ -15,8 +19,7 @@ const http = require("http");
 const serverHTTP = http.createServer(app);
 const PORT = process.env.PORT ?? 3000;
 
-//app.use(middelwares.setupSession);
-//app.use(middelwares.addUserToLocals);
+
 
  (async ()=>{
 
