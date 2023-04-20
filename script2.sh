@@ -15,7 +15,7 @@ PGDATABASE=batala
 PGUSER=batala
 PGPASSWORD=batala
 PORT=3000' 
->>./projet-01-o-lasso-back/.env
+>>.env
 
 npm i
 echo 'npm done'
