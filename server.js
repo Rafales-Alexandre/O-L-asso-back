@@ -35,12 +35,8 @@ const server = new ApolloServer(apolloConfig);
     await server.start();
         app.use("/graphql",cors(),json(),expressMiddleware(server,apolloConfig,
             // {plugins :[ ApolloServerPluginDrainHttpServer({ serverHTTP}) ]} , 
-            { context : async ({ req, res }) => { 
-                const token = req.headers.authorization || ''; 
-                const user = await getUser(token); 
-                return { user}
-            },
-        }),
+           // { context : async ({ req, res }) => ({ token : await getTokenForRequest(req), }) }
+            ),
          );
     
         await new Promise ((resolve) => serverHTTP.listen (PORT, resolve))

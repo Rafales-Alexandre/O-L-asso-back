@@ -8,7 +8,16 @@ const suitDatamapper = require("../datamappers/suit");
 
 module.exports = {
 	addUser(_, args) {
-		return userDatamapper.create(args.input);
+
+		/* ajouter argument context au dessus
+		
+		if(!context.role == "admin" || "board"){
+			console.log("pas bien")
+			Throw GraphQlError 
+			return null,
+		} else { */
+			return userDatamapper.create(args.input)
+		//}
 	},
 	addInstrument(_, args) {
 		return instrumentDatamapper.create(args.input);
