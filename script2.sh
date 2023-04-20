@@ -15,7 +15,7 @@ PGDATABASE=batala
 PGUSER=batala
 PGPASSWORD=batala
 PORT=3000" 
->.env
+>>.env
 
 npm i
 echo 'npm done'
