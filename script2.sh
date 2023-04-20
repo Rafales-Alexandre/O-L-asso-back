@@ -8,14 +8,14 @@ echo 'God Mod '
 touch .env
 echo 'env created'
 
-echo '
+echo "
 PGHOST=localhost
 PGPORT=5432
 PGDATABASE=batala
 PGUSER=batala
 PGPASSWORD=batala
-PORT=3000' 
->>.env
+PORT=3000" 
+>.env
 
 npm i
 echo 'npm done'
