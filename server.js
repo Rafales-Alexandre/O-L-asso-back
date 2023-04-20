@@ -35,7 +35,7 @@ const server = new ApolloServer(apolloConfig);
     await server.start();
         app.use("/graphql",cors(),json(),expressMiddleware(server,apolloConfig,
             // {plugins :[ ApolloServerPluginDrainHttpServer({ serverHTTP}) ]} , 
-           // { context : async ({ req, res }) => ({ token : await getTokenForRequest(req), }) }
+            { context : async ({ req, res }) => ({ token : await getTokenForRequest(req), }) }
             ),
          );
     

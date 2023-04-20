@@ -5,14 +5,14 @@ const express = require("express");
 const app = express();
 
 
-const context = require ("./context");
+//const context = require ("./context");
 const typeDefs = require("./schemas");
 const resolvers = require("./resolvers");
 
 const apolloConfig = {
 	typeDefs,
 	resolvers,
-	context
+	
 };
 
 
@@ -21,5 +21,4 @@ const apolloConfig = {
 module.exports = {
 	app,
 	apolloConfig,
-
 };
