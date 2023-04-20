@@ -1,3 +1,7 @@
+/**
+ * Un-official feature, may be replace by an Apollo feature 
+ */
+
 const path = require("path");
 const fs = require('fs').promises;
 const createWriteStream = require('fs').createWriteStream;

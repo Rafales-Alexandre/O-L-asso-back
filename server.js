@@ -1,18 +1,22 @@
+/**
+ * Batala Main
+ * Main requiement to work has a ApolloServer/Express API
+ */
 require("dotenv").config();
-const express = require('express');
-
-
+const express = require("express");
 const { ApolloServer } = require('@apollo/server');
-
 const { expressMiddleware } = require('@apollo/server/express4');
-
-
 const { json } = require ("body-parser")
 const cors = require('cors');
-const { ApolloServerPluginDrainHttpServer} = require('@apollo/server/plugin/drainHttpServer')
 
 /**
- * app and ApolloConfig are the context ! 
+ * Non official features yet:
+const { ApolloServerPluginDrainHttpServer} = require('@apollo/server/plugin/drainHttpServer')
+
+ */
+
+/**
+ * Context of Appollo : 
  */
 const {app,apolloConfig} = require("./app");
 
@@ -23,6 +27,10 @@ const PORT = process.env.PORT ?? 3003;
 
 const server = new ApolloServer(apolloConfig);
 
+/**
+ * Deployment 
+ * 
+ */
 (async ()=>{
     await server.start();
         app.use("/graphql",cors(),json(),expressMiddleware(server,apolloConfig,

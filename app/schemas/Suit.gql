@@ -1,3 +1,5 @@
+""" Type of Suit """
+
 enum Gender {
     F
     M

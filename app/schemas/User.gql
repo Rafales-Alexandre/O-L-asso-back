@@ -1,3 +1,5 @@
+""" Type of User """
+
 enum Gender {
   F
   M

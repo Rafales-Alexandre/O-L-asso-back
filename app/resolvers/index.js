@@ -1,3 +1,7 @@
+/**
+ * Index of resolvers features 
+ */
+
 const Query = require ("./query");
 const User = require ("./user");
 const Instrument = require ("./instrument");

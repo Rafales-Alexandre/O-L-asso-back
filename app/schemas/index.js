@@ -1,3 +1,6 @@
+/**
+ * Index of all GQL files, and the method to read them 
+ */
 const { readFileSync }= require ("fs");
 const path = require ("path");
 

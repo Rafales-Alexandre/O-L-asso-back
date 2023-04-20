@@ -1,24 +1,24 @@
-
+/**
+ * Context of Apollo Server 
+ */
 const express = require("express");
 const app = express();
-//const { ApolloServerPluginDrainHttpServer} = require('@apollo/server/plugin/drainHttpServer')
+
 
 
 const typeDefs = require("./schemas");
 const resolvers = require("./resolvers");
 
 const apolloConfig = {
-    typeDefs,
-    resolvers,
-   // context
-   //error
+	typeDefs,
+	resolvers,
 };
 
 
 
 
 module.exports = {
-    app,
-    apolloConfig,
+	app,
+	apolloConfig,
 
-}
+};

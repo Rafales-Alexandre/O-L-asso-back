@@ -1,7 +1,11 @@
+/**
+ * List of Query
+ */
+
 const instrumentDatamapper = require ("../datamappers/instrument");
 const userDatamapper = require ("../datamappers/user");
 const suitDatamapper = require ("../datamappers/suit");
-const { GraphQLError } = require("graphql");
+//const { GraphQLError } = require("graphql");
 
 
 
@@ -10,7 +14,9 @@ const resolverQuery = {
 		return userDatamapper.findAll();
 	},
 	getUserById(_, args){
-		/* if (!args){
+		/**
+		 * Not official feature 
+		 if (!args){
 			throw new GraphQLError('Invalid_Input', {
 				extensions : {
 					code : 'BAD_USER_INPUT',

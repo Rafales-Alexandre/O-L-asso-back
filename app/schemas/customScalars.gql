@@ -1,2 +1,4 @@
+""" Type of Scalar Data """
+
 scalar Date
 scalar DateTime

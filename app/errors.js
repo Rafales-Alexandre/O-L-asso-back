@@ -1,3 +1,7 @@
+/**
+ * Undeployed features, still learning about it 
+ */
+
 const { ApolloServerErrorCode } = require('@apollo/server/errors');
 const { GraphQLError } = require('graphql')
 
