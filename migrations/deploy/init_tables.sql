@@ -77,13 +77,17 @@ CREATE TABLE "suit"(
     "quantity_l" INT,
     "quantity_xl" INT,
     "quantity_xxl" INT,
-    "quantity_xxxl" INT
+    "quantity_xxxl" INT,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+    "updated_at" TIMESTAMPTZ
 );
 
 CREATE TABLE "user_has_suit" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "user_id" INT REFERENCES "user"("id") ON DELETE SET NULL,
-    "suit_id" INT REFERENCES "suit"("id") ON DELETE SET NULL
+    "suit_id" INT REFERENCES "suit"("id") ON DELETE SET NULL,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+    "updated_at" TIMESTAMPTZ
 );
 
 COMMIT;
