@@ -14,10 +14,16 @@ PGPORT=5432
 PGDATABASE=batala
 PGUSER=batala
 PGPASSWORD=batala
-PORT=3000' >>/var/www/html/00-Apotheose/projet-01-o-lasso-back/.env
+PORT=3000' 
+>>./projet-01-o-lasso-back/.env
 
 npm i
 echo 'npm done'
 
+psql -U batala -d batala -h localhost -f migrations/deploy/init_tables.sql
+echo 'tables created !'
+
 node ./data/seeding.js
 echo 'seeding.done'
+
+node server.js
