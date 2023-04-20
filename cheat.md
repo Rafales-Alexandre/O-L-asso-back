@@ -1,0 +1,22 @@
+data": {
+    "getUserById": {
+      "id": "3",
+      "lastname": "Nicolas",
+      "firstname": "Andoche",
+      "nickname": "Ang",
+      "email": "Victoire.Dupuy@yahoo.fr",
+      "password": "10exd3U3FBTbCzQ",
+      "birthdate": "1967-06-07",
+      "phone": "00-30-57-39-34",
+      "address": "56 Boulevard Royale",
+      "address_2": "Apt. 700",
+      "zip_code": "23683",
+      "city": "Troyes",
+      "gender": "Mixte",
+      "top_size": "XXXL",
+      "bottom_size": "XL",
+      "subscription": true,
+      "deposit": true,
+      "role": "admin",
+      "created_at": "2023-04-20T09:30:20.111Z",
+      "updated_at": null
