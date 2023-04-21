@@ -33,7 +33,7 @@ CREATE TABLE "user"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "url_img" TEXT,
     "lastname" TEXT NOT NULL,
-    "firstname" TEXT NOT NULL,
+    "firstname" TEXT ,
     "nickname" TEXT,
     "email" email NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
@@ -89,6 +89,14 @@ CREATE TABLE "user_has_suit" (
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
+
+CREATE TABLE password_reset_requests (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES "user"(id) ON DELETE SET NULL,
+  reset_token UUID UNIQUE NOT NULL,
+  expiration TIMESTAMPTZ NOT NULL
+);
+
 
 COMMIT;
 
