@@ -19,7 +19,7 @@ PORT=3000
 SECRET=victoria
 APIADDRESS=http://localhost:3000/graphql" >>.env
 
-echo ".env effective !"
+echo " Values inserted in .env  !"
 npm i
 echo 'npm init done'
 
