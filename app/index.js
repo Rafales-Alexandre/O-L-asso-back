@@ -1,3 +1,4 @@
+
 /**
  * Context of Apollo Server 
  */
@@ -12,10 +13,7 @@ const resolvers = require("./resolvers");
 const apolloConfig = {
 	typeDefs,
 	resolvers,
-	context: 
 };
-
-
 
 
 module.exports = {

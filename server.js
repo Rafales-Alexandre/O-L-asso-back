@@ -3,9 +3,11 @@
  * Main requiement to work has a ApolloServer/Express API
  */
 require("dotenv").config();
+const getTokenForRequest = require("./app/services/getTokenForRequest");
 const express = require("express");
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
+const { ApolloServerPluginDrainHttpServer } = require('@apollo/server/plugin/drainHttpServer');
 const { json } = require ("body-parser")
 const cors = require('cors');
 
@@ -25,6 +27,8 @@ const serverHTTP = http.createServer(app);
 
 const PORT = process.env.PORT ?? 3003;
 
+// apolloConfig.plugins = [ApolloServerPluginDrainHttpServer({ serverHTTP})];
+
 const server = new ApolloServer(apolloConfig);
 
 /**
@@ -33,13 +37,10 @@ const server = new ApolloServer(apolloConfig);
  */
 (async ()=>{
     await server.start();
-        app.use("/graphql",cors(),json(),expressMiddleware(server,apolloConfig,
-            // {plugins :[ ApolloServerPluginDrainHttpServer({ serverHTTP}) ]} , 
-            { context : async ({ req, res }) => ({ token : await getTokenForRequest(req), }) }
-            ),
-         );
-    
-        await new Promise ((resolve) => serverHTTP.listen (PORT, resolve))
-        console.log(`🚀 On décolle ici http://localhost:3000/graphql`);
+    app.use("/graphql",cors(),json(),expressMiddleware(server, {
+        context : async ({ req, res }) => ({ token : await getTokenForRequest(req), })
+    }));
 
+    await new Promise ((resolve) => serverHTTP.listen (PORT, resolve))
+    console.log(`🚀 On décolle ici http://localhost:3000/graphql`);
 }) ();
