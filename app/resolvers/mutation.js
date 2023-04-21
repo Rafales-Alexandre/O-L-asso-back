@@ -5,6 +5,7 @@
 const userDatamapper = require("../datamappers/user");
 const instrumentDatamapper = require("../datamappers/instrument");
 const suitDatamapper = require("../datamappers/suit");
+const authService = require("../services/authService");
 
 module.exports = {
 	addUser(_, args) {
@@ -43,6 +44,15 @@ module.exports = {
 	updateInstrument(_, {id, input}){
 		return instrumentDatamapper.update({id}, input);
 	},
+	loginUser(_, {input}) {
+		const token = authService.login(input);
+
+		if(token) {
+			return {
+				token
+			};
+		}
+	}
     
 
 };

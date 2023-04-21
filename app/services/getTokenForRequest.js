@@ -1,5 +1,5 @@
 function getTokenForRequest(req) {
-  //console.log(req.header('Authorization'));
+  return req.header('Authorization');
 }
 
 module.exports = getTokenForRequest;

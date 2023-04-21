@@ -64,3 +64,11 @@ input UserInput{
   instrument_id: ID
 }
 
+input LoginInput {
+  email: String
+  password: String
+}
+
+type LoginReturn {
+  token: String
+}

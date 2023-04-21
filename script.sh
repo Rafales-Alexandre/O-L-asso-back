@@ -28,4 +28,4 @@ echo 'tables created !'
 node ./data/seeding.js
 echo 'seeding.done'
 
-node server.js
+nodemon server.js

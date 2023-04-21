@@ -5,27 +5,18 @@
 const instrumentDatamapper = require ("../datamappers/instrument");
 const userDatamapper = require ("../datamappers/user");
 const suitDatamapper = require ("../datamappers/suit");
-//const { GraphQLError } = require("graphql");
-
-
+const authService = require("../services/authService");
 
 const resolverQuery = {
 	getAllUsers (){
 		return userDatamapper.findAll();
 	},
 	getUserById(_, args){
-		/**
-		 * Not official feature 
-		 if (!args){
-			throw new GraphQLError('Invalid_Input', {
-				extensions : {
-					code : 'BAD_USER_INPUT',
-				}
-			})
-		} */
 		return userDatamapper.findByPk(args.id);
 	},
-	getAllInstruments(){
+	getAllInstruments(_, __, contextValue){
+		authService.isRole(["board", "admin"], contextValue);
+
 		return instrumentDatamapper.findAll();
 	},
 	getInstrumentById(_, args){

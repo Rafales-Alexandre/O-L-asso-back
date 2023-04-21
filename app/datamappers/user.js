@@ -19,7 +19,18 @@ class User extends CoreDatamapper {
 
         return result.rows;
     }
+    async findByEmail(email) {
+        const baseQuery = {
+            text: ` 
+            SELECT u.* FROM "${this.tableName}" as u
+            WHERE u.email = $1
+            `,
+            values: [email]
+        };
+        const result = await this.client.query(baseQuery);
 
+        return result.rows[0];
+    }
     async findBySuitTotal(suitId) {
 
         const baseQuery = {
