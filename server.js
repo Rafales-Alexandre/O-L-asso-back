@@ -1,31 +1,58 @@
+/**
+ * Batala Main
+ * Main requiement to work has a ApolloServer/Express API
+ */
 require("dotenv").config();
-const express = require('express');
-
-
+const getTokenForRequest = require("./app/services/getTokenForRequest");
+const express = require("express");
 const { ApolloServer } = require('@apollo/server');
-const { startStandaloneServer } = require('@apollo/server/standalone');
 const { expressMiddleware } = require('@apollo/server/express4');
-const middelwares = require ("./app/services/middlewares")
+//const { ApolloServerPluginDrainHttpServer } = require('@apollo/server/plugin/drainHttpServer');
+const { json } = require ("body-parser")
+const cors = require('cors');
+const jwt = require("jsonwebtoken");
 
-const cors = require('cors')
+/**
+ * Non official features yet:
+const { ApolloServerPluginDrainHttpServer} = require('@apollo/server/plugin/drainHttpServer')
 
+ */
+
+/**
+ * Context of Appollo : 
+ */
 const {app,apolloConfig} = require("./app");
-const apolloServer = new ApolloServer(apolloConfig);
 
 const http = require("http");
 const serverHTTP = http.createServer(app);
-const PORT = process.env.PORT ?? 3000;
 
+const PORT = process.env.PORT ?? 3003;
 
+// apolloConfig.plugins = [ApolloServerPluginDrainHttpServer({ serverHTTP})];
 
- (async ()=>{
+const server = new ApolloServer(apolloConfig);
 
-    await apolloServer.start();
+/**
+ * Deployment 
+ * 
+ */
+(async ()=>{
+	await server.start();
+	app.use("/graphql",cors(),json(),expressMiddleware(server, {
+		context : async ({ req, res }) => {
+			const token = await getTokenForRequest(req);
 
-    app.use("/graphql",cors(),express.json(),expressMiddleware(apolloServer,apolloConfig) );
+			const data = jwt.verify(token, 'olasso');
+			if(data.user) {
+				return {
+					user: data.user
+				};
+			}
 
-    serverHTTP.listen(PORT,()=>{
-        console.log(`Listening on ${PORT}/graphql`);
-    });
+			return {};
+		}
+	}));
 
-})(); 
+	await new Promise ((resolve) => serverHTTP.listen (PORT, resolve));
+	console.log("`🚀 On décolle ici http://localhost:3000/graphql`");
+}) ();

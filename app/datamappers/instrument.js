@@ -1,3 +1,7 @@
+/**
+ * Addition of the CoreDatamapper for Instrument 
+ */
+
 const CoreDatamapper = require ("./coreDatamapper");
 const client = require ("../db/pg");
 

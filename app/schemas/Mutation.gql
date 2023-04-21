@@ -1,3 +1,5 @@
+""" List of Mutation """
+
 type Mutation {
     addUser(input: UserInput): User
     addInstrument(input: InstrumentInput): Instrument
@@ -10,4 +12,7 @@ type Mutation {
     updateSuit(id: ID!, input : SuitInput): Suit
     updateUser(id: ID!, input: UserInput): User
     updateInstrument(id: ID!, input: InstrumentInput): Instrument
+
+    loginUser(input: LoginInput): LoginReturn
+
 }

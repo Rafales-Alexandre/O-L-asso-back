@@ -1,4 +1,6 @@
-
+/**
+ * The Essential CoreDatamapper 
+ */
 
 class CoreDatamapper {
     tableName;

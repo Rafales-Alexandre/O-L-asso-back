@@ -1,3 +1,6 @@
+/**
+ * Addition of the CoreDatamapper for Suit 
+ */
 const CoreDatamapper = require("./coreDatamapper");
 const client = require("../db/pg")
 

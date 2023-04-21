@@ -1,22 +1,22 @@
 
+/**
+ * Context of Apollo Server 
+ */
 const express = require("express");
 const app = express();
-/* const router = require("./router"); */
 
+
+//const context = require ("./context");
 const typeDefs = require("./schemas");
 const resolvers = require("./resolvers");
 
 const apolloConfig = {
-    typeDefs,
-    resolvers,
-   //error
+	typeDefs,
+	resolvers,
 };
 
 
-
-
 module.exports = {
-    app,
-    apolloConfig,
-
-}
+	app,
+	apolloConfig,
+};

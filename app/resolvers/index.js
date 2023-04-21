@@ -1,7 +1,11 @@
+/**
+ * Index of resolvers features 
+ */
+
 const Query = require ("./query");
 const User = require ("./user");
 const Instrument = require ("./instrument");
-const {DateResolver, DateTimeResolver} = require('graphql-scalars');
+const {DateResolver, DateTimeResolver} = require("graphql-scalars"  );
 const Suit = require ("./suit");
 
 
