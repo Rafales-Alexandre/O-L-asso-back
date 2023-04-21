@@ -28,7 +28,6 @@ const serverHTTP = http.createServer(app);
 
 const PORT = process.env.PORT ?? 3003;
 
-// apolloConfig.plugins = [ApolloServerPluginDrainHttpServer({ serverHTTP})];
 
 const server = new ApolloServer(apolloConfig);
 
