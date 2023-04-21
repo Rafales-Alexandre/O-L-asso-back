@@ -46,7 +46,21 @@ const server = new ApolloServer(apolloConfig);
 				return {
 					user: data.user
 				};
-			}
+			} if (token) {
+console.log(req.headers)
+    try {
+      const data = jwt.verify(token, 'olasso');
+      if (data.user) {
+        return {
+          user: data.user,
+        };
+      }
+    } catch (err) {
+      console.error("JWT verification failed:", err.message);
+    }
+    return {};
+  }
+
 
 			return {};
 		}

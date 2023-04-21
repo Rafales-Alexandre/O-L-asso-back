@@ -43,6 +43,9 @@ const authService = {
     }
 
     return true;
+  },
+  tokenToMe(token){
+    console.log(token)
   }
 };
 
