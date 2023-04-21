@@ -15,7 +15,9 @@ PGPORT=5432
 PGDATABASE=batala
 PGUSER=batala
 PGPASSWORD=batala
-PORT=3000" >>.env
+PORT=3000
+SECRET=victoria
+APIADDRESS=http://localhost:3000/graphql" >>.env
 
 echo ".env effective !"
 npm i

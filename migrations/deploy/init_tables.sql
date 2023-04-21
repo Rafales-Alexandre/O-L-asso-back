@@ -50,8 +50,7 @@ CREATE TABLE "user"(
     "deposit" BOOLEAN,
     "role" role,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
-    "updated_at" TIMESTAMPTZ,
-
+    "updated_at" TIMESTAMPTZ
 );
 
 CREATE TABLE "instrument"(
@@ -93,9 +92,9 @@ CREATE TABLE "user_has_suit" (
 
 CREATE TABLE password_reset_requests (
   id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
+  user_id INTEGER REFERENCES "user"(id) ON DELETE SET NULL,
   reset_token UUID UNIQUE NOT NULL,
-  expiration TIMESTAMP NOT NULL
+  expiration TIMESTAMPTZ NOT NULL
 );
 
 
