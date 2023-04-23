@@ -5,11 +5,11 @@
 require("dotenv").config();
 const getTokenForRequest = require("./app/services/getTokenForRequest");
 const express = require("express");
-const { ApolloServer } = require('@apollo/server');
-const { expressMiddleware } = require('@apollo/server/express4');
+const { ApolloServer } = require("@apollo/server");
+const { expressMiddleware } = require("@apollo/server/express4");
 //const { ApolloServerPluginDrainHttpServer } = require('@apollo/server/plugin/drainHttpServer');
-const { json } = require ("body-parser")
-const cors = require('cors');
+const { json } = require("body-parser");
+const cors = require("cors");
 const jwt = require("jsonwebtoken");
 
 /**
@@ -21,7 +21,7 @@ const { ApolloServerPluginDrainHttpServer} = require('@apollo/server/plugin/drai
 /**
  * Context of Appollo : 
  */
-const {app,apolloConfig} = require("./app");
+const { app, apolloConfig } = require("./app");
 
 const http = require("http");
 const serverHTTP = http.createServer(app);
@@ -35,40 +35,34 @@ const server = new ApolloServer(apolloConfig);
  * Deployment 
  * 
  */
-(async ()=>{
+(async () => {
 	await server.start();
-	app.use("/graphql",cors(),json(),expressMiddleware(server, {
-		context : async ({ req, res }) => {
+	app.use("/graphql", cors(), json(), expressMiddleware(server, {
+		context: async ({ req, res }) => {
 			const token = await getTokenForRequest(req);
 
-			const data = jwt.verify(token, 'olasso');
-			if(data.user) {
-				return {
-					user: data.user
-				};
-			} if (token) {
-console.log(req.headers)
-    try {
-      const data = jwt.verify(token, 'olasso');
-      if (data.user) {
-        return {
-          user: data.user,
-        };
-      }
-    } catch (err) {
-      console.error("JWT verification failed:", err.message);
-    }
-    return {};
-  }
+			if (token) {
+				try {
+					const data = jwt.verify(token, process.env.SECRET);
+					if (data.user) {
+						return {
+							user: data.user,
+						};
+					}
+				} catch (err) {
+					console.error("JWT verification failed:", err.message);
+				}
+				return {};
+			}
 
 
 			return {};
 		}
 	}));
 
-	await new Promise ((resolve) => serverHTTP.listen (PORT, resolve));
+	await new Promise((resolve) => serverHTTP.listen(PORT, resolve));
 	console.log(`🚀 On décolle ici http://localhost:${PORT}/graphql`);
-}) ();
+})();
 
 /**
  * how to send the header to the autorization
