@@ -2,12 +2,12 @@
  * Index of resolvers features 
  */
 
-const Query = require ("./query");
-const User = require ("./user");
-const Instrument = require ("./instrument");
-const {DateResolver, DateTimeResolver} = require("graphql-scalars"  );
-const Suit = require ("./suit");
-
+const Query = require("./query");
+const User = require("./user");
+const Instrument = require("./instrument");
+const { DateResolver, DateTimeResolver } = require("graphql-scalars");
+const Suit = require("./suit");
+const { askResetPassword, verifyResetPasswordToken, resetPassword } = require("./resetPassword");
 
 const Mutation = require("./mutation");
 
@@ -18,5 +18,10 @@ module.exports = {
 	User,
 	Instrument,
 	Suit,
-	Mutation
+	Mutation,
+	ResetPassword: {
+		askResetPassword,
+		verifyResetPasswordToken,
+		resetPassword,
+	},
 };

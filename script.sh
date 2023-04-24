@@ -17,7 +17,9 @@ PGUSER=batala
 PGPASSWORD=batala
 PORT=3000
 SECRET=victoria
-APIADDRESS=http://localhost:3000/graphql" >>.env
+APIADDRESS=http://localhost:3000/graphql
+EMAIL=jc.batala.lr@gmail.com
+EMAILPASSWORD=Bata-test" >>.env
 
 echo " Values inserted in .env  !"
 npm i

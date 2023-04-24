@@ -6,6 +6,7 @@ const userDatamapper = require("../datamappers/user");
 const instrumentDatamapper = require("../datamappers/instrument");
 const suitDatamapper = require("../datamappers/suit");
 const authService = require("../services/authService");
+const resetPassword = require("./resetPassword");
 
 module.exports = {
 	addUser(_, args) {
@@ -17,7 +18,7 @@ module.exports = {
 			Throw GraphQlError 
 			return null,
 		} else { */
-			return userDatamapper.create(args.input)
+		return userDatamapper.create(args.input)
 		//}
 	},
 	addInstrument(_, args) {
@@ -26,33 +27,32 @@ module.exports = {
 	addSuit(_, args) {
 		return suitDatamapper.create(args.input);
 	},
-	deleteSuit(parent, {id}) {
+	deleteSuit(parent, { id }) {
 		return suitDatamapper.delete(id);
 	},
-	deleteUser(parent, {id}){
+	deleteUser(parent, { id }) {
 		return userDatamapper.delete(id);
 	},
-	deleteInstrument(_, {id}){
+	deleteInstrument(_, { id }) {
 		return instrumentDatamapper.delete(id);
 	},
-	updateSuit(_,{id, input}){
-		return suitDatamapper.update({id}, input);
+	updateSuit(_, { id, input }) {
+		return suitDatamapper.update({ id }, input);
 	},
-	updateUser(_,{id, input}){
-		return userDatamapper.update({id}, input );
+	updateUser(_, { id, input }) {
+		return userDatamapper.update({ id }, input);
 	},
-	updateInstrument(_, {id, input}){
-		return instrumentDatamapper.update({id}, input);
+	updateInstrument(_, { id, input }) {
+		return instrumentDatamapper.update({ id }, input);
 	},
-	loginUser(_, {input}) {
+	loginUser(_, { input }) {
 		const token = authService.login(input);
 
-		if(token) {
+		if (token) {
 			return {
 				token
 			};
 		}
-	}
-    
-
+	},
+	resetPassword
 };

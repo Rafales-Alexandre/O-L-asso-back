@@ -104,6 +104,26 @@ async function insertUsers(users) {
         "role"
     )
     VALUES
+    (
+        '',
+        'Norris',
+        'Chuck',
+        '',
+        'cn@email.com',
+        'chuckpass',
+        '1970-01-01',
+        '',
+        '',
+        '',
+        '17000',
+        '',
+        'M',
+        'L',
+        'L',
+        'true',
+        'true',
+        'admin'
+    ), --superpass
         ${usersValues}
         RETURNING id
     `;

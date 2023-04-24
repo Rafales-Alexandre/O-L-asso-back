@@ -20,3 +20,18 @@ module.exports = {
 	app,
 	apolloConfig,
 };
+
+/**
+ * Nodemailer - to send email
+ */
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+const config = require("./config");
+
+const transporter = nodemailer.createTransport({
+	service: config.email.service,
+	auth: {
+		user: config.email.user,
+		pass: config.email.pass
+	}
+});

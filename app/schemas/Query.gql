@@ -1,5 +1,6 @@
-""" List of Query  """
-
+"""
+List of Query
+"""
 type Query {
   getAllInstruments: [Instrument]
   getAllUsers: [User]
@@ -11,5 +12,6 @@ type Query {
 
   getSuitsByUser(id: ID!): [Suit]
 
-
+  askResetPassword(email: String!): ResetPasswordResponse!
+  verifyResetPasswordToken(token: String!): TokenValidation!
 }

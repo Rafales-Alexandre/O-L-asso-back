@@ -63,7 +63,3 @@ const server = new ApolloServer(apolloConfig);
 	await new Promise((resolve) => serverHTTP.listen(PORT, resolve));
 	console.log(`🚀 On décolle ici http://localhost:${PORT}/graphql`);
 })();
-
-/**
- * how to send the header to the autorization
- */
