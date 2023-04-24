@@ -16,7 +16,7 @@ PGDATABASE=batala
 PGUSER=batala
 PGPASSWORD=batala
 PORT=3000
-SECRET=victoria
+SECRET=batala
 APIADDRESS=http://localhost:3000/graphql" >>.env
 
 echo " Values inserted in .env  !"
