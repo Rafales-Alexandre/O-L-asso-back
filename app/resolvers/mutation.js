@@ -6,7 +6,7 @@ const userDatamapper = require("../datamappers/user");
 const instrumentDatamapper = require("../datamappers/instrument");
 const suitDatamapper = require("../datamappers/suit");
 const authService = require("../services/authService");
-const resetPassword = require("./resetPassword");
+
 
 module.exports = {
 	addUser(_, args) {
@@ -53,6 +53,5 @@ module.exports = {
 				token
 			};
 		}
-	},
-	resetPassword
+	}
 };

@@ -6,7 +6,6 @@ const instrumentDatamapper = require ("../datamappers/instrument");
 const userDatamapper = require ("../datamappers/user");
 const suitDatamapper = require ("../datamappers/suit");
 const authService = require("../services/authService");
-const { askResetPassword , verifyResetPasswordToken} = require("./resetPassword");
 
 const resolverQuery = {
 	getAllUsers (){
@@ -31,11 +30,7 @@ const resolverQuery = {
 	},
 	getSuitsByUser(_,args) {
 		return suitDatamapper.findByUser(args.id);
-	},
-	askResetPassword (_,email){
-		return message
-	},
-	verifyResetPasswordToken
+	}
 	
 };
 

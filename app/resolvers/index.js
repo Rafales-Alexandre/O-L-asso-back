@@ -7,8 +7,6 @@ const User = require("./user");
 const Instrument = require("./instrument");
 const { DateResolver, DateTimeResolver } = require("graphql-scalars");
 const Suit = require("./suit");
-const { askResetPassword, verifyResetPasswordToken, resetPassword } = require("./resetPassword");
-
 const Mutation = require("./mutation");
 
 module.exports = {
@@ -19,9 +17,5 @@ module.exports = {
 	Instrument,
 	Suit,
 	Mutation,
-	ResetPassword: {
-		askResetPassword,
-		verifyResetPasswordToken,
-		resetPassword,
-	},
+	
 };

@@ -12,6 +12,4 @@ type Query {
 
   getSuitsByUser(id: ID!): [Suit]
 
-  askResetPassword(email: String!): ResetPasswordResponse!
-  verifyResetPasswordToken(token: String!): TokenValidation!
 }
