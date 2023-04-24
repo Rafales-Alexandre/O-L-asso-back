@@ -6,7 +6,7 @@ const userDatamapper = require("../datamappers/user");
 const instrumentDatamapper = require("../datamappers/instrument");
 const suitDatamapper = require("../datamappers/suit");
 const authService = require("../services/authService");
-
+const resetPasswordDatamapper = require("../datamappers/resetPassword");
 
 module.exports = {
 	addUser(_, args, contextValue) {
@@ -54,5 +54,9 @@ module.exports = {
 				token
 			};
 		}
+	},
+	resetPassword(_,{ token, newPassword}, contextValue){
+		authService.isRole(["admin"], contextValue);
+		return resetPasswordDatamapper.resetPassword(_,{ token, newPassword});
 	}
 };

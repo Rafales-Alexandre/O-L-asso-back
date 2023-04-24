@@ -6,6 +6,7 @@ const instrumentDatamapper = require ("../datamappers/instrument");
 const userDatamapper = require ("../datamappers/user");
 const suitDatamapper = require ("../datamappers/suit");
 const authService = require("../services/authService");
+const resetPasswordDatamapper = require("../datamappers/resetPassword")
 
 const resolverQuery = {
 	getAllUsers (_,__,contextValue){
@@ -36,6 +37,14 @@ const resolverQuery = {
 	getSuitsByUser(_,args, contextValue) {
 		authService.isRole(["board", "admin"], contextValue);
 		return suitDatamapper.findByUser(args.id);
+	},
+	askResetPassword (_,{ email }, contextValue){
+		authService.isRole(["board", "admin", "member"], contextValue);
+		return resetPasswordDatamapper.askResetPassword(_,{ email });
+	},
+	verifyResetPasswordToken(_,{ token }, contextValue){
+		authService.isRole(["board", "admin", "member"], contextValue);
+		return resetPasswordDatamapper.verifyResetPasswordToken(_,{ token });
 	}
 	
 };

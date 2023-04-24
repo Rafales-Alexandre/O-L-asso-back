@@ -10,6 +10,7 @@ const suitSchema = readFileSync(path.join(__dirname, "./Suit.gql"));
 const querySchema = readFileSync(path.join(__dirname, "./Query.gql"));
 const customScalars = readFileSync(path.join(__dirname, "./customScalars.gql"));
 const mutationSchema = readFileSync(path.join(__dirname, "./Mutation.gql"));
+const resetPasswordSchema = readFileSync(path.join(__dirname, "./ResetPassword.gql"));
 
 
 const typeDefs = `#graphql
@@ -19,6 +20,6 @@ ${instrumentSchema}
 ${suitSchema}
 ${querySchema}
 ${mutationSchema}
-`;
+${resetPasswordSchema}`;
 
 module.exports = typeDefs;
