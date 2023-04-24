@@ -8,27 +8,33 @@ const suitDatamapper = require ("../datamappers/suit");
 const authService = require("../services/authService");
 
 const resolverQuery = {
-	getAllUsers (){
+	getAllUsers (_,__,contextValue){
+		authService.isRole(["board", "admin", "member"], contextValue);
 		return userDatamapper.findAll();
 	},
-	getUserById(_, args){
+	getUserById(_, args, contextValue){
+		authService.isRole(["board", "admin", "member"], contextValue);
 		return userDatamapper.findByPk(args.id);
 	},
 	getAllInstruments(_, __, contextValue){
-		authService.isRole(["board", "admin"], contextValue);
+		authService.isRole(["board", "admin", "member"], contextValue);
 
 		return instrumentDatamapper.findAll();
 	},
-	getInstrumentById(_, args){
+	getInstrumentById(_, args, contextValue){
+		authService.isRole(["board", "admin", "member"], contextValue);
 		return instrumentDatamapper.findByPk(args.id);
 	},
-	getAllSuits (){
+	getAllSuits (_,__, contextValue){
+		authService.isRole(["board", "admin", "member"], contextValue);
 		return suitDatamapper.findAll();
 	},
-	getSuitById(_,args){
+	getSuitById(_,args, contextValue){
+		authService.isRole(["board", "admin", "member"], contextValue);
 		return suitDatamapper.findByPk(args.id);
 	},
-	getSuitsByUser(_,args) {
+	getSuitsByUser(_,args, contextValue) {
+		authService.isRole(["board", "admin"], contextValue);
 		return suitDatamapper.findByUser(args.id);
 	}
 	

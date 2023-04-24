@@ -10,7 +10,7 @@ const authService = {
       return false;
     }
 
-    // TODO process.env secret
+
     const token = jwt.sign({user}, process.env.SECRET , {expiresIn: '7h'});
 
     return token;
@@ -44,9 +44,6 @@ const authService = {
 
     return true;
   },
-  tokenToMe(token){
-    console.log(token)
-  }
 };
 
 
