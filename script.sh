@@ -1,13 +1,13 @@
 #!/bin/sh
 
-echo 'Here we Go !'
+echo '.oO0    Bienvenue sur votre nouveau script    0Oo.'
 
 sudo -u postgres psql -f init.sql
- echo "drop and recreate table"
+ echo ".oO0    Suppression et création de la base de données    0Oo."
 
 
 touch .env
-echo 'env created'
+echo '.oO0    Fichier .env créer    0Oo.'
 
 echo "
 PGHOST=localhost
@@ -18,18 +18,19 @@ PGPASSWORD=batala
 PORT=3000
 SECRET=batala
 APIADDRESS=http://localhost:3000/graphql
+NODE_ENV=developpement
 EMAIL=jc.batala.lr@gmail.com
 EMAILPASSWORD=Bata-test" >>.env
 
-echo " Values inserted in .env  !"
+echo ".oO0    Fichier .env écrit    0Oo."
 npm i
-echo 'npm init done'
+echo '.oO0    Npm init et install éffectué    0Oo.'
 
 psql -U batala -d batala -h localhost -f migrations/deploy/init_tables.sql
 
-echo 'tables created !'
+echo '.oO0    Tables de la Base de données crées    0Oo.'
 
 node ./data/seeding.js
-echo 'seeding.done'
+echo '.oO0    Injections des données réalisées    0Oo.'
 
 node server.js
