@@ -11,7 +11,7 @@ const authService = {
     }
 
     // TODO process.env secret
-    const token = jwt.sign({user}, 'olasso', {expiresIn: '7h'});
+    const token = jwt.sign({user}, process.env.SECRET , {expiresIn: '7h'});
 
     return token;
   },
