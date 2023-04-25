@@ -3,8 +3,12 @@ const userDatamapper = require("../datamappers/user");
 const { GraphQLError } = require("graphql");
 
 const authService = {
-	async login({ email, password }) {
+	async login(email, password) {
 		const user = await userDatamapper.findByEmail(email);
+
+		if (!user) {
+			return false;
+		}
 
 		if (user.password !== password) {
 			return false;
@@ -12,26 +16,12 @@ const authService = {
 
 		const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: "7h" });
 
-		const {
-			id, url_img, lastname, firstname, nickname, birthdate, phone,
-			address, address_2, zip_code, city, gender, top_size, bottom_size,
-			subscription, deposit, role } = user;
+		delete user.password;
 
-		const userReturns = {
-			id, url_img, lastname, firstname, nickname, email, birthdate, phone,
-			address, address_2, zip_code, city, gender, top_size, bottom_size,
-			subscription, deposit, role
-    };
-
-		//console.log("userReturns : ", userReturns);
-
-		return token;
-
-		/* return {
-			token: JSON.stringify({ token: token }),
-			user: userReturns
-
-		}; */
+		return {
+			token,
+			user
+		};
 	},
 
 	isLoggedIn(context) {

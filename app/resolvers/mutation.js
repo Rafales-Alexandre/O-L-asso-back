@@ -129,7 +129,7 @@ module.exports = {
 			*/
 			
 		
-			return userDatamapper.login(input.email);
+			return authService.login(input.email, input.password);
 		
 	},
 	resetPassword(_, { token, newPassword }, contextValue) {
