@@ -1,5 +1,6 @@
-""" Type of User """
-
+"""
+Type of User
+"""
 enum Gender {
   F
   M
@@ -42,7 +43,7 @@ type User {
   suits: [Suit]
 }
 
-input UserInput{
+input UserInput {
   url_img: String
   lastname: String!
   firstname: String
@@ -67,8 +68,10 @@ input UserInput{
 input LoginInput {
   email: String
   password: String
+  
 }
 
 type LoginReturn {
   token: String
+  user: User
 }

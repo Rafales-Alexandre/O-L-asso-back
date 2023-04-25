@@ -43,8 +43,6 @@ class User extends CoreDatamapper {
         const result = await this.client.query(baseQuery);
         return result.rows[0].count;
     }
-
-    
 }
 
 

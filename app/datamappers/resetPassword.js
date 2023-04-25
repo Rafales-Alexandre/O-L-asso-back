@@ -6,18 +6,6 @@ const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const config = require("../config");
 
-/**
- * Fonctionnement askResetPassword
- *  
- * 1. on récupère le mail de l'user, on le cherche dans la bdd (c'est un findByEmail)
- * 2. l'email existe dans la bdd, on peut donc créer le token
- * 3. On enregistre dans la table 'password_reset_requests' le user.id, le token et le délai d'expiration (genre AddResetToken)
- * 4. on envoie le token par un email à l'user
- * askResetPassword n'a donc bien besoin que de l'email en paramètre pour s'exécuter. 
- * 
- */
-
-
 const transporter = nodemailer.createTransport(config.mailtrap);
 
 class ResetPassword extends CoreDatamapper {
