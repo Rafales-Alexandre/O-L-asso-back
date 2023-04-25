@@ -3,6 +3,8 @@
  */
 const CoreDatamapper = require("./coreDatamapper");
 const client = require("../db/pg")
+const authService = require("../services/authService");
+
 
 class User extends CoreDatamapper {
     tableName = 'user';
@@ -44,7 +46,14 @@ class User extends CoreDatamapper {
         return result.rows[0].count;
     }
 
-    
+    async login(input){
+        const token = authService.login(input);
+        userDetails = this.findByEmail(input.email);
+        return{
+            token,
+            userDetails
+        }
+    }
 }
 
 
