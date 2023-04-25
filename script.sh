@@ -19,8 +19,7 @@ PORT=3000
 SECRET=batala
 APIADDRESS=http://localhost:3000/graphql
 NODE_ENV=developpement
-EMAIL=jc.batala.lr@gmail.com
-EMAILPASSWORD=Bata-test" >>.env
+" >>.env
 
 echo ".oO0    Fichier .env écrit    0Oo."
 npm i
