@@ -1,0 +1,8 @@
+services:
+  web:
+    image: node
+    command: npm start
+    ports:
+      - 3000
+    environment:
+      - NODE_ENV: developement
