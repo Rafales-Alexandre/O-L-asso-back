@@ -6,3 +6,7 @@ services:
       - 3000
     environment:
       - NODE_ENV: developement
+    build:
+      commands:
+        - npm install
+        - npm run migrate-seed
