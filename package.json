@@ -4,10 +4,11 @@
   "description": "## Initialisation !",
   "main": ".eslintrc.js",
   "scripts": {
-    "migrate": "pg-migrate up -m ./migrations/deploy --config ./migrate-config.js",
-    "seed": "node data/seeding.js",
+    "migrate": "pg-migrate up -m ./migrations/deploy --config ./migrate-config.js -u \"$DATABASE_URL\"",
+    "seed": "node ./data/seeding.js",
     "migrate-seed": "npm run migrate && npm run seed",
-    "start": "nodemon -e js,mjs,json,gql server.js"
+    "dev": "nodemon -e js,mjs,json,gql server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

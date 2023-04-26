@@ -61,5 +61,5 @@ const server = new ApolloServer(apolloConfig);
 	}));
 
 	await new Promise((resolve) => serverHTTP.listen(PORT, resolve));
-	console.log(`🚀 On décolle ici http://localhost:${PORT}/graphql`);
+	console.log("🚀 On décolle ici https://projet-01-o-lasso-back-production.up.railway.app/");
 })();
