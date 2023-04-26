@@ -1,7 +1,11 @@
 /**
- * This file aim to seed datas into the database for dev. time.
- * this script uses fakerjs to seed the table "user"
- * this script is called in package.json script "resetDB" : npm run resetDB ?
+ * @ - This file aim to seed datas into the database for dev. time.
+ * @module dotenv - Make accessible the requirement of enviromnt value of the .env file 
+ * @module faker -  Create a range of fake data 
+ * @module db - Client Pool connections to the database 
+ * @module instruments - Model data provide to feed faker 
+ * @module suits - Model data provide to feed faker
+ * @module userHasSuit - Model data provide to feed faker
  */
 require('dotenv').config();
 const { faker } = require('@faker-js/faker');
@@ -11,11 +15,17 @@ const instruments = require('./instruments');
 const suits = require('./suits');
 const userHasSuits = require('./user_has_suits');
 
+/** Call of the enviromnt file  */
 faker.locale = 'fr';
 
+/** @params {NB_USERS} - Numbers of values created by faker */
 const NB_USERS = 70;
 
-
+/**
+ * @function pgQuoteEscape - Formating the entries for the database 
+ * @param {*} row 
+ * @returns 
+ */
 function pgQuoteEscape(row) {
     const newRow = {};
     Object.entries(row).forEach(([prop, value]) => {
@@ -27,7 +37,11 @@ function pgQuoteEscape(row) {
     });
     return newRow;
 }
-
+/**
+ * @functionn generateUsers - create the fake user data, with a models
+ * @param {*} nbUsers - @see NB_USERS 
+ * @returns {user ={...values}}
+ */
 async function generateUsers(nbUsers) {
     const users = [];
     for (let i = 0; i < nbUsers; i += 1) {
@@ -56,6 +70,11 @@ async function generateUsers(nbUsers) {
 
     return users;
 }
+/**
+ * @function insertUsers - Insert User in Database
+ * @param {*} users - Created by precedent function 
+ * @returns 
+ */
 async function insertUsers(users) {
     await db.query('TRUNCATE TABLE "user" RESTART IDENTITY CASCADE');
     const usersValues = users.map((user) => {
@@ -152,6 +171,12 @@ async function insertUsers(users) {
     return result.rows;
 }
 
+/**
+ * @function insertInstuments - generate Instrument and assignation to user 
+ * @param {*} usersIds - @see user 
+ * @returns 
+ */
+
 async function insertInstuments(usersIds = []) {
 
     if (!usersIds.length) {
@@ -206,6 +231,10 @@ async function insertInstuments(usersIds = []) {
     return result.rows;
 }
 
+/**
+ * @function insertSuits - create the suit data and assign them to user 
+ * @returns 
+ */
 async function insertSuits() {
     const suitsToInsert = suits.map((suit) => {
         const data = {
@@ -260,6 +289,12 @@ async function insertSuits() {
     return result.rows;
 }
 
+/**
+ * @function insertedUsersHasSuits - this table is a bit different, since it shall use and link specific values between them, and not randomize them 
+ * @param {*} usersIds 
+ * @param {*} suitsIds 
+ * @returns 
+ */
 async function insertUserHasSuit(usersIds = [], suitsIds = []) {
 
     if (!usersIds.length || !suitsIds.length) {
@@ -297,6 +332,10 @@ async function insertUserHasSuit(usersIds = [], suitsIds = []) {
     return result.rows;
 }
 
+/**
+ * @function
+ * Will run every function of the script 
+ */
 (async () => {
     /**
      * Generating users

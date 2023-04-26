@@ -1,4 +1,6 @@
 /** Batala Intranet Terminal Exploitation*/
+
+
 /** 
  * Necessary module for the app
  * @module dotenv while import the local files needed to lauch the server 
@@ -53,6 +55,9 @@ const server = new ApolloServer(apolloConfig);
 
 /**
  * Deployment 
+ * @constructor
+ * @param {cors, json, expressMiddleware} - Parameters of the Express Aplication
+ * @param {context} - Parameters of the Apollo Server Application 
  * 
  */
 (async () => {
@@ -79,6 +84,10 @@ const server = new ApolloServer(apolloConfig);
 			return {};
 		}
 	}));
+
+	/**
+ * Final Lauching 
+ */
 
 	await new Promise((resolve) => serverHTTP.listen(PORT, resolve));
 	console.log(`🚀 On décolle ici http://localhost:${PORT}/graphql`);

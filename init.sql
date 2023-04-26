@@ -1,4 +1,4 @@
--- Revert init.sql from pg 
+-- Initialisation of the database, for a server use  
 
 DROP DATABASE batala;
 DROP USER batala;

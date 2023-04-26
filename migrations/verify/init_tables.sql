@@ -1,5 +1,6 @@
--- Verify batala:init_tables on pg
+-- Verify batala:init_tables 
 
+-- Will select one of every value from every table that return false. If everything is true, then the table creations worked perfectly 
 BEGIN;
 
 -- SELECT DOMAIN "postal_code_fr" IS NULL RETURN FALSE;
@@ -13,6 +14,7 @@ BEGIN;
 -- SELECT TYPE "pupitre" RETURN FALSE ;
 
 -- SELECT TYPE "role" RETURN FALSE ;
+
 
 SELECT id ,url_img,lastname,firstname,nickname,email,password,birthdate,phone,address,address_2,zip_code,city,gender,top_size,bottom_size,subscription,deposit,role,created_at,updated_at FROM  "user" WHERE false ; 
 
