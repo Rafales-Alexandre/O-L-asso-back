@@ -7,7 +7,7 @@ const app = express();
 
 
 /**
- * Contecyt value for Apollo server 
+ * Context value for Apollo server 
  */
 const typeDefs = require("./schemas");
 const resolvers = require("./resolvers");

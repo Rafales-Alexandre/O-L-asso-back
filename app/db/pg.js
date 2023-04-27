@@ -7,11 +7,29 @@ const debug = require("debug")("SQL:log");
 
 const { Pool } = require("pg");
 
-//const pool = new Pool();
+const useLocalDatabase = process.env.USE_LOCAL_DATABASE === "true";
+
+const connectionString = useLocalDatabase
+	? process.env.LOCAL_DATABASE_URL
+	: process.env.DATABASE_URL;
 
 const pool = new Pool({
-	connectionString: process.env.DATABASE_URL,
-  });
+	connectionString,
+});
+
+// Fonction pour vérifier et afficher la base de données connectée
+async function checkConnectedDatabase() {
+	try {
+	  const client = await pool.connect();
+	  const result = await client.query("SELECT current_database()");
+	  console.log("Connected to database:", result.rows[0].current_database);
+	} catch (error) {
+	  console.error("Error checking connected database:", error);
+	}
+}
+  
+// Appeler la fonction pour vérifier la base de données connectée
+checkConnectedDatabase();
 
 let queryCount = 0;
 
