@@ -1,6 +1,8 @@
 """
-Type of User
+Instead of wroting a comparision string in Javascript to make some sorting by gender, we have decided to create a Enum 
 """
+
+
 enum Gender {
   F
   M

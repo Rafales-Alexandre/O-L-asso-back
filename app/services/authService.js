@@ -40,9 +40,11 @@ const authService = {
 					])
 				}});
 		}
-
+		/**If the two previous conditions don't throw Error, then we will generate the Authetification/Autorization token 
+ */
 		const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: "7h" });
 
+		/** After 7h of connection, the token will be deleted and the user will have to reconnect  */
 		delete user.password;
 
 		return {
@@ -50,21 +52,37 @@ const authService = {
 			user
 		};
 	},
-
+	/**
+	  * @function isLoggedIn - Will verified if the user is logged in to make sure only members can access to the intranet 
+	  * @param {*} context - Specifications from ApolloServer, it's linked to the token in the headers
+	  * @returns 
+	  */
 	isLoggedIn(context) {
-		//authService.ensureThatUserIsAdmin();
+
 		const user = context.user;
 
 		if (!user) {
 			throw new GraphQLError("You are not logged in.", {
 				extensions: {
 					code: "FORBIDDEN",
-				},
+					http: {
+						status : 403,
+						headers : new Map ([
+							["Unauthorize user"]
+						])
+					},
+				}
 			});
+		// return true;
 		}
-
-		return true;
 	},
+
+	/**
+	 * @function isRole - Thank to the preious functions, we have the hability to collect information about User like the Role. Not All members from Batala can access to all the features. 
+	 * @param {*} roles 
+	 * @param {*} context 
+	 * @returns 
+	 */
 	isRole(roles, context) {
 		this.isLoggedIn(context);
 
@@ -74,6 +92,12 @@ const authService = {
 			throw new GraphQLError("You are not allowed to access this resource", {
 				extensions: {
 					code: "FORBIDDEN",
+					http: {
+						status : 403,
+						headers : new Map ([
+							["Unauthorize user"]
+						])
+					},
 				},
 			});
 		}
