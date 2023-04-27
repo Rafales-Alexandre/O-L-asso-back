@@ -4,8 +4,11 @@
   "description": "## Initialisation !",
   "main": ".eslintrc.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -e js,mjs,json,gql server.js"
+    "migrate": "pg-migrate up -m ./migrations/deploy --config ./migrate-config.js -u \"$DATABASE_URL\"",
+    "seed": "node ./data/seeding.js",
+    "migrate-seed": "npm run migrate && npm run seed",
+    "dev": "nodemon -e js,mjs,json,gql server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -43,6 +46,7 @@
     "jsonwebtoken": "^9.0.0",
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.22",
-    "pg": "^8.10.0"
+    "pg": "^8.10.0",
+    "pg-migrate": "^2.0.1"
   }
 }
