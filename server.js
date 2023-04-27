@@ -27,6 +27,7 @@ const jwt = require("jsonwebtoken");
 const { expressMiddleware } = require("@apollo/server/express4");
 const { json } = require("body-parser");
 const { ApolloServer } = require("@apollo/server");
+const {GraphqlError} = require ("@apollo/server/errors");
 
 /** Custom middelware, will generate  the token we need using @module jwt */
 const getTokenForRequest = require("./app/services/getTokenForRequest");
@@ -76,6 +77,7 @@ const server = new ApolloServer(apolloConfig);
 					}
 				} catch (err) {
 					console.error("JWT verification failed:", err.message);
+					
 				}
 				return {};
 			}
