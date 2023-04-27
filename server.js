@@ -15,7 +15,6 @@ const express = require("express");
  * Necessary module for Apollo server Express Middelware 
  * @module cors is the module of Cross-origin resource sharing, absolutely essential to our project with his database, router, and front part very distant from each other
  * @module jwt is our Token to grant the access or not to certain feature of our app
-
 */
 
 const cors = require("cors");
@@ -29,7 +28,7 @@ const jwt = require("jsonwebtoken");
 const { expressMiddleware } = require("@apollo/server/express4");
 const { json } = require("body-parser");
 const { ApolloServer } = require("@apollo/server");
-const { GraphQLError } = require('graphql')
+const { GraphQLError } = require("graphql");
 
 /** Custom middelware, will generate  the token we need using @module jwt */
 const getTokenForRequest = require("./app/services/getTokenForRequest");

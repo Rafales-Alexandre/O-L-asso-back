@@ -45,6 +45,10 @@ const resolverQuery = {
 	verifyResetPasswordToken(_,{ token }, contextValue){
 		authService.isRole(["board", "admin", "member"], contextValue);
 		return resetPasswordDatamapper.verifyResetPasswordToken(_,{ token });
+	},
+	getInstrumentsByUser(_, args, contextValue){
+		authService.isRole([ "admin"] , contextValue);
+		return instrumentDatamapper.findByUser(args.id);
 	}
 	
 };

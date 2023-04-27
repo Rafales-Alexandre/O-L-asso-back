@@ -43,6 +43,18 @@ class User extends CoreDatamapper {
         const result = await this.client.query(baseQuery);
         return result.rows[0].count;
     }
+    async findByInstrument(instrumentId){
+        const baseQuery = {
+            text: ` 
+            SELECT u.* FROM "${this.tableName}" as u
+            LEFT JOIN "user_has_suit" as us ON u.id = us.user_id 
+            WHERE us.suit_id = ${instrumentId}
+            `
+        };
+        const result = await this.client.query(baseQuery);
+
+        return result.rows;
+    }
 }
 
 
