@@ -5,13 +5,47 @@
 const { ApolloServerErrorCode } = require('@apollo/server/errors');
 const { GraphQLError } = require('graphql')
 
-/* if () {
-    throw new GraphQLError ('You\'ve been a bad request', {
+
+    throw new GraphQLError ('Authentification by token failed', {
         extensions: {
-            code: 'BAD_REQUEST'}
-            , 
+            code: 'JWT_AUTH_FAILED',
+            http: {
+                status : 406,
+                headers : new Map ([
+                    ['hey Alexandre','c\'est ça']
+                    ['qu\'on voulait tester', 'non ?']
+                ])
+            }
+            //
+        },
     });
 
-} */
+    formatError: (formattedError, error) => {
 
+        // Return a different error message
+    
+        if (
+    
+          formattedError.extensions.code ===
+    
+          ApolloServerErrorCode.GRAPHQL_VALIDATION_FAILED
+    
+        ) {
+    
+          return {
+    
+            ...formattedError,
+    
+            message: "Your query doesn't match the schema. Try double-checking it!",
+    
+          };
+    
+        }
+    
+    
+        // Otherwise return the formatted error. This error can also
+    
+        // be manipulated in other ways, as long as it's returned.
+    
+        return formattedError;
 

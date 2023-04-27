@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /** Batala Intranet Terminal Exploitation*/
 
 
@@ -27,7 +29,7 @@ const jwt = require("jsonwebtoken");
 const { expressMiddleware } = require("@apollo/server/express4");
 const { json } = require("body-parser");
 const { ApolloServer } = require("@apollo/server");
-const {GraphqlError} = require ("@apollo/server/errors");
+const { GraphQLError } = require('graphql')
 
 /** Custom middelware, will generate  the token we need using @module jwt */
 const getTokenForRequest = require("./app/services/getTokenForRequest");
@@ -77,7 +79,11 @@ const server = new ApolloServer(apolloConfig);
 					}
 				} catch (err) {
 					console.error("JWT verification failed:", err.message);
-					
+					throw new GraphQLError("Authentification by token failed", {
+						extensions: {
+							code: "JWT_AUTH_FAILED",
+						},
+					});
 				}
 				return {};
 			}

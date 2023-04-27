@@ -1,4 +1,4 @@
-DROP DATABASE batala;
-DROP USER batala;
+-- Creation of database 
+
 CREATE USER batala WITH PASSWORD 'batala';
 CREATE DATABASE batala OWNER batala;

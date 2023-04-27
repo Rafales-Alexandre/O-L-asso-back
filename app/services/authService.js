@@ -1,5 +1,7 @@
 /**
- * 
+ * @method authService - Carry the whole authetification process
+ * @module jwt - token to secure the authentification and autorization
+ * @module GraphQLError - Error handling 
  */
 const jwt = require("jsonwebtoken");
 const userDatamapper = require("../datamappers/user");
