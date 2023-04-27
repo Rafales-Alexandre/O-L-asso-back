@@ -7,7 +7,9 @@ const debug = require("debug")("SQL:log");
 
 const { Pool } = require("pg");
 
-const useLocalDatabase = process.env.USE_LOCAL_DATABASE === "false";
+
+
+const useLocalDatabase = process.env.USE_LOCAL_DATABASE === "true";
 
 const connectionString = useLocalDatabase
 	? process.env.LOCAL_DATABASE_URL
