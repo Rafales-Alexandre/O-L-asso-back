@@ -1,13 +1,31 @@
-#!/bin/sh
+#    ██████  █    ██  ██▓███  ▓█████  ██▀███       ██████  ▄████▄   ██▀███   ██▓ ██▓███  ▄▄▄█████▓   ▓█████▄ ▓█████     ██▓    ▄▄▄       █    ██  ▄████▄   ██░ ██  ██▓ ███▄    █   ▄████     ▐██▌     ▐██▌     ▐██▌    
+#  ▒██    ▒  ██  ▓██▒▓██░  ██▒▓█   ▀ ▓██ ▒ ██▒   ▒██    ▒ ▒██▀ ▀█  ▓██ ▒ ██▒▓██▒▓██░  ██▒▓  ██▒ ▓▒   ▒██▀ ██▌▓█   ▀    ▓██▒   ▒████▄     ██  ▓██▒▒██▀ ▀█  ▓██░ ██▒▓██▒ ██ ▀█   █  ██▒ ▀█▒    ▐██▌     ▐██▌     ▐██▌    
+#  ░ ▓██▄   ▓██  ▒██░▓██░ ██▓▒▒███   ▓██ ░▄█ ▒   ░ ▓██▄   ▒▓█    ▄ ▓██ ░▄█ ▒▒██▒▓██░ ██▓▒▒ ▓██░ ▒░   ░██   █▌▒███      ▒██░   ▒██  ▀█▄  ▓██  ▒██░▒▓█    ▄ ▒██▀▀██░▒██▒▓██  ▀█ ██▒▒██░▄▄▄░    ▐██▌     ▐██▌     ▐██▌    
+#    ▒   ██▒▓▓█  ░██░▒██▄█▓▒ ▒▒▓█  ▄ ▒██▀▀█▄       ▒   ██▒▒▓▓▄ ▄██▒▒██▀▀█▄  ░██░▒██▄█▓▒ ▒░ ▓██▓ ░    ░▓█▄   ▌▒▓█  ▄    ▒██░   ░██▄▄▄▄██ ▓▓█  ░██░▒▓▓▄ ▄██▒░▓█ ░██ ░██░▓██▒  ▐▌██▒░▓█  ██▓    ▓██▒     ▓██▒     ▓██▒    
+#  ▒██████▒▒▒▒█████▓ ▒██▒ ░  ░░▒████▒░██▓ ▒██▒   ▒██████▒▒▒ ▓███▀ ░░██▓ ▒██▒░██░▒██▒ ░  ░  ▒██▒ ░    ░▒████▓ ░▒████▒   ░██████▒▓█   ▓██▒▒▒█████▓ ▒ ▓███▀ ░░▓█▒░██▓░██░▒██░   ▓██░░▒▓███▀▒    ▒▄▄      ▒▄▄      ▒▄▄     
+#  ▒ ▒▓▒ ▒ ░░▒▓▒ ▒ ▒ ▒▓▒░ ░  ░░░ ▒░ ░░ ▒▓ ░▒▓░   ▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░░ ▒▓ ░▒▓░░▓  ▒▓▒░ ░  ░  ▒ ░░       ▒▒▓  ▒ ░░ ▒░ ░   ░ ▒░▓  ░▒▒   ▓▒█░░▒▓▒ ▒ ▒ ░ ░▒ ▒  ░ ▒ ░░▒░▒░▓  ░ ▒░   ▒ ▒  ░▒   ▒     ░▀▀▒     ░▀▀▒     ░▀▀▒    
+#  ░ ░▒  ░ ░░░▒░ ░ ░ ░▒ ░      ░ ░  ░  ░▒ ░ ▒░   ░ ░▒  ░ ░  ░  ▒     ░▒ ░ ▒░ ▒ ░░▒ ░         ░        ░ ▒  ▒  ░ ░  ░   ░ ░ ▒  ░ ▒   ▒▒ ░░░▒░ ░ ░   ░  ▒    ▒ ░▒░ ░ ▒ ░░ ░░   ░ ▒░  ░   ░     ░  ░     ░  ░     ░  ░    
+#  ░  ░  ░   ░░░ ░ ░ ░░          ░     ░░   ░    ░  ░  ░  ░          ░░   ░  ▒ ░░░         ░          ░ ░  ░    ░        ░ ░    ░   ▒    ░░░ ░ ░ ░         ░  ░░ ░ ▒ ░   ░   ░ ░ ░ ░   ░        ░        ░        ░    
+#        ░     ░                 ░  ░   ░              ░  ░ ░         ░      ░                          ░       ░  ░       ░  ░     ░  ░   ░     ░ ░       ░  ░  ░ ░           ░       ░     ░        ░        ░       
+#                                                         ░                                           ░                                          ░                                                                     
 
-echo '.oO0    Bienvenue sur votre nouveau script    0Oo.'
+
+
+echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Bienvenue sur votre script de lancement de la partie Back-end de Olasso ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙ '
+
+# Lauch of init.sql files to initiates creation of database and role 
 
 sudo -u postgres psql -f init.sql
- echo ".oO0    Suppression et création de la base de données    0Oo."
 
+echo " ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Suppression et création de la base de données ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙"
+
+# Creation of the .env files
 
 touch .env
-echo '.oO0    Fichier .env créer    0Oo.'
+
+echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env créer ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙'
+
+# seeding of of environment values in it 
 
 echo "
 PGHOST=localhost
@@ -21,15 +39,22 @@ APIADDRESS=http://localhost:3000/graphql
 NODE_ENV=developpement
 " >>.env
 
-echo ".oO0    Fichier .env écrit    0Oo."
+echo " ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env écrit ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙"
+
+#Download and installation of all NPM of the project 
+
 npm i
-echo '.oO0    Npm init et install éffectué    0Oo.'
+echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Installation des modules NPM  ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙'
+
+# In postgres, lauching of the file to create the tables 
 
 psql -U batala -d batala -h localhost -f migrations/deploy/init_tables.sql
 
-echo '.oO0    Tables de la Base de données crées    0Oo.'
+echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Tables de la Base de données crées ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙'
 
+# Lauching of the seeding script
 node ./data/seeding.js
-echo '.oO0    Injections des données réalisées    0Oo.'
+echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Injections des données réalisées , lancement du server : ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙'
 
+#Lauching of the server 
 node server.js

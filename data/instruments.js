@@ -1,3 +1,7 @@
+/**
+ * Array providing data to seeding.js
+ */
+
 const instruments = [
     ['B1-01', 'Basse1', '', null, 8, 6.6, 'TRUE',1],
     ['B1-02', 'Basse1', 'très lourd avec pieds fixes', null, 8, 8, 'FALSE',2],

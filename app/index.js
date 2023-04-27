@@ -1,15 +1,20 @@
 
 /**
- * Context of Apollo Server 
+ * Context for Apollo Server 
  */
 const express = require("express");
 const app = express();
 
 
-//const context = require ("./context");
+/**
+ * Contecyt value for Apollo server 
+ */
 const typeDefs = require("./schemas");
 const resolvers = require("./resolvers");
 
+/**
+ * Configurations for Apollo server 
+ */
 const apolloConfig = {
 	typeDefs,
 	resolvers
@@ -20,8 +25,3 @@ module.exports = {
 	app,
 	apolloConfig,
 };
-
-/**
- * Nodemailer - to send email
- */
-

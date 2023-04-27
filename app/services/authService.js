@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 const jwt = require("jsonwebtoken");
 const userDatamapper = require("../datamappers/user");
 const { GraphQLError } = require("graphql");

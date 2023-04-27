@@ -1,3 +1,7 @@
+/**
+ * Configuraton File for mailing system 
+ */
+
 module.exports = {
 	jwtSecret: process.env.SECRET,
 

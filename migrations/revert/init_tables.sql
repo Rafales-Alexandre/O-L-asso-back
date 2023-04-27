@@ -1,4 +1,4 @@
--- Revert batala: init_tables.sql from pg 
+-- Revert all the tables from batala
 
 BEGIN;
 
