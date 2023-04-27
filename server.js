@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /** Batala Intranet Terminal Exploitation*/
 
 
@@ -13,7 +15,6 @@ const express = require("express");
  * Necessary module for Apollo server Express Middelware 
  * @module cors is the module of Cross-origin resource sharing, absolutely essential to our project with his database, router, and front part very distant from each other
  * @module jwt is our Token to grant the access or not to certain feature of our app
-
 */
 
 const cors = require("cors");
@@ -27,6 +28,7 @@ const jwt = require("jsonwebtoken");
 const { expressMiddleware } = require("@apollo/server/express4");
 const { json } = require("body-parser");
 const { ApolloServer } = require("@apollo/server");
+const { GraphQLError } = require("graphql");
 
 /** Custom middelware, will generate  the token we need using @module jwt */
 const getTokenForRequest = require("./app/services/getTokenForRequest");
@@ -76,6 +78,11 @@ const server = new ApolloServer(apolloConfig);
 					}
 				} catch (err) {
 					console.error("JWT verification failed:", err.message);
+					throw new GraphQLError("Authentification by token failed", {
+						extensions: {
+							code: "JWT_AUTH_FAILED",
+						},
+					});
 				}
 				return {};
 			}

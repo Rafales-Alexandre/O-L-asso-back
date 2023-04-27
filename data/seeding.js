@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable quotes */
 /**
  * @ - This file aim to seed datas into the database for dev. time.
  * @module dotenv - Make accessible the requirement of enviromnt value of the .env file 
@@ -7,6 +9,7 @@
  * @module suits - Model data provide to feed faker
  * @module userHasSuit - Model data provide to feed faker
  */
+
 require('dotenv').config();
 const { faker } = require('@faker-js/faker');
 const debug = require('debug')('seeding');
@@ -27,15 +30,15 @@ const NB_USERS = 70;
  * @returns 
  */
 function pgQuoteEscape(row) {
-    const newRow = {};
-    Object.entries(row).forEach(([prop, value]) => {
-        if (typeof value !== 'string') {
-            newRow[prop] = value;
-            return;
-        }
-        newRow[prop] = value.replaceAll("'", "''");
-    });
-    return newRow;
+	const newRow = {};
+	Object.entries(row).forEach(([prop, value]) => {
+		if (typeof value !== 'string') {
+			newRow[prop] = value;
+			return;
+		}
+		newRow[prop] = value.replaceAll("'", "''");
+	});
+	return newRow;
 }
 /**
  * @functionn generateUsers - create the fake user data, with a models
@@ -43,32 +46,32 @@ function pgQuoteEscape(row) {
  * @returns {user ={...values}}
  */
 async function generateUsers(nbUsers) {
-    const users = [];
-    for (let i = 0; i < nbUsers; i += 1) {
-        const user = {
-            url_img: faker.image.avatar(),
-            lastname: faker.name.lastName(),
-            firstname: faker.name.firstName(),
-            nickname: faker.name.firstName().slice(0, 3),
-            email: faker.internet.email(),
-            password: faker.internet.password(),
-            birthdate: faker.date.between('1960-01-01', '2000-12-31').toISOString().slice(0, 10),
-            phone: faker.phone.number('0#-##-##-##-##'),
-            address: faker.address.streetAddress(),
-            address_2: faker.address.secondaryAddress(),
-            zip_code: faker.address.zipCode('#####'),
-            city: faker.address.city(),
-            gender: faker.helpers.arrayElement(["F", "M", "Mixte"]),
-            top_size: faker.helpers.arrayElement(["S", "M", "L", "XL", "XXL", "XXXL"]),
-            bottom_size: faker.helpers.arrayElement(["S", "M", "L", "XL", "XXL", "XXXL"]),
-            subscription: faker.datatype.boolean(),
-            deposit: faker.datatype.boolean(),
-            role: faker.helpers.arrayElement(['member', 'board', 'admin'])
-        };
-        users.push(user);
-    }
+	const users = [];
+	for (let i = 0; i < nbUsers; i += 1) {
+		const user = {
+			url_img: faker.image.avatar(),
+			lastname: faker.name.lastName(),
+			firstname: faker.name.firstName(),
+			nickname: faker.name.firstName().slice(0, 3),
+			email: faker.internet.email(),
+			password: faker.internet.password(),
+			birthdate: faker.date.between('1960-01-01', '2000-12-31').toISOString().slice(0, 10),
+			phone: faker.phone.number('0#-##-##-##-##'),
+			address: faker.address.streetAddress(),
+			address_2: faker.address.secondaryAddress(),
+			zip_code: faker.address.zipCode('#####'),
+			city: faker.address.city(),
+			gender: faker.helpers.arrayElement(["F", "M", "Mixte"]),
+			top_size: faker.helpers.arrayElement(["S", "M", "L", "XL", "XXL", "XXXL"]),
+			bottom_size: faker.helpers.arrayElement(["S", "M", "L", "XL", "XXL", "XXXL"]),
+			subscription: faker.datatype.boolean(),
+			deposit: faker.datatype.boolean(),
+			role: faker.helpers.arrayElement(['member', 'board', 'admin'])
+		};
+		users.push(user);
+	}
 
-    return users;
+	return users;
 }
 /**
  * @function insertUsers - Insert User in Database
@@ -76,10 +79,10 @@ async function generateUsers(nbUsers) {
  * @returns 
  */
 async function insertUsers(users) {
-    await db.query('TRUNCATE TABLE "user" RESTART IDENTITY CASCADE');
-    const usersValues = users.map((user) => {
-        const newUser = pgQuoteEscape(user);
-        return `(
+	await db.query('TRUNCATE TABLE "user" RESTART IDENTITY CASCADE');
+	const usersValues = users.map((user) => {
+		const newUser = pgQuoteEscape(user);
+		return `(
             '${newUser.url_img}',
             '${newUser.lastname}',
             '${newUser.firstname}',
@@ -99,8 +102,8 @@ async function insertUsers(users) {
             '${newUser.deposit}',
             '${newUser.role}'
         )`;
-    });
-    const queryStr = `
+	});
+	const queryStr = `
     INSERT INTO "user"
     (
         "url_img",
@@ -166,9 +169,9 @@ async function insertUsers(users) {
         ${usersValues}
         RETURNING id
     `;
-    const result = await db.query(queryStr);
-    console.log("données user insérées")
-    return result.rows;
+	const result = await db.query(queryStr);
+	console.log("✴.·´¯ Données \"user\" insérées dans la table Users ¯´·.✴");
+	return result.rows;
 }
 
 /**
@@ -179,28 +182,28 @@ async function insertUsers(users) {
 
 async function insertInstuments(usersIds = []) {
 
-    if (!usersIds.length) {
-        throw new Error('Pas d\'utilisateurs passés en paramètres ou tableau vide');
-    }
+	if (!usersIds.length) {
+		throw new Error('Pas d\'utilisateurs passés en paramètres ou tableau vide');
+	}
 
-    const intrumentToInsert = instruments.map(instrument => {
-        const data = {
-            "code": instrument[0],
-            "pupitre": instrument[1],
-            "observation": instrument[2],
-            "depth": instrument[3],
-            "rods": instrument[4],
-            "weight": instrument[5],
-            "sticker": instrument[6],
-            "user_id": instrument[7]
-        }
+	const intrumentToInsert = instruments.map(instrument => {
+		const data = {
+			"code": instrument[0],
+			"pupitre": instrument[1],
+			"observation": instrument[2],
+			"depth": instrument[3],
+			"rods": instrument[4],
+			"weight": instrument[5],
+			"sticker": instrument[6],
+			"user_id": instrument[7]
+		};
 
-        return data;
-    });
+		return data;
+	});
 
-    const instrumentValues = intrumentToInsert.map(instrument => {
-        const newInstrument = pgQuoteEscape(instrument);
-        return `(
+	const instrumentValues = intrumentToInsert.map(instrument => {
+		const newInstrument = pgQuoteEscape(instrument);
+		return `(
             '${newInstrument.code}',
             '${newInstrument.pupitre}',
             '${newInstrument.observation}',
@@ -211,8 +214,8 @@ async function insertInstuments(usersIds = []) {
             ${newInstrument.user_id || 'NULL'}
         )`;
 
-    });
-    const queryStr = `
+	});
+	const queryStr = `
     INSERT INTO "instrument" (
         "code",
         "pupitre",
@@ -226,36 +229,36 @@ async function insertInstuments(usersIds = []) {
     VALUES
         ${instrumentValues}
     `;
-    const result = await db.query(queryStr);
-    console.log("données instruments insérées")
-    return result.rows;
+	const result = await db.query(queryStr);
+	console.log("✴.·´¯ Données \"instruments\" insérées dans la table Instruments ¯´·.✴ ");
+	return result.rows;
 }
 
 /**
  * @function insertSuits - create the suit data and assign them to user 
- * @returns 
+ * @returns data insertable in Database 
  */
 async function insertSuits() {
-    const suitsToInsert = suits.map((suit) => {
-        const data = {
-            "label": suit[0],
-            "gender": suit[1],
-            "observation": suit[2],
-            "quantity_s": suit[3],
-            "quantity_m": suit[4],
-            "quantity_l": suit[5],
-            "quantity_xl": suit[6],
-            "quantity_xxl": suit[7],
-            "quantity_xxxl": suit[8]
-        }
-        return data;
-    });
+	const suitsToInsert = suits.map((suit) => {
+		const data = {
+			"label": suit[0],
+			"gender": suit[1],
+			"observation": suit[2],
+			"quantity_s": suit[3],
+			"quantity_m": suit[4],
+			"quantity_l": suit[5],
+			"quantity_xl": suit[6],
+			"quantity_xxl": suit[7],
+			"quantity_xxxl": suit[8]
+		};
+		return data;
+	});
 
-    await db.query('TRUNCATE TABLE "suit" RESTART IDENTITY CASCADE');
+	await db.query('TRUNCATE TABLE "suit" RESTART IDENTITY CASCADE');
 
-    const suitsValues = suitsToInsert.map((suit) => {
-        const newSuit = pgQuoteEscape(suit);
-        return `(
+	const suitsValues = suitsToInsert.map((suit) => {
+		const newSuit = pgQuoteEscape(suit);
+		return `(
             '${newSuit.label}',
             '${newSuit.gender}',
             '${newSuit.observation}',
@@ -266,8 +269,8 @@ async function insertSuits() {
             '${newSuit.quantity_xxl}',
             '${newSuit.quantity_xxxl}' 
         )`;
-    });
-    const queryStr = `
+	});
+	const queryStr = `
     INSERT INTO "suit"
         (
             "label",
@@ -284,9 +287,9 @@ async function insertSuits() {
             ${suitsValues}
             RETURNING id
     `;
-    const result = await db.query(queryStr);
-    console.log("données costumes insérées")
-    return result.rows;
+	const result = await db.query(queryStr);
+	console.log("✴.·´¯ Données \"costumes\" insérées dans la table Suits¯´·.✴");
+	return result.rows;
 }
 
 /**
@@ -297,27 +300,27 @@ async function insertSuits() {
  */
 async function insertUserHasSuit(usersIds = [], suitsIds = []) {
 
-    if (!usersIds.length || !suitsIds.length) {
-        throw new Error('Pas d\'utilisateurs ou de costumes passés en paramètres ou tableau vide');
-    }
-    const userHasSuitsToInsert = userHasSuits.map(userHasSuit => {
-        const data = {
-            "user_id": userHasSuit[0],
-            "suit_id": userHasSuit[1], 
-        }
-        return data;
-    });
+	if (!usersIds.length || !suitsIds.length) {
+		throw new Error('Pas d\'utilisateurs ou de costumes passés en paramètres ou tableau vide');
+	}
+	const userHasSuitsToInsert = userHasSuits.map(userHasSuit => {
+		const data = {
+			"user_id": userHasSuit[0],
+			"suit_id": userHasSuit[1], 
+		};
+		return data;
+	});
 
-    await db.query('TRUNCATE TABLE "user_has_suit" RESTART IDENTITY CASCADE');
+	await db.query('TRUNCATE TABLE "user_has_suit" RESTART IDENTITY CASCADE');
 
-    const userHasSuitsValues = userHasSuitsToInsert.map((userHasSuit) => {
-        const newUserHasSuit = pgQuoteEscape(userHasSuit);
-        return `(
+	const userHasSuitsValues = userHasSuitsToInsert.map((userHasSuit) => {
+		const newUserHasSuit = pgQuoteEscape(userHasSuit);
+		return `(
             '${newUserHasSuit.user_id}',
             '${newUserHasSuit.suit_id}'
         )`;
-    });
-    const queryStr = `
+	});
+	const queryStr = `
     INSERT INTO "user_has_suit"
     (
         "user_id",
@@ -327,9 +330,9 @@ async function insertUserHasSuit(usersIds = [], suitsIds = []) {
         ${userHasSuitsValues}
         RETURNING id
 `;
-    const result = await db.query(queryStr);
-    console.log("données user_has_suit insérées");
-    return result.rows;
+	const result = await db.query(queryStr);
+	console.log("✴.·´¯ Données \"utilisateurs à un costumes \" insérées dans la table User_has_suit¯´·.✴");
+	return result.rows;
 }
 
 /**
@@ -337,16 +340,15 @@ async function insertUserHasSuit(usersIds = [], suitsIds = []) {
  * Will run every function of the script 
  */
 (async () => {
-    /**
-     * Generating users
-     */
-    const users = await generateUsers(NB_USERS);
-    const insertedUsers = await insertUsers(users);
-    debug(`${insertedUsers.length} users inserted`);
-    const userIds = insertedUsers.map((user) => user.id);
-    const insertedInstruments = await insertInstuments(userIds);
-    const insertedSuits = await insertSuits();
-    const suitIds = insertedSuits.map((suit) => suit.id);
-    const insertedUsersHasSuits = await insertUserHasSuit(userIds, suitIds);
+	
+	const users = await generateUsers(NB_USERS);
+	const insertedUsers = await insertUsers(users);
+	debug(`${insertedUsers.length} users inserted`);
+	const userIds = insertedUsers.map((user) => user.id);
+	const insertedInstruments = await insertInstuments(userIds);
+	const insertedSuits = await insertSuits();
+	const suitIds = insertedSuits.map((suit) => suit.id);
+	const insertedUsersHasSuits = await insertUserHasSuit(userIds, suitIds);
+
 
 })();

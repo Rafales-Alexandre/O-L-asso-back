@@ -10,6 +10,7 @@ type Instrument {
   weight: Float
   sticker: Boolean
   user: User
+  users: [User]
   created_at: DateTime!
   updated_at: DateTime
 }

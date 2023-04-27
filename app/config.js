@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Configuraton File for mailing system 
  */
