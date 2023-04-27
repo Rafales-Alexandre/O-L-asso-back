@@ -90,5 +90,5 @@ const server = new ApolloServer(apolloConfig);
  */
 
 	await new Promise((resolve) => serverHTTP.listen(PORT, resolve));
-	console.log("🚀 On décolle ici https://projet-01-o-lasso-back-production.up.railway.app/graphql");
+	console.log("🚀 On décolle ici ", process.env.APIADDRESS );
 })();
