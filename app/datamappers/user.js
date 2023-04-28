@@ -2,7 +2,8 @@
  * Addition of the CoreDatamapper for User 
  */
 const CoreDatamapper = require("./coreDatamapper");
-const client = require("../db/pg")
+const client = require("../db/pg");
+const bcrypt = require("bcrypt"); // Try on bcrypt
 
 class User extends CoreDatamapper {
     tableName = 'user';
@@ -55,6 +56,64 @@ class User extends CoreDatamapper {
 
         return result.rows;
     }
+
+    async createBcrypt({
+        url_img,
+        lastname,
+        firstname,
+        nickname,
+        email,
+        password,
+        birthdate,
+        phone,
+        address,
+        address_2,
+        zip_code,
+        city,
+        gender,
+        top_size,
+        bottom_size,
+        subscription,
+        deposit,
+        role,
+    }) {
+        // Check if user exists
+        const userExists = await User.findOne({ email });
+        if (userExists) {
+          throw new Error('Cet email est déjà utilisé.');
+        }
+      
+        // hashing
+        const hashedPassword = await bcrypt.hash(password, 10);
+      
+        // create new user with data input
+        const newUser = new User({
+          url_img,
+          lastname,
+          firstname,
+          nickname,
+          email,
+          password: hashedPassword,
+          birthdate,
+          phone,
+          address,
+          address_2,
+          zip_code,
+          city,
+          gender,
+          top_size,
+          bottom_size,
+          subscription,
+          deposit,
+          role,
+        });
+      
+        // Enregistre l'utilisateur dans la base de données
+        const savedUser = await newUser.save();
+      
+        // Retourne l'utilisateur nouvellement créé
+        return savedUser;
+      }
 }
 
 

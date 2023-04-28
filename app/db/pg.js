@@ -19,7 +19,7 @@ const pool = new Pool({
 	connectionString,
 });
 
-// Fonction pour vérifier et afficher la base de données connectée
+// Check database connected
 async function checkConnectedDatabase() {
 	try {
 	  const client = await pool.connect();
@@ -30,7 +30,7 @@ async function checkConnectedDatabase() {
 	}
 }
   
-// Appeler la fonction pour vérifier la base de données connectée
+
 checkConnectedDatabase();
 
 let queryCount = 0;
