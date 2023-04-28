@@ -6,6 +6,8 @@
 const jwt = require("jsonwebtoken");
 const userDatamapper = require("../datamappers/user");
 const { GraphQLError } = require("graphql");
+const bcrypt = require("bcrypt"); // Try on bcrypt
+
 
 const authService = {
 	/**
@@ -29,7 +31,9 @@ const authService = {
 			//return false;
 		}
 
-		if (user.password !== password) {
+		const passwordIsOk = await bcrypt.compare(password, user.password);
+
+		if (!passwordIsOk) {
 			//return false;
 			throw new GraphQLError ("Wrong password", {
 				code : "FORBIDDEN",

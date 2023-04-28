@@ -11,9 +11,12 @@ const { Pool } = require("pg");
 
 const useLocalDatabase = process.env.USE_LOCAL_DATABASE === "true";
 
+
 const connectionString = useLocalDatabase
 	? process.env.LOCAL_DATABASE_URL
 	: process.env.DATABASE_URL;
+
+console.log(connectionString);
 
 const pool = new Pool({
 	connectionString,

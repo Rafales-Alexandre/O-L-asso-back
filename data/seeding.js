@@ -146,26 +146,6 @@ async function insertUsers(users) {
         'true',
         'admin'
     ), --superpass
-    (
-        '',
-        'JC',
-        'A',
-        '',
-        'jc1932@gmail.com',
-        'jc1932',
-        '1970-01-01',
-        '',
-        '',
-        '',
-        '17000',
-        '',
-        'M',
-        'L',
-        'L',
-        'true',
-        'true',
-        'admin'
-    ), --superpass
         ${usersValues}
         RETURNING id
     `;
@@ -331,7 +311,7 @@ async function insertUserHasSuit(usersIds = [], suitsIds = []) {
         RETURNING id
 `;
 	const result = await db.query(queryStr);
-	console.log("✴.·´¯ Données \"utilisateurs à un costumes \" insérées dans la table User_has_suit¯´·.✴");
+	console.log("✴.·´¯ Données \"utilisateurs a un costumes \" insérées dans la table User_has_suit¯´·.✴");
 	return result.rows;
 }
 
@@ -349,6 +329,5 @@ async function insertUserHasSuit(usersIds = [], suitsIds = []) {
 	const insertedSuits = await insertSuits();
 	const suitIds = insertedSuits.map((suit) => suit.id);
 	const insertedUsersHasSuits = await insertUserHasSuit(userIds, suitIds);
-
-
+    // process.exit();
 })();
