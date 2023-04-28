@@ -20,29 +20,35 @@ const authService = {
 		const user = await userDatamapper.findByEmail(email);
 
 		if (!user) {
-			throw new GraphQLError ("You're not allowed in", {
-				code : "FORBIDDEN",
+			throw new GraphQLError("You're not allowed in", {
+				code: "FORBIDDEN",
 				http: {
-					status : 403,
-					headers : new Map ([
+					status: 403,
+					headers: new Map([
 						["Unauthorize user"]
 					])
-				}});
+				}
+			});
 			//return false;
 		}
 
-		const passwordIsOk = await bcrypt.compare(password, user.password);
+		let passwordIsOk = false;
+		if (user.password.startsWith("$2")) {
+			// if password starts with $2, it means it's already encrypted with bcrypt
+			passwordIsOk = await bcrypt.compare(password, user.password);
+		} else {
+			// if password is not encrypted, we assume it's plain text and we compare it directly
+			passwordIsOk = password === user.password;
+		}
 
 		if (!passwordIsOk) {
-			//return false;
-			throw new GraphQLError ("Wrong password", {
-				code : "FORBIDDEN",
+			throw new GraphQLError("Wrong password", {
+				code: "FORBIDDEN",
 				http: {
-					status : 403,
-					headers : new Map ([
-						["Wrong Password"]
-					])
-				}});
+					status: 403,
+					headers: new Map([["Wrong Password"]]),
+				},
+			});
 		}
 		/**If the two previous conditions don't throw Error, then we will generate the Authetification/Autorization token 
  */
@@ -70,14 +76,14 @@ const authService = {
 				extensions: {
 					code: "FORBIDDEN",
 					http: {
-						status : 403,
-						headers : new Map ([
+						status: 403,
+						headers: new Map([
 							["Unauthorize user"]
 						])
 					},
 				}
 			});
-		// return true;
+			// return true;
 		}
 	},
 
@@ -97,8 +103,8 @@ const authService = {
 				extensions: {
 					code: "FORBIDDEN",
 					http: {
-						status : 403,
-						headers : new Map ([
+						status: 403,
+						headers: new Map([
 							["Unauthorize user"]
 						])
 					},
