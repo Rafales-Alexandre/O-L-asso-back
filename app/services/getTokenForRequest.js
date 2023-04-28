@@ -6,6 +6,7 @@
  */
 
 function getTokenForRequest(req) {
+ 
 	return req.header('Authorization');
 }
 
