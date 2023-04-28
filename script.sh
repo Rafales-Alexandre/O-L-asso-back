@@ -17,7 +17,7 @@ echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Bienvenue sur votre script de l
 
 sudo -u postgres psql -f init.sql
 
-echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Suppression et création de la base de données ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙'
+echo " ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Suppression et création de la base de données ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙"
 
 # Creation of the .env files
 
@@ -28,20 +28,19 @@ echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env créer ᴼᵒ▫�
 # seeding of of environment values in it 
 
 echo "
-PGHOST=localhost
-PGPORT=5432
-PGDATABASE=batala
-PGUSER=batala
-PGPASSWORD=batala
-PORT=3000
-APIADDRESS=http://localhost:3000/graphql
-SECRET=victoria
-USE_LOCAL_DATABASE=true
-LOCAL_DATABASE_URL=postgres://batala:batala@localhost:5432/batala
-DATABASE_URL=${{Postgres.DATABASE_URL}}
-NODE_ENV=developement" >>.env
+    PGHOST=localhost
+    PGPORT=5432
+    PGDATABASE=batala
+    PGUSER=batala
+    PGPASSWORD=batala
+    PORT=3000
+    SECRET=batala
+    APIADDRESS=http://localhost:3000/graphql
+    NODE_ENV=developpement
+    EMAIL=jc.batala.lr@gmail.com
+    EMAILPASSWORD=Bata-test">>.env
 
-echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env écrit ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙'
+echo " ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env écrit ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙"
 
 #Download and installation of all NPM of the project 
 
