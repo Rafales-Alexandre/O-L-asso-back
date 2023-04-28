@@ -44,7 +44,7 @@ class User extends CoreDatamapper {
         const result = await this.client.query(baseQuery);
         return result.rows[0].count;
     }
-    async findByInstrument(instrumentId){
+    async findByInstrument(instrumentId) {
         const baseQuery = {
             text: ` 
             SELECT u.* FROM "${this.tableName}" as u
@@ -73,47 +73,103 @@ class User extends CoreDatamapper {
         gender,
         top_size,
         bottom_size,
-        subscription,
-        deposit,
-        role,
+        subscription = false,
+        deposit = false,
+        role = "member",
     }) {
         // Check if user exists
-        const userExists = await this.findByEmail({ email });
+        const userExists = await this.findByEmail(email);
         if (userExists) {
-          throw new Error('Cet email est déjà utilisé.');
+            throw new Error('Cet email est déjà utilisé.');
         }
-      
+
         // hashing
         const hashedPassword = await bcrypt.hash(password, 10);
-      
+
         // create new user with data input
-        const newUser = new User({
-          url_img,
-          lastname,
-          firstname,
-          nickname,
-          email,
-          password: hashedPassword,
-          birthdate,
-          phone,
-          address,
-          address_2,
-          zip_code,
-          city,
-          gender,
-          top_size,
-          bottom_size,
-          subscription,
-          deposit,
-          role,
-        });
-      
-        // Enregistre l'utilisateur dans la base de données
-        const savedUser = await newUser.save();
-      
-        // Retourne l'utilisateur nouvellement créé
-        return savedUser;
-      }
+        const newUser = {
+            url_img,
+            lastname,
+            firstname,
+            nickname,
+            email,
+            password: hashedPassword,
+            birthdate,
+            phone,
+            address,
+            address_2,
+            zip_code,
+            city,
+            gender,
+            top_size,
+            bottom_size,
+            subscription,
+            deposit,
+            role,
+        };
+
+        // Conditionally add properties if provided
+        if (url_img) {
+            newUser.url_img = url_img;
+        }
+        if (firstname) {
+            newUser.firstname = firstname;
+        }
+        if (nickname) {
+            newUser.nickname = nickname;
+        }
+        if (birthdate) {
+            newUser.birthdate = birthdate;
+        }
+        if (phone) {
+            newUser.phone = phone;
+        }
+        if (address) {
+            newUser.address = address;
+        }
+        if (address_2) {
+            newUser.address_2 = address_2;
+        }
+        if (zip_code) {
+            newUser.zip_code = zip_code;
+        }
+        if (city) {
+            newUser.city = city;
+        }
+        if (gender) {
+            newUser.gender = gender;
+        }
+        if (top_size) {
+            newUser.top_size = top_size;
+        }
+        if (bottom_size) {
+            newUser.bottom_size = bottom_size;
+        }
+
+        return this.create(newUser);
+
+       /*  // Build the query
+        const columns = Object.keys(newUser);
+        const values = Object.values(newUser);
+        const placeholders = columns.map((_, index) => `$${index + 1}`).join(', ');
+
+        // Save user to database
+        const baseQuery =
+        {
+            text: `
+                INSERT INTO "user" (${columns.join(', ')})
+                VALUES (${placeholders})
+                RETURNING *
+            `,
+            values: values,
+        }; */
+
+
+
+       /*  const result = await this.client.query(baseQuery);
+        console.log("✴.·´¯ Données \"user\" insérées dans la table Users ¯´·.✴");
+        return result.rows[0]; */
+    }
 }
 
 
