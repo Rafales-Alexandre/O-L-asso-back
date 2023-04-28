@@ -17,7 +17,7 @@ echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Bienvenue sur votre script de l
 
 sudo -u postgres psql -f init.sql
 
-echo " ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Suppression et création de la base de données ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙"
+echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Suppression et création de la base de données ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙'
 
 # Creation of the .env files
 
@@ -39,10 +39,9 @@ SECRET=victoria
 USE_LOCAL_DATABASE=true
 LOCAL_DATABASE_URL=postgres://batala:batala@localhost:5432/batala
 DATABASE_URL=${{Postgres.DATABASE_URL}}
-NODE_ENV=developement
-" >>.env
+NODE_ENV=developement" >>.env
 
-echo " ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env écrit ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙"
+echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env écrit ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙'
 
 #Download and installation of all NPM of the project 
 
