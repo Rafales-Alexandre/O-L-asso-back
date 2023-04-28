@@ -78,7 +78,7 @@ class User extends CoreDatamapper {
         role,
     }) {
         // Check if user exists
-        const userExists = await User.findOne({ email });
+        const userExists = await User.findByEmail({ email });
         if (userExists) {
           throw new Error('Cet email est déjà utilisé.');
         }
