@@ -28,10 +28,15 @@ echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env créer ᴼᵒ▫�
 # seeding of of environment values in it 
 
 echo "
+PGHOST=localhost
+PGPORT=5432
+PGDATABASE=batala
+PGUSER=batala
+PGPASSWORD=batala
 PORT=3000
+APIADDRESS=http://localhost:3000/graphql
 SECRET=victoria
 USE_LOCAL_DATABASE=true
-APIADDRESS=http://localhost:3000/graphql
 LOCAL_DATABASE_URL=postgres://batala:batala@localhost:5432/batala
 DATABASE_URL=${{Postgres.DATABASE_URL}}
 NODE_ENV=developement
