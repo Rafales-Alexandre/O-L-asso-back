@@ -32,14 +32,7 @@ const authService = {
 			//return false;
 		}
 
-		let passwordIsOk = false;
-		if (user.password.startsWith("$2")) {
-			// if password starts with $2, it means it's already encrypted with bcrypt
-			passwordIsOk = await bcrypt.compare(password, user.password);
-		} else {
-			// if password is not encrypted, we assume it's plain text and we compare it directly
-			passwordIsOk = password === user.password;
-		}
+		const passwordIsOk = await bcrypt.compare(password, user.password);
 
 		if (!passwordIsOk) {
 			throw new GraphQLError("Wrong password", {

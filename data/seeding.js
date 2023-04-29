@@ -17,6 +17,7 @@ const db = require('../app/db/pg');
 const instruments = require('./instruments');
 const suits = require('./suits');
 const userHasSuits = require('./user_has_suits');
+const bcrypt = require("bcrypt");
 
 /** Call of the enviromnt file  */
 faker.locale = 'fr';
@@ -47,6 +48,7 @@ function pgQuoteEscape(row) {
  */
 async function generateUsers(nbUsers) {
 	const users = [];
+    const password = bcrypt.hashSync("chuckpass", 10);
 	for (let i = 0; i < nbUsers; i += 1) {
 		const user = {
 			url_img: faker.image.avatar(),
@@ -54,7 +56,7 @@ async function generateUsers(nbUsers) {
 			firstname: faker.name.firstName(),
 			nickname: faker.name.firstName().slice(0, 3),
 			email: faker.internet.email(),
-			password: faker.internet.password(),
+			password: password,
 			birthdate: faker.date.between('1960-01-01', '2000-12-31').toISOString().slice(0, 10),
 			phone: faker.phone.number('0#-##-##-##-##'),
 			address: faker.address.streetAddress(),
@@ -132,7 +134,7 @@ async function insertUsers(users) {
         'Chuck',
         '',
         'cn@email.com',
-        'chuckpass',
+        '$2b$10$kX/3sXvKjQd9qiwaTQlvs.HfkLXBLf4E0C6.yxSY46ZWHMDT5MQFe',
         '1970-01-01',
         '',
         '',
@@ -329,5 +331,5 @@ async function insertUserHasSuit(usersIds = [], suitsIds = []) {
 	const insertedSuits = await insertSuits();
 	const suitIds = insertedSuits.map((suit) => suit.id);
 	const insertedUsersHasSuits = await insertUserHasSuit(userIds, suitIds);
-    // process.exit();
+    process.exit();
 })();
