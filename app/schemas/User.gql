@@ -1,5 +1,5 @@
 """
-Instead of wroting a comparision string in Javascript to make some sorting by gender, we have decided to create a Enum 
+Instead of wroting a comparision string in Javascript to make some sorting by gender, we have decided to create Enum for Gender  and Size (of suits)
 """
 
 
@@ -17,6 +17,10 @@ enum Size {
   XXL
   XXXL
 }
+
+"""
+Definition of the user Type, based on the database value
+"""
 
 type User {
   id: ID!
@@ -45,6 +49,10 @@ type User {
   suits: [Suit]
 }
 
+"""
+Type for the input, the necessary value are followed by the ! symbol
+"""
+
 input UserInput {
   url_img: String
   lastname: String!
@@ -67,12 +75,18 @@ input UserInput {
   instrument_id: ID
 }
 
+"""
+Type to specify the login input. Because it's directly link to the user type, it would be superflous to have an another file type 
+"""
 input LoginInput {
   email: String
   password: String
   
 }
 
+"""
+Specify the return type, because or method need this return
+"""
 type LoginReturn {
   token: String
   user: User

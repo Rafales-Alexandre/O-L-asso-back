@@ -15,6 +15,9 @@ type Instrument {
   updated_at: DateTime
 }
 
+"""
+Type for the input, the necessary value are followed by the ! symbol
+"""
 input InstrumentInput {
   code: String!
   pupitre: String

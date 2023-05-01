@@ -1,5 +1,8 @@
+/* eslint-disable no-undef */
 /**
  * Index of all GQL files, and the method to read them 
+ * @module readFileSync - necessary to "translate" gql files
+ * @module path _ resolve any path issues
  */
 const { readFileSync } = require("fs");
 const path = require("path");
@@ -12,7 +15,9 @@ const customScalars = readFileSync(path.join(__dirname, "./customScalars.gql"));
 const mutationSchema = readFileSync(path.join(__dirname, "./Mutation.gql"));
 const resetPasswordSchema = readFileSync(path.join(__dirname, "./ResetPassword.gql"));
 
-
+/**
+ * @module typeDefs is one of the two necessary parameters to make the ApolloServer
+ */
 const typeDefs = `#graphql
 ${customScalars}
 ${userSchema}

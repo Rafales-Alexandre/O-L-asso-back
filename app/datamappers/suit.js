@@ -8,6 +8,11 @@ const client = require("../db/pg")
 class Suit extends CoreDatamapper {
     tableName = 'suit';
 
+    /**
+     * Because it's a custom query using a resolver, we need to write the method
+     * @param {*} userId is a string we get, send it to the database via the @function baseQuery through the name of table define by ${this.tablename}, being define in the beginning 
+     * @returns an object 
+     */
     async findByUser(userId) {
         const baseQuery = {
             text: ` 

@@ -5,8 +5,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const config = require("../config");
-
 const transporter = nodemailer.createTransport(config.mailtrap);
+
+
 
 class ResetPassword extends CoreDatamapper {
     tablename = 'password_reset_requests';

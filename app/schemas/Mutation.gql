@@ -1,5 +1,6 @@
 """
 List of Mutation
+A mutation is the ensemble of any modification of the initial database 
 """
 type Mutation {
   addUser(input: UserInput): User

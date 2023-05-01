@@ -1,5 +1,5 @@
 /**
- * Resolvers of User 
+ * Resolvers for User, will  make the missing link between table to make the perfect query  
  */
 
 const instrumentDatamapper = require("../datamappers/instrument");

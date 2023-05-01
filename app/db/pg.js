@@ -7,8 +7,10 @@ const debug = require("debug")("SQL:log");
 
 const { Pool } = require("pg");
 
-
-
+/**
+ * @object to query the environnment file
+ * ! commentare souhaité sur la valeur false à modifier pour un déploiement en local
+ */
 const useLocalDatabase = process.env.USE_LOCAL_DATABASE === "true";
 
 

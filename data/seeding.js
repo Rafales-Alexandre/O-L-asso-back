@@ -48,7 +48,10 @@ function pgQuoteEscape(row) {
  */
 async function generateUsers(nbUsers) {
 	const users = [];
-    const password = bcrypt.hashSync("chuckpass", 10);
+	/**
+     * explication requise
+     */
+	const password = bcrypt.hashSync("chuckpass", 10);
 	for (let i = 0; i < nbUsers; i += 1) {
 		const user = {
 			url_img: faker.image.avatar(),
@@ -320,6 +323,7 @@ async function insertUserHasSuit(usersIds = [], suitsIds = []) {
 /**
  * @function
  * Will run every function of the script 
+ * ! need explanationabout the process.exit()
  */
 (async () => {
 	
@@ -331,5 +335,5 @@ async function insertUserHasSuit(usersIds = [], suitsIds = []) {
 	const insertedSuits = await insertSuits();
 	const suitIds = insertedSuits.map((suit) => suit.id);
 	const insertedUsersHasSuits = await insertUserHasSuit(userIds, suitIds);
-    process.exit();
+	process.exit();
 })();

@@ -1,6 +1,6 @@
 """
 List of Query
-
+The necessary value are followed by the ! symbol
 """
 type Query {
   getAllInstruments: [Instrument]

@@ -1,5 +1,5 @@
 /**
- * List of Mutation
+ * List of Mutation based on the gql file
  */
 
 const userDatamapper = require("../datamappers/user");
@@ -47,7 +47,6 @@ module.exports = {
 		return instrumentDatamapper.update({ id }, input);
 	},
 	loginUser(_, { input }) {
-		
 		return authService.login(input.email, input.password);
 		
 	},

@@ -1,10 +1,17 @@
-""" Type of Suit """
+"""
+Instead of wroting a comparision string in Javascript to make some sorting by gender, we have decided to create Enum for Gender (by user)
+"""
 
 enum Gender {
     F
     M
     Mixte
 }
+
+
+"""
+Definition of the user Type, based on the database value
+"""
 
 type Suit {
     id: ID! 
@@ -21,6 +28,9 @@ type Suit {
     total: Int
 }
 
+"""
+Type for the input, the necessary value are followed by the ! symbol
+"""
 input SuitInput {
     label: String!
     gender: Gender

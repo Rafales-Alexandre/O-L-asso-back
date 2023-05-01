@@ -1,5 +1,5 @@
 /**
- * Resolvers of User 
+ * Resolvers for Suit, will  make the missing link between table to make the perfect query  
  */
 
 const userDatamapper = require ("../datamappers/user");

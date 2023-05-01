@@ -9,6 +9,10 @@ const client = require ("../db/pg");
 class Instrument extends CoreDatamapper {
     tableName = 'instrument';
     async findByUser(userId) {
+        /**
+         * Because it's a custom query using a resolver, we need to write the method
+         * We don't have a inout value to make it work, because it's directly linked to the user datamapper  
+         */
         const baseQuery = {
             text: ` 
             SELECT s.* FROM "${this.tableName}" as s
