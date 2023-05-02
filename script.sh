@@ -31,7 +31,7 @@ echo "
 PORT=3000
 SECRET=victoria
 USE_LOCAL_DATABASE=true
-LOCAL_APIADDRESS=http://localhost:${PORT}/graphql/
+LOCAL_APIADDRESS=http://localhost:3000/graphql/
 REMOTE_APIADDRESS=https://projet-01-o-lasso-back-production.up.railway.app/graphql
 LOCAL_DATABASE_URL=postgres://batala:batala@localhost:5432/batala
 DATABASE_URL=postgresql://postgres:K8jML9zYB1tqLa8hWF5I@containers-us-west-183.railway.app:6327/railway
