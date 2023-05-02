@@ -22,8 +22,8 @@ const jwt = require("jsonwebtoken");
 
 /** Instead of quering the whole content, we recover what we need 
  *	@module expressMiddleware is the function enabling you to attach Apollo Server to an Express Server 
- *  @module json is necessary to handle http post request of Expressin In Apollo
- * @module ApolloServer is the main library for ApolloServer itself 
+ *	@module json is necessary to handle http post request of Expressin In Apollo
+ *	@module ApolloServer is the main library for ApolloServer itself 
 */
 const { expressMiddleware } = require("@apollo/server/express4");
 const { json } = require("body-parser");

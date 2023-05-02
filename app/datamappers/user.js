@@ -10,8 +10,8 @@ class User extends CoreDatamapper {
     tableName = 'user';
     /**
      * Because it's a custom query using a resolver, we need to write the method
-     * @param {*} suitId is what we get, it's a sttring and we send it to the database , called by the ${this.tableName}, tableName being define in the beggening of the function
-     * @returns result.rows as an object
+     * @param {String} suitId is what we get, it's a string and we send it to the database , called by the ${this.tableName}, tableName being define in the beggening of the function
+     * @returns {Array.<Object>} result.rows as an object
      */
 
     async findBySuit(suitId) {
@@ -28,8 +28,8 @@ class User extends CoreDatamapper {
     }
 
     /**
-     * @param {*} email is what we get, it's a sttring and we send it to the database , called by the ${this.tableName}, tableName being define in the beggening of the function
-     * @returns result.rows as an object
+     * @param {String} email is what we get, it's a sttring and we send it to the database , called by the ${this.tableName}, tableName being define in the beggening of the function
+     * @returns {Object} result.rows as an object
      */
 
     async findByEmail(email) {
@@ -44,11 +44,11 @@ class User extends CoreDatamapper {
 
         return result.rows[0];
     }
-    /**
-     * @param {*} suitId is what we get, it's a sttring and we send it to the database , called by the ${this.tableName}, tableName being define in the beggening of the function
-     * @returns the total of the suits called, as an 
-     * ! ça retourne en objet ??? en string ? 
-     */
+     /**
+   * Finds the total number of users associated with a given suit ID.
+   * @param {string} suitId - The ID of the suit to find the total number of users for.
+   * @returns {number} - The total number of users associated with the suit.
+   */
     async findBySuitTotal(suitId) {
 
         const baseQuery = {
@@ -62,9 +62,10 @@ class User extends CoreDatamapper {
         return result.rows[0].count;
     }
     /**
-     * @param {*} instrumentId is what we get, it's a sttring and we send it to the database , called by the ${this.tableName}, tableName being define in the beggening of the function
-     * @returns an object containing all the instrument for an user 
-     */
+   * Finds all users associated with a given instrument ID.
+   * @param {string} instrumentId - The ID of the instrument to find users for.
+   * @returns {Array.<Object>} - An array of user objects associated with the instrument.
+   */
     async findByInstrument(instrumentId) {
         const baseQuery = {
             text: ` 
@@ -77,11 +78,14 @@ class User extends CoreDatamapper {
 
         return result.rows;
     }
-/**
- * ! a documenter
- * @param {*} userData - use the token ? 
- * @returns 
- */
+  /**
+   * Creates a new user with the given data, and hashes their password using bcrypt.
+   * @param {Object} userData - The data for the new user to create.
+   * @param {string} userData.email - The email address of the user to create.
+   * @param {string} userData.password - The plaintext password of the user to create.
+   * @returns {Object} - The newly created user object.
+   * @throws Error - Throws an error if the email address is already in use.
+   */
     async createBcrypt(userData) {
         // Check if user exists
         const userExists = await this.findByEmail(userData.email);

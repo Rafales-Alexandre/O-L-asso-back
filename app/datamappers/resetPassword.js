@@ -7,11 +7,21 @@ const nodemailer = require("nodemailer");
 const config = require("../config");
 const transporter = nodemailer.createTransport(config.mailtrap);
 
-
+/**
+ * Class representing a password reset controller.
+ * @extends CoreDatamapper
+ */
 
 class ResetPassword extends CoreDatamapper {
     tablename = 'password_reset_requests';
 
+/**
+  * Creates a new password reset request for a user and sends a password reset email.
+  * @param {*} _ - Unused parameter.
+  * @param {Object} args - Arguments for the password reset request.
+  * @param {string} args.email - The email address of the user requesting a password reset.
+  * @returns {Object} - An object with a message indicating that the password reset email has been sent.
+*/
     async askResetPassword(_, { email }) {
 
         const user = await userDatamapper.findByEmail(email);
@@ -34,6 +44,13 @@ class ResetPassword extends CoreDatamapper {
         return { message: "Email sent" };
     }
 
+    /**
+   * Verifies if a given password reset token is valid.
+   * @param {*} _ - Unused parameter.
+   * @param {Object} args - Arguments for the password reset token verification.
+   * @param {string} args.token - The password reset token to be verified.
+   * @returns {Object} - An object with a boolean flag indicating if the token is valid or not.
+   */
     async verifyResetPasswordToken(_, { token }) {
         try {
             jwt.verify(token, config.jwtSecret);
@@ -52,6 +69,14 @@ class ResetPassword extends CoreDatamapper {
         }
     }
 
+      /**
+   * Resets the password of a user with a given password reset token.
+   * @param {*} _ - Unused parameter.
+   * @param {Object} args - Arguments for the password reset operation.
+   * @param {string} args.token - The password reset token.
+   * @param {string} args.newPassword - The new password for the user.
+   * @returns {Object} - An object indicating if the password reset was successful or not.
+   */
     async resetPassword(_, { token, newPassword }) {
         try {
             const decoded = jwt.verify(token, config.jwtSecret);
