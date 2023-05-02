@@ -46,8 +46,7 @@ class User extends CoreDatamapper {
     }
     /**
      * @param {*} suitId is what we get, it's a sttring and we send it to the database , called by the ${this.tableName}, tableName being define in the beggening of the function
-     * @returns the total of the suits called, as an 
-     * ! ça retourne en objet ??? en string ? 
+     * @returns the total of the suits called, as a string, integer Type
      */
     async findBySuitTotal(suitId) {
 
@@ -77,6 +76,8 @@ class User extends CoreDatamapper {
 
         return result.rows;
     }
+
+
 /**
  * ! a documenter
  * @param {*} userData - use the token ? 
@@ -86,9 +87,8 @@ class User extends CoreDatamapper {
         // Check if user exists
         const userExists = await this.findByEmail(userData.email);
         if (userExists) {
-            /**
-             * ! probleme de sécurité à utilisé cette méthode , peut etre lisible. L'usage d'une graphQlError est préférable. 
-             * throw new GraphQLError("You're not allowed in", {
+            
+     throw new GraphQLError("You're not allowed in", {
 				code: "FORBIDDEN",
 				http: {
 					status: 403,
@@ -96,8 +96,7 @@ class User extends CoreDatamapper {
 						["Unauthorize user"]
 					])
 				}
-             */
-            throw new Error('Cet email est déjà utilisé.');
+            })
         }
 /**
  * ! la @method b-crypt ne devrait-elle pas être dans un fichier séparer, comme son type gql ? pas pour le fonctionnement, mais pour le respct sémantique. 
