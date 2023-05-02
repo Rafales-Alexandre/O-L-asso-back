@@ -97,5 +97,19 @@ const server = new ApolloServer(apolloConfig);
  */
 
 	await new Promise((resolve) => serverHTTP.listen(PORT, resolve));
-	console.log("🚀 On décolle ici ", process.env.APIADDRESS );
+
+	/**
+ * @object to query the environnment file
+ * 
+ * Check wich database to connect : modify the .env 
+ * USE_LOCAL_DATABASE=true ==> local database (batala), connectionString takes the value LOCAL_DATABASE_URL
+ * USE_LOCAL_DATABASE=fals ==> remote database (railway), connectionString takes the value DATABASE_URL
+ */
+	const useLocalDatabase = process.env.USE_LOCAL_DATABASE === "true";
+	// ternary condition to apiAdress
+	const localApiAddress = process.env.LOCAL_APIADDRESS.replace("${PORT}", process.env.PORT);
+	const apiAdress = useLocalDatabase ? localApiAddress : process.env.REMOTE_APIADDRESS;
+
+	console.log("🚀 On décolle ici ", apiAdress);
+
 })();
