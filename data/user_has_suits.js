@@ -1,5 +1,5 @@
 /**
- * Array providing data to seeding.js
+ * @typedef {Array} Array providing data to seeding.js
  */
 
 const userHasSuits = [

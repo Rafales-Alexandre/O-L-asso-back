@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 /**
- * Array providing data to seeding.js
+ * @type {Array<Array<string|number|null|boolean>>} instruments - Array containing arrays with data of instruments
  */
 
 const instruments = [
