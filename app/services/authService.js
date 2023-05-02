@@ -23,9 +23,9 @@ const authService = {
 			throw new GraphQLError("You're not allowed in", {
 				code: "FORBIDDEN",
 				http: {
-					status: 403,
+					status: 401,
 					headers: new Map([
-						["Unauthorize user"]
+						["Unauthorize user, go away !"]
 					])
 				}
 			});
@@ -35,11 +35,11 @@ const authService = {
 		const passwordIsOk = await bcrypt.compare(password, user.password);
 
 		if (!passwordIsOk) {
-			throw new GraphQLError("Wrong password", {
+			throw new GraphQLError("Wrong password hun ", {
 				code: "FORBIDDEN",
 				http: {
 					status: 403,
-					headers: new Map([["Wrong Password"]]),
+					headers: new Map([["Wrong Password but don't use that information ! Malicious hacker Boi !"]]),
 				},
 			});
 		}
@@ -69,7 +69,7 @@ const authService = {
 				extensions: {
 					code: "FORBIDDEN",
 					http: {
-						status: 403,
+						status: 401,
 						headers: new Map([
 							["Unauthorize user"]
 						])
