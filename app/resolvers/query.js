@@ -45,7 +45,7 @@ const resolverQuery = {
 		return suitDatamapper.findByPk(args.id);
 	},
 	getSuitsByUser(_,args, contextValue) {
-		authService.isRole(["board", "admin"], contextValue);
+		authService.isRole(["board", "admin", "member"], contextValue);
 		return suitDatamapper.findByUser(args.id);
 	},
 	getInstrumentsByUser(_, args, contextValue){
