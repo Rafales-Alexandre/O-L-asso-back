@@ -13,7 +13,6 @@ const { GraphQLError } = require('graphql')
                 status : 406,
                 headers : new Map ([
                     ['hey Alexandre','c\'est ça']
-                    ['qu\'on voulait tester', 'non ?']
                 ])
             }
             //

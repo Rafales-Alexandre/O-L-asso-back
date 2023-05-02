@@ -92,11 +92,11 @@ const authService = {
 		const user = context.user;
 
 		if (!roles.includes(user.role)) {
-			throw new GraphQLError("You are not allowed to access this resource", {
+			throw new GraphQLError("You are not allowed to access this feature", {
 				extensions: {
 					code: "FORBIDDEN",
 					http: {
-						status: 403,
+						status: 401,
 						headers: new Map([
 							["Unauthorize user"]
 						])
