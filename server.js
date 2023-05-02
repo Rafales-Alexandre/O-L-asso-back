@@ -66,6 +66,11 @@ const server = new ApolloServer(apolloConfig);
 	await server.start();
 	app.use("/graphql", cors(), json(), expressMiddleware(server, {
 		context: async ({ req, res }) => {
+
+			// Exclude introspection queries
+			if (req.body.operationName === "IntrospectionQuery") {
+				return {};
+			}
 			const token = await getTokenForRequest(req);
 
 			if (token) {
