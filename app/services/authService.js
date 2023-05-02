@@ -98,7 +98,8 @@ const authService = {
 					http: {
 						status: 401,
 						headers: new Map([
-							["Unauthorize user"]
+							['Unauthorize', 'user'],
+							['go', 'away'],
 						])
 					},
 				},
