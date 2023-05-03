@@ -76,11 +76,10 @@ input UserInput {
 }
 
 input PasswordInput {
-  password: String
-  id : 
+  newPassword: String
+  id : ID
 }
 
 type PasswordReturn {
-  user: ID!
   password: String
 }

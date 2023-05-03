@@ -93,7 +93,7 @@ const server = new ApolloServer(apolloConfig);
 								])
 							},
 
-						},
+						}
 					});
 				}
 				return {};
