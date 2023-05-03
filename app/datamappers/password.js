@@ -15,9 +15,9 @@ const config = require("../config");
 class Password extends CoreDatamapper {
     tableName = 'user';
 
-    async updatePassword(_, { user, newPassword }) {
-
-        console.log({user})
+    async updatePassword(_, { id, newPassword }) {
+        const user = await userDatamapper.findByPk({id});
+        console.log(user)
         try {
             const decoded = jwt.verify(token, config.jwtSecret);
             if (!user.password === decoded){
@@ -32,7 +32,7 @@ class Password extends CoreDatamapper {
                     }
                 }) 
             }
-            const coded = newpass
+            const coded = newPassword
 
               /**
            * Hash the new password with bcrypt
