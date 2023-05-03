@@ -62,17 +62,16 @@ const server = new ApolloServer(apolloConfig);
  * @param {context} - Parameters of the Apollo Server Application 
  * 
  */
+
 (async () => {
 	await server.start();
 	app.use("/graphql", cors(), json(), expressMiddleware(server, {
 		context: async ({ req, res }) => {
-
 			// Exclude introspection queries
 			if (req.body.operationName === "IntrospectionQuery") {
 				return {};
 			}
 			const token = await getTokenForRequest(req);
-
 			if (token) {
 				try {
 					const data = jwt.verify(token, process.env.SECRET);
@@ -92,22 +91,20 @@ const server = new ApolloServer(apolloConfig);
 									['Unvalid', 'token'],
 									['send ', 'help'],
 								])
+							},
+
 						},
-					}
-				})
+					});
+				}
+				return {};
 			}
-
-
 			return {};
 		}
 	}));
-
 	/**
  * Final Lauching 
  */
-
 	await new Promise((resolve) => serverHTTP.listen(PORT, resolve));
-
 	/**
  * @object to query the environnment file
  * 
@@ -119,7 +116,5 @@ const server = new ApolloServer(apolloConfig);
 	// ternary condition to apiAdress
 	const localApiAddress = process.env.LOCAL_APIADDRESS.replace("${PORT}", process.env.PORT);
 	const apiAdress = useLocalDatabase ? localApiAddress : process.env.REMOTE_APIADDRESS;
-
 	console.log("🚀 On décolle ici ", apiAdress);
-
 })();

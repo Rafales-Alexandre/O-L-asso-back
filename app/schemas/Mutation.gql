@@ -18,4 +18,6 @@ type Mutation {
   loginUser(input: LoginInput): LoginReturn
 
   resetPassword(token: String!, newPassword: String!): ResetPasswordResult!
+
+  updatePassword(user: String, newPassword: String! ): User
 }

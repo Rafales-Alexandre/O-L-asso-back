@@ -16,7 +16,8 @@ class Password extends CoreDatamapper {
     tableName = 'user';
 
     async updatePassword(_, { user, newPassword }) {
-        fetch user
+
+        console.log({user})
         try {
             const decoded = jwt.verify(token, config.jwtSecret);
             if (!user.password === decoded){

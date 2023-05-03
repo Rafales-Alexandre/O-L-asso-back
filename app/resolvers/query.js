@@ -49,7 +49,7 @@ const resolverQuery = {
 		return suitDatamapper.findByUser(args.id);
 	},
 	getInstrumentsByUser(_, args, contextValue){
-		authService.isRole([ "admin"] , contextValue);
+		authService.isRole([ "admin", "board", "member"] , contextValue);
 		return instrumentDatamapper.findByUser(args.id);
 	},
 	askResetPassword (_,{ email }, contextValue){
