@@ -75,4 +75,12 @@ input UserInput {
   instrument_id: ID
 }
 
+input PasswordInput {
+  password: String
+  id : 
+}
 
+type PasswordReturn {
+  user: ID!
+  password: String
+}

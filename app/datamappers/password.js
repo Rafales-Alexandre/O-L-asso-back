@@ -3,7 +3,6 @@ const client = require("../db/pg");
 const userDatamapper = require("./user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const nodemailer = require("nodemailer");
 const config = require("../config");
 
 
@@ -15,7 +14,8 @@ const config = require("../config");
 class Password extends CoreDatamapper {
     tableName = 'user';
 
-    async updatePassword(_, { id, newPassword }) {
+    async updatePassword(id, newPassword) {
+        console.log (id)
         const user = await userDatamapper.findByPk({id});
         console.log(user)
         try {

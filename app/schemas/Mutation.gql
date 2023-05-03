@@ -19,5 +19,5 @@ type Mutation {
 
   resetPassword(token: String!, newPassword: String!): ResetPasswordResult!
 
-  updatePassword(id: ID!, newPassword: String! ): User
+  updatePassword(input: PasswordInput! ): User
 }

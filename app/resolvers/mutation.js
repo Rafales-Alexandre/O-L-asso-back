@@ -55,8 +55,9 @@ module.exports = {
 		authService.isRole(["admin"], contextValue);
 		return resetPasswordDatamapper.resetPassword(_, { token, newPassword });
 	},
-	updatePassword(_, {user, newPassword}, contextValue){
+	updatePassword(_, { input }, contextValue){
+		console.log({input})
 		authService.isRole(["board", "admin", "member"], contextValue);
-		return passwordDatamapper.updatePassword(_, {user, newPassword});
+		return passwordDatamapper.updatePassword(input.id, input.newPassword);
 	}
 };
