@@ -93,9 +93,8 @@ const server = new ApolloServer(apolloConfig);
 									['send ', 'help'],
 								])
 						},
-					});
-				}
-				return {};
+					}
+				})
 			}
 
 
