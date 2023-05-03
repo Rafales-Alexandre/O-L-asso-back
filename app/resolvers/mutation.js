@@ -11,8 +11,7 @@ const resetPasswordDatamapper = require("../datamappers/resetPassword");
 module.exports = {
 	addUser(_, args, contextValue) {
 		authService.isRole(["board", "admin"], contextValue);
-		return userDatamapper.createBcrypt(args.input); // try bcrypt
-		//}
+		return userDatamapper.createBcrypt(args.input);
 	},
 	addInstrument(_, args, contextValue) {
 		authService.isRole(["board", "admin"], contextValue);
@@ -51,7 +50,7 @@ module.exports = {
 		
 	},
 	resetPassword(_, { token, newPassword }, contextValue) {
-		authService.isRole(["admin",], contextValue);
+		authService.isRole(["admin"], contextValue);
 		return resetPasswordDatamapper.resetPassword(_, { token, newPassword });
 	}
 };

@@ -88,17 +88,17 @@ const server = new ApolloServer(apolloConfig);
 							http: {
 								status : 406,
 								headers: new Map([
-									['Unvalid', 'token'],
-									['send ', 'help'],
+									["Unvalid", "token"],
+									["send ", "help"],
 								])
 							},
 						}
 					});
+				}
+				return {};
 			}
-			return {};
 		}
-	}
-}));
+	}));
 
 	/**
  * Final Lauching 
