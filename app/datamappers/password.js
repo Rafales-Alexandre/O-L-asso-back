@@ -32,26 +32,27 @@ class Password extends CoreDatamapper {
                     }
                 }) 
             }
-            const coded = newPassword
-
-              /**
-           * Hash the new password with bcrypt
-           */
-              const saltRounds = 10;
-              const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
-  
-  
+            const saltRounds = 10;
+            const coded = await bcrypt.hash(newPassword, saltRounds);
               
-              const baseQuery = { text :`UPDATE "${this.tableName}" SET password, ${newPassword}, WHERE id = $${user.id} RETURNING *`,
-              // value 
-            }
+              const baseQuery = { text :`UPDATE "${this.tableName}" SET password, ${coded}, WHERE id = $${user.id} RETURNING *`,
+            };
             const result = await this.client.query(baseQuery)
             
             return {
                 success: true
             };
         } catch (error) {
-            return { success: false, message: error.message };
+            throw new GraphQLError("What the heck are you doing ", {
+                code: "INTERNAL_SERVER_ERROR",
+                http: {
+                    status: 500,
+                    headers: new Map([
+                        ['I', 'did'],
+                        ['something', 'bad'],
+                    ])
+                }
+            }) 
         }
 
           
