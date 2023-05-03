@@ -78,15 +78,6 @@ class User extends CoreDatamapper {
 
         return result.rows;
     }
-<<<<<<< HEAD
-
-
-/**
- * ! a documenter
- * @param {*} userData - use the token ? 
- * @returns 
- */
-=======
   /**
    * Creates a new user with the given data, and hashes their password using bcrypt.
    * @param {Object} userData - The data for the new user to create.
@@ -95,7 +86,6 @@ class User extends CoreDatamapper {
    * @returns {Object} - The newly created user object.
    * @throws Error - Throws an error if the email address is already in use.
    */
->>>>>>> b0e7cf6788bb3dae807598a1586c2509a1f86d23
     async createBcrypt(userData) {
         // Check if user exists
         const userExists = await this.findByEmail(userData.email);
