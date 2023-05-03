@@ -22,8 +22,8 @@ const jwt = require("jsonwebtoken");
 
 /** Instead of quering the whole content, we recover what we need 
  *	@module expressMiddleware is the function enabling you to attach Apollo Server to an Express Server 
- *  @module json is necessary to handle http post request of Expressin In Apollo
- * @module ApolloServer is the main library for ApolloServer itself 
+ *	@module json is necessary to handle http post request of Expressin In Apollo
+ *	@module ApolloServer is the main library for ApolloServer itself 
 */
 const { expressMiddleware } = require("@apollo/server/express4");
 const { json } = require("body-parser");
@@ -66,6 +66,11 @@ const server = new ApolloServer(apolloConfig);
 	await server.start();
 	app.use("/graphql", cors(), json(), expressMiddleware(server, {
 		context: async ({ req, res }) => {
+
+			// Exclude introspection queries
+			if (req.body.operationName === "IntrospectionQuery") {
+				return {};
+			}
 			const token = await getTokenForRequest(req);
 
 			if (token) {
@@ -81,6 +86,12 @@ const server = new ApolloServer(apolloConfig);
 					throw new GraphQLError("Authentification by token failed", {
 						extensions: {
 							code: "JWT_AUTH_FAILED",
+							http: {
+								status : 406,
+								headers: new Map([
+									['Unvalid', 'token'],
+									['send ', 'help'],
+								])
 						},
 					});
 				}
@@ -97,5 +108,19 @@ const server = new ApolloServer(apolloConfig);
  */
 
 	await new Promise((resolve) => serverHTTP.listen(PORT, resolve));
-	console.log("🚀 On décolle ici ", process.env.APIADDRESS );
+
+	/**
+ * @object to query the environnment file
+ * 
+ * Check wich database to connect : modify the .env 
+ * USE_LOCAL_DATABASE=true ==> local database (batala), connectionString takes the value LOCAL_DATABASE_URL
+ * USE_LOCAL_DATABASE=fals ==> remote database (railway), connectionString takes the value DATABASE_URL
+ */
+	const useLocalDatabase = process.env.USE_LOCAL_DATABASE === "true";
+	// ternary condition to apiAdress
+	const localApiAddress = process.env.LOCAL_APIADDRESS.replace("${PORT}", process.env.PORT);
+	const apiAdress = useLocalDatabase ? localApiAddress : process.env.REMOTE_APIADDRESS;
+
+	console.log("🚀 On décolle ici ", apiAdress);
+
 })();

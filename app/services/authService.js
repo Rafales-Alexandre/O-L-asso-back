@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /**
  * @method authService - Carry the whole authetification process
  * @module jwt - token to secure the authentification and autorization
@@ -23,9 +24,9 @@ const authService = {
 			throw new GraphQLError("You're not allowed in", {
 				code: "FORBIDDEN",
 				http: {
-					status: 403,
+					status: 401,
 					headers: new Map([
-						["Unauthorize user"]
+						['Unauthorize',  'user'], ['back ', 'home']
 					])
 				}
 			});
@@ -35,11 +36,11 @@ const authService = {
 		const passwordIsOk = await bcrypt.compare(password, user.password);
 
 		if (!passwordIsOk) {
-			throw new GraphQLError("Wrong password", {
+			throw new GraphQLError("Wrong password hun ", {
 				code: "FORBIDDEN",
 				http: {
 					status: 403,
-					headers: new Map([["Wrong Password"]]),
+					headers: new Map([['Wrong', 'Password'], ['try', 'again']]),
 				},
 			});
 		}
@@ -69,9 +70,10 @@ const authService = {
 				extensions: {
 					code: "FORBIDDEN",
 					http: {
-						status: 403,
+						status: 401,
 						headers: new Map([
-							["Unauthorize user"]
+							['Unlogged', 'user'],
+							['send back', 'to login page'],
 						])
 					},
 				}
@@ -92,20 +94,21 @@ const authService = {
 		const user = context.user;
 
 		if (!roles.includes(user.role)) {
-			throw new GraphQLError("You are not allowed to access this resource", {
+			throw new GraphQLError("You are not allowed to access this feature", {
 				extensions: {
 					code: "FORBIDDEN",
 					http: {
-						status: 403,
+						status: 401,
 						headers: new Map([
-							["Unauthorize user"]
+							['Unauthorize', 'user'],
+							['send back', 'to home page'],
 						])
 					},
 				},
 			});
 		}
 
-		return true;
+	//	return redirection code 404;
 	},
 };
 

@@ -28,17 +28,15 @@ echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env créer ᴼᵒ▫�
 # seeding of of environment values in it 
 
 echo "
-    PGHOST=localhost
-    PGPORT=5432
-    PGDATABASE=batala
-    PGUSER=batala
-    PGPASSWORD=batala
-    PORT=3000
-    SECRET=batala
-    APIADDRESS=http://localhost:3000/graphql
-    NODE_ENV=developpement
-    EMAIL=jc.batala.lr@gmail.com
-    EMAILPASSWORD=Bata-test">>.env
+PORT=3000
+SECRET=victoria
+USE_LOCAL_DATABASE=true
+LOCAL_APIADDRESS=http://localhost:3000/graphql/
+REMOTE_APIADDRESS=https://projet-01-o-lasso-back-production.up.railway.app/graphql
+LOCAL_DATABASE_URL=postgres://batala:batala@localhost:5432/batala
+DATABASE_URL=postgresql://postgres:K8jML9zYB1tqLa8hWF5I@containers-us-west-183.railway.app:6327/railway
+NODE_ENV=developement
+    ">>.env
 
 echo " ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env écrit ᴼᵒ▫ₒₒ▫ᵒᴼᵒ▫▫·∙∙"
 
