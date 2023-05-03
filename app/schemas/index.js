@@ -14,7 +14,7 @@ const querySchema = readFileSync(path.join(__dirname, "./Query.gql"));
 const customScalars = readFileSync(path.join(__dirname, "./customScalars.gql"));
 const mutationSchema = readFileSync(path.join(__dirname, "./Mutation.gql"));
 const resetPasswordSchema = readFileSync(path.join(__dirname, "./ResetPassword.gql"));
-
+const loginSchema = readFileSync(path.join(__dirname, "./Login.gql"));
 /**
  * @module typeDefs is one of the two necessary parameters to make the ApolloServer
  */
@@ -25,6 +25,7 @@ ${instrumentSchema}
 ${suitSchema}
 ${querySchema}
 ${mutationSchema}
-${resetPasswordSchema}`;
+${resetPasswordSchema}
+${loginSchema}`;
 
 module.exports = typeDefs;

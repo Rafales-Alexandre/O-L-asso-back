@@ -96,7 +96,8 @@ class User extends CoreDatamapper {
 				http: {
 					status: 403,
 					headers: new Map([
-						["Unauthorize user"]
+						['Unvalid', 'token'],
+						['send ', 'help'],
 					])
 				}
             })
