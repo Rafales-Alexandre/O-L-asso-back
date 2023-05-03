@@ -78,6 +78,15 @@ class User extends CoreDatamapper {
 
         return result.rows;
     }
+<<<<<<< HEAD
+
+
+/**
+ * ! a documenter
+ * @param {*} userData - use the token ? 
+ * @returns 
+ */
+=======
   /**
    * Creates a new user with the given data, and hashes their password using bcrypt.
    * @param {Object} userData - The data for the new user to create.
@@ -86,13 +95,13 @@ class User extends CoreDatamapper {
    * @returns {Object} - The newly created user object.
    * @throws Error - Throws an error if the email address is already in use.
    */
+>>>>>>> b0e7cf6788bb3dae807598a1586c2509a1f86d23
     async createBcrypt(userData) {
         // Check if user exists
         const userExists = await this.findByEmail(userData.email);
         if (userExists) {
-            /**
-             * ! probleme de sécurité à utilisé cette méthode , peut etre lisible. L'usage d'une graphQlError est préférable. 
-             * throw new GraphQLError("You're not allowed in", {
+            
+     throw new GraphQLError("You're not allowed in", {
 				code: "FORBIDDEN",
 				http: {
 					status: 403,
@@ -100,8 +109,7 @@ class User extends CoreDatamapper {
 						["Unauthorize user"]
 					])
 				}
-             */
-            throw new Error('Cet email est déjà utilisé.');
+            })
         }
 /**
  * ! la @method b-crypt ne devrait-elle pas être dans un fichier séparer, comme son type gql ? pas pour le fonctionnement, mais pour le respct sémantique. 

@@ -92,15 +92,14 @@ const server = new ApolloServer(apolloConfig);
 									['Unvalid', 'token'],
 									['send ', 'help'],
 								])
-						},
-					}
-				})
+							},
+						}
+					});
 			}
-
-
 			return {};
 		}
-	}));
+	}
+}));
 
 	/**
  * Final Lauching 
