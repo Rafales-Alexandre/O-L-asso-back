@@ -82,7 +82,6 @@ const server = new ApolloServer(apolloConfig);
 						};
 					}
 				} catch (err) {
-					console.error("JWT verification failed:", err.message);
 					throw new GraphQLError("Authentification by token failed", {
 						extensions: {
 							code: "JWT_AUTH_FAILED",
