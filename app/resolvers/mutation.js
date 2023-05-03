@@ -39,7 +39,7 @@ module.exports = {
 		return suitDatamapper.update({ id }, input);
 	},
 	updateUser(_, { id, input }, contextValue) {
-		authService.isRole(["board", "admin"], contextValue);
+		authService.isRole(["board", "admin", "member"], contextValue);
 		return userDatamapper.update({ id }, input);
 	},
 	updateInstrument(_, { id, input }, contextValue) {
@@ -51,7 +51,7 @@ module.exports = {
 		
 	},
 	resetPassword(_, { token, newPassword }, contextValue) {
-		authService.isRole(["admin"], contextValue);
+		authService.isRole(["admin",], contextValue);
 		return resetPasswordDatamapper.resetPassword(_, { token, newPassword });
 	}
 };
