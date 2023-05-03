@@ -44,18 +44,11 @@ class User extends CoreDatamapper {
 
         return result.rows[0];
     }
-<<<<<<< HEAD
-    /**
-     * @param {*} suitId is what we get, it's a sttring and we send it to the database , called by the ${this.tableName}, tableName being define in the beggening of the function
-     * @returns the total of the suits called, as a string, integer Type
-     */
-=======
      /**
    * Finds the total number of users associated with a given suit ID.
    * @param {string} suitId - The ID of the suit to find the total number of users for.
    * @returns {number} - The total number of users associated with the suit.
    */
->>>>>>> b0e7cf6788bb3dae807598a1586c2509a1f86d23
     async findBySuitTotal(suitId) {
 
         const baseQuery = {
