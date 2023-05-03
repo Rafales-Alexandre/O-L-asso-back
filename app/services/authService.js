@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /**
  * @method authService - Carry the whole authetification process
  * @module jwt - token to secure the authentification and autorization
@@ -25,7 +26,7 @@ const authService = {
 				http: {
 					status: 401,
 					headers: new Map([
-						["Unauthorize user, go away !"]
+						['Unauthorize',  'user'], ['back ', 'home']
 					])
 				}
 			});
@@ -39,7 +40,7 @@ const authService = {
 				code: "FORBIDDEN",
 				http: {
 					status: 403,
-					headers: new Map([["Wrong Password but don't use that information ! Malicious hacker Boi !"]]),
+					headers: new Map([['Wrong', 'Password'], ['try', 'again']]),
 				},
 			});
 		}
@@ -71,7 +72,8 @@ const authService = {
 					http: {
 						status: 401,
 						headers: new Map([
-							["Unauthorize user"]
+							['Unlogged', 'user'],
+							['send back', 'to login page'],
 						])
 					},
 				}
@@ -99,7 +101,7 @@ const authService = {
 						status: 401,
 						headers: new Map([
 							['Unauthorize', 'user'],
-							['go', 'away'],
+							['send back', 'to home page'],
 						])
 					},
 				},
