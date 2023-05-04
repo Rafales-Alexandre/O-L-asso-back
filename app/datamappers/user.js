@@ -111,8 +111,8 @@ class User extends CoreDatamapper {
 
         return this.create(userData);
     }
-    async updateImage(userData){
-        const userData = await this.findByPk(userData.id);
+    async updateImage(dataInput){
+        const userData = await this.findByPk(dataInput.id);
         if (userData) {
             
             throw new GraphQLError("You're not allowed in", {
