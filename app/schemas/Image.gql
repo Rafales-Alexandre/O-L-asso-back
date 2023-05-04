@@ -1,0 +1,6 @@
+input ImageInput {
+  name: String!
+  type: String!
+  size: Int!
+  url: String!
+}

@@ -111,6 +111,24 @@ class User extends CoreDatamapper {
 
         return this.create(userData);
     }
+    async updateImage(dataInput){
+        const userData = await this.findByPk(dataInput.id);
+        if (userData) {
+            
+            throw new GraphQLError("You're not allowed in", {
+                       code: "FORBIDDEN",
+                       http: {
+                           status: 403,
+                           headers: new Map([
+                                   ['Unauthorize', 'uzer'],
+                                   ['send ', 'coffee to fight in the great battle '],
+                           ])
+                       }
+                   })
+               }
+        userData.url_img = image.url;
+        return this.update({id}, userData);
+    }
 }
 
 
