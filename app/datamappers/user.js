@@ -106,6 +106,7 @@ class User extends CoreDatamapper {
         // hashing
         const hashedPassword = await bcrypt.hash(userData.password, 10);
     }
+    /*
     async createSecureUser(inputData){
 
         const userQuery = await this.findByPk(inputData.email);
@@ -131,6 +132,7 @@ class User extends CoreDatamapper {
         return this.create(inputData)
         
     }
+    */
     async updateImage(dataInput){
         const userData = await this.findByPk(dataInput.id);
         if (userData) {

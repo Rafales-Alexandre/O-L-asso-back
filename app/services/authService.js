@@ -50,10 +50,10 @@ const authService = {
 		/**If the two previous conditions don't throw Error, then we will generate the Authetification/Autorization token 
  */
 		const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: "7h" });
+		console.log("user is connected", user )
 
 		/** After 7h of connection, the token will be deleted and the user will have to reconnect  */
 		delete user.password;
-
 		return {
 			token,
 			user
