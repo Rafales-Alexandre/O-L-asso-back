@@ -90,7 +90,7 @@ class User extends CoreDatamapper {
     async createBcrypt(userData) {
         // Check if user exists
         const userExists = await this.findByEmail(userData.email);
-        if (!userExists) {
+        if (userExists) {
 
             throw new GraphQLError("You're not allowed in", {
                 code: "FORBIDDEN",
