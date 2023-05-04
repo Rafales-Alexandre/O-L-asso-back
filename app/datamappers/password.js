@@ -2,7 +2,7 @@ const CoreDatamapper = require("./coreDatamapper");
 const client = require("../db/pg");
 const userDatamapper = require("./user");
 const bcrypt = require("bcrypt");
-
+const { GraphQLError } = require('graphql');
 
 /**
  * Class representing a password reset controller.

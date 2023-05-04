@@ -4,7 +4,8 @@
  */
 const CoreDatamapper = require("./coreDatamapper");
 const client = require("../db/pg");
-const bcrypt = require("../services/bcrypt")
+const bcrypt = require("../services/bcrypt");
+const { GraphQLError } = require('graphql');
 
 class User extends CoreDatamapper {
     tableName = 'user';
