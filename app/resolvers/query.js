@@ -52,12 +52,12 @@ const resolverQuery = {
 		authService.isRole([ "admin", "board", "member"] , contextValue);
 		return instrumentDatamapper.findByUser(args.id);
 	},
-	askResetPassword (_,{ email }, contextValue){
-		authService.isRole(["board", "admin", "member"], contextValue);
+	askResetPassword (_,{ email }){
+		
 		return resetPasswordDatamapper.askResetPassword(_,{ email });
 	},
-	verifyResetPasswordToken(_,{ token }, contextValue){
-		authService.isRole(["board", "admin", "member"], contextValue);
+	verifyResetPasswordToken(_,{ token }){
+		
 		return resetPasswordDatamapper.verifyResetPasswordToken(_,{ token });
 	}
 	
