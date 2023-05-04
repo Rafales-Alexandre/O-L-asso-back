@@ -39,7 +39,7 @@ module.exports = {
 	},
 	updateUser(_, { id, input }, contextValue) {
 		authService.isRole(["board", "admin", "member"], contextValue);
-		return userDatamapper.update({ id }, input);
+		return userDatamapper.updateImage({ id }, input);
 	},
 	updateInstrument(_, { id, input }, contextValue) {
 		authService.isRole(["board", "admin"], contextValue);
@@ -53,8 +53,8 @@ module.exports = {
 		authService.isRole(["admin"], contextValue);
 		return resetPasswordDatamapper.resetPassword(_, { token, newPassword });
 	},
-	updateUserImage(_, { id, image }, contextValue) {
+	/* updateUserImage(_, { id, image }, contextValue) {
 		authService.isRole(["board", "admin", "member"], contextValue);
 		return userDatamapper.updateImage({ id }, image);
-	}
+	} */
 };
