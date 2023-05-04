@@ -1,4 +1,4 @@
- /**
+/**
    * Creates a new user with the given data, and hashes their password using bcrypt.
    * @param {Object} userData - The data for the new user to create.
    * @param {string} userData.email - The email address of the user to create.
@@ -8,14 +8,14 @@
    */
 
 
-const bcrypt = require ('bcrypt');
+const bcrypt = require ("bcrypt");
 
 const bCrypt = {
 	async createBcryptUser(userData) {
 
 		const hashedPassword = await bcrypt.hash(userData, 10);
 
-        /* const newUser = {
+		/* const newUser = {
             userData.password : hashedPassword,
         } 
 		 */
