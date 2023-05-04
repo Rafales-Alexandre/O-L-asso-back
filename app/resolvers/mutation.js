@@ -8,11 +8,13 @@ const suitDatamapper = require("../datamappers/suit");
 const authService = require("../services/authService");
 const resetPasswordDatamapper = require("../datamappers/resetPassword");
 const passwordDatamapper = require ("../datamappers/password");
+const bcrypt = require("../services/bcrypt");
 
 module.exports = {
 	addUser(_, args, contextValue) {
 		authService.isRole(["board", "admin"], contextValue);
-		return userDatamapper.createBcrypt(args.input); 
+		return userDatamapper.createSecureUser(args.input);
+
 		//}
 	},
 	addInstrument(_, args, contextValue) {

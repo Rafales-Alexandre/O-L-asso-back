@@ -7,31 +7,21 @@
    * @throws Error - Throws an error if the email address is already in use.
    */
 
- const bCrypt = {
-async createBcrypt(userData) {
-    // Check if user exists
-    const userExists = await this.findByEmail(userData.email);
-    if (userExists) {
-        
- throw new GraphQLError("You're not allowed in", {
-            code: "FORBIDDEN",
-            http: {
-                status: 403,
-                headers: new Map([
-                    ['Unvalid', 'token'],
-                    ['send ', 'help'],
-                ])
-            }
-        })
-    }
-    // hashing
-    const hashedPassword = await bcrypt.hash(userData.password, 10);
 
-    // create new user with data input
-    userData.password = hashedPassword;
+const bcrypt = require ('bcrypt');
 
-    return this.create(userData);
-}
- }
+const bCrypt = {
+	async createBcryptUser(userData) {
 
- module.exports = bCrypt; 
+		const hashedPassword = await bcrypt.hash(userData, 10);
+
+        /* const newUser = {
+            userData.password : hashedPassword,
+        } 
+		 */
+
+		return hashedPassword;
+	}
+};
+
+module.exports = bCrypt; 
