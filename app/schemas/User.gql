@@ -75,19 +75,11 @@ input UserInput {
   instrument_id: ID
 }
 
-"""
-Type to specify the login input. Because it's directly link to the user type, it would be superflous to have an another file type 
-"""
-input LoginInput {
-  email: String
-  password: String
-  
+input PasswordInput {
+  newPassword: String
+  id : ID
 }
 
-"""
-Specify the return type, because or method need this return
-"""
-type LoginReturn {
-  token: String
-  user: User
+type PasswordReturn {
+  password: String
 }

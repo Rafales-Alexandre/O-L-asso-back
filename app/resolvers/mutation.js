@@ -7,6 +7,8 @@ const instrumentDatamapper = require("../datamappers/instrument");
 const suitDatamapper = require("../datamappers/suit");
 const authService = require("../services/authService");
 const resetPasswordDatamapper = require("../datamappers/resetPassword");
+const passwordDatamapper = require ("../datamappers/password");
+const bcrypt = require("../services/bcrypt");
 
 module.exports = {
 	addUser(_, args, contextValue) {
@@ -52,6 +54,11 @@ module.exports = {
 	resetPassword(_, { token, newPassword }, contextValue) {
 		authService.isRole(["admin"], contextValue);
 		return resetPasswordDatamapper.resetPassword(_, { token, newPassword });
+	},
+	updatePassword(_, { input }, contextValue){
+		console.log({input});
+		authService.isRole(["board", "admin", "member"], contextValue);
+		return passwordDatamapper.updatePassword(input.id, input.newPassword);
 	},
 	updateUserImage(_, { id, image }, contextValue) {
 		authService.isRole(["board", "admin", "member"], contextValue);

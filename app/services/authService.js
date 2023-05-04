@@ -37,7 +37,7 @@ const authService = {
 		const passwordIsOk = await bcrypt.compare(password, user.password);
 
 		if (!passwordIsOk) {
-			throw new GraphQLError("Wrong password hun ", {
+			throw new GraphQLError("Wrong password ", {
 				code: "FORBIDDEN",
 				http: {
 					status: 403,

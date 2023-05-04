@@ -4,7 +4,7 @@
  */
 const CoreDatamapper = require("./coreDatamapper");
 const client = require("../db/pg");
-const bcrypt = require("bcrypt"); 
+const bcrypt = require("../services/bcrypt")
 
 class User extends CoreDatamapper {
     tableName = 'user';
@@ -105,11 +105,31 @@ class User extends CoreDatamapper {
 
         // hashing
         const hashedPassword = await bcrypt.hash(userData.password, 10);
+    }
+    async createSecureUser(inputData){
 
-        // create new user with data input
-        userData.password = hashedPassword;
+        const userQuery = await this.findByPk(inputData.email);
+        console.log("tada ", userQuery)
+       if(inputData.email === userQuery){
+        throw new GraphQLError("You already exist !", {
+            extensions: {
+                code: "NEVER_TRUST_USER",
+                http: {
+                    status : 409,
+                    headers: new Map([
+                        ['Unvalid', 'request'],
+                        ['user', 'exists'],
+                    ])
+                },
 
-        return this.create(userData);
+            }
+        });
+       }
+        const updatePassword = await bcrypt.createBcryptUser(inputData.password)
+        inputData.password = updatePassword;
+        console.log("user :", inputData)
+        return this.create(inputData)
+        
     }
     async updateImage(dataInput){
         const userData = await this.findByPk(dataInput.id);
