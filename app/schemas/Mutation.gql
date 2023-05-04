@@ -20,4 +20,5 @@ type Mutation {
   resetPassword(token: String!, newPassword: String!): ResetPasswordResult!
 
   updatePassword(input: PasswordInput! ): PasswordReturn 
+  updateUserImage(id: ID!, image: ImageInput!): User!
 }

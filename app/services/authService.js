@@ -26,7 +26,7 @@ const authService = {
 				http: {
 					status: 401,
 					headers: new Map([
-						['Unauthorize','user'], 
+						['Unauthorize',  'user'],
 						['back ', 'home']
 					])
 				}
@@ -42,9 +42,8 @@ const authService = {
 				http: {
 					status: 403,
 					headers: new Map([
-						['Wrong', 'Password'],
-						['try', 'again']
-					]),
+						['Wrong', 'Password'], 
+						['try', 'again']]),
 				},
 			});
 		}

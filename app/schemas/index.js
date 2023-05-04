@@ -15,10 +15,13 @@ const customScalars = readFileSync(path.join(__dirname, "./customScalars.gql"));
 const mutationSchema = readFileSync(path.join(__dirname, "./Mutation.gql"));
 const resetPasswordSchema = readFileSync(path.join(__dirname, "./ResetPassword.gql"));
 const loginSchema = readFileSync(path.join(__dirname, "./Login.gql"));
+const imageSchema = readFileSync(path.join(__dirname,"./Image.gql"));
+
 /**
  * @module typeDefs is one of the two necessary parameters to make the ApolloServer
  */
 const typeDefs = `#graphql
+${imageSchema}
 ${customScalars}
 ${userSchema}
 ${instrumentSchema}

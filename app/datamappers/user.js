@@ -78,7 +78,34 @@ class User extends CoreDatamapper {
 
         return result.rows;
     }
+  /**
+   * Creates a new user with the given data, and hashes their password using bcrypt.
+   * @param {Object} userData - The data for the new user to create.
+   * @param {string} userData.email - The email address of the user to create.
+   * @param {string} userData.password - The plaintext password of the user to create.
+   * @returns {Object} - The newly created user object.
+   * @throws Error - Throws an error if the email address is already in use.
+   */
+    async createBcrypt(userData) {
+        // Check if user exists
+        const userExists = await this.findByEmail(userData.email);
+        if (userExists) {
+            
+     throw new GraphQLError("You're not allowed in", {
+				code: "FORBIDDEN",
+				http: {
+					status: 403,
+					headers: new Map([
+                            ['Unauthorize', 'uzer'],
+                            ['send ', 'coffee to fight in the great battle '],
+					])
+				}
+            })
+        }
 
+        // hashing
+        const hashedPassword = await bcrypt.hash(userData.password, 10);
+    }
     async createSecureUser(inputData){
 
         const userQuery = await this.findByPk(inputData.email);
@@ -104,7 +131,24 @@ class User extends CoreDatamapper {
         return this.create(inputData)
         
     }
-   
+    async updateImage(dataInput){
+        const userData = await this.findByPk(dataInput.id);
+        if (userData) {
+            
+            throw new GraphQLError("You're not allowed in", {
+                       code: "FORBIDDEN",
+                       http: {
+                           status: 403,
+                           headers: new Map([
+                                   ['Unauthorize', 'uzer'],
+                                   ['send ', 'coffee to fight in the great battle '],
+                           ])
+                       }
+                   })
+               }
+        userData.url_img = image.url;
+        return this.update({id}, userData);
+    }
 }
 
 

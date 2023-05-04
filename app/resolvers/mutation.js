@@ -13,9 +13,7 @@ const bcrypt = require("../services/bcrypt");
 module.exports = {
 	addUser(_, args, contextValue) {
 		authService.isRole(["board", "admin"], contextValue);
-		return userDatamapper.createSecureUser(args.input);
-
-		//}
+		return userDatamapper.createBcrypt(args.input);
 	},
 	addInstrument(_, args, contextValue) {
 		authService.isRole(["board", "admin"], contextValue);
@@ -61,5 +59,9 @@ module.exports = {
 		console.log({input});
 		authService.isRole(["board", "admin", "member"], contextValue);
 		return passwordDatamapper.updatePassword(input.id, input.newPassword);
+	},
+	updateUserImage(_, { id, image }, contextValue) {
+		authService.isRole(["board", "admin", "member"], contextValue);
+		return userDatamapper.updateImage({ id }, image);
 	}
 };
