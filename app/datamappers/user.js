@@ -4,7 +4,7 @@
  */
 const CoreDatamapper = require("./coreDatamapper");
 const client = require("../db/pg");
-const bcrypt = require("../services/bcrypt");
+const bcrypt = require ("bcrypt")
 const { GraphQLError } = require('graphql');
 
 class User extends CoreDatamapper {
@@ -90,6 +90,7 @@ class User extends CoreDatamapper {
     async createBcrypt(userData) {
         // Check if user exists
         const userExists = await this.findByEmail(userData.email);
+        
         if (userExists) {
 
             throw new GraphQLError("You're not allowed in", {
@@ -106,7 +107,8 @@ class User extends CoreDatamapper {
 
         // hashing
         const hashedPassword = await bcrypt.hash(userData.password, 10);
-        return hashedPassword;
+        userData.password = hashedPassword;
+        return this.create(userData);
     }
     /*
     async createSecureUser(inputData){
@@ -137,7 +139,7 @@ class User extends CoreDatamapper {
     */
     async updateImage(dataInput) {
         const userData = await this.findByPk(dataInput.id);
-        if (userData) {
+        if (!userData) {
 
             throw new GraphQLError("You're not allowed in", {
                 code: "FORBIDDEN",
