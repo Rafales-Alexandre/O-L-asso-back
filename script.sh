@@ -30,11 +30,11 @@ echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env créer ᴼᵒ▫�
 echo "
 PORT=3000
 SECRET=victoria
-USE_LOCAL_DATABASE=true
+USE_LOCAL_DATABASE=false
 LOCAL_APIADDRESS=http://localhost:3000/graphql/
 REMOTE_APIADDRESS=https://projet-01-o-lasso-back-production.up.railway.app/graphql
 LOCAL_DATABASE_URL=postgres://batala:batala@localhost:5432/batala
-DATABASE_URL=postgresql://postgres:K8jML9zYB1tqLa8hWF5I@containers-us-west-183.railway.app:6327/railway
+DATABASE_URL=postgresql://postgres:yogW7mReoLzebcCpoTkI@containers-us-west-119.railway.app:6478/railway
 NODE_ENV=developement
     ">>.env
 
