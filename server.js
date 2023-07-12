@@ -101,7 +101,7 @@ const server = new ApolloServer(apolloConfig);
 	/**
  * Final Lauching 
  */
-	await new Promise((resolve) => serverHTTP.listen(PORT, resolve));
+	await new Promise((resolve) => serverHTTP.listen(PORT, "0.0.0.0", resolve));
 	/**
  * @object to query the environnment file
  * 
