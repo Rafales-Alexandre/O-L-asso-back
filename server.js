@@ -52,8 +52,11 @@ const serverHTTP = http.createServer(app);
 const PORT = process.env.PORT ?? 3003;
 
 /** @function server initiate the ApolloServer */
-
-const server = new ApolloServer(apolloConfig);
+const server = new ApolloServer({
+	...apolloConfig,
+	introspection: true,
+	playground: true,
+});
 
 /**
  * Deployment 
