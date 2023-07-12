@@ -28,7 +28,7 @@ echo ' ∙∙·▫▫ᵒᴼᵒ▫ₒₒ▫ᵒᴼ Fichier .env créer ᴼᵒ▫�
 # seeding of of environment values in it 
 
 echo "
-PORT=3000
+PORT=5432
 SECRET=victoria
 USE_LOCAL_DATABASE=false
 LOCAL_APIADDRESS=http://localhost:3000/graphql/
