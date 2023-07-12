@@ -51,9 +51,9 @@ module.exports = {
 		return authService.login(input.email, input.password);
 		
 	},
-	resetPassword(_, { token, newPassword }, contextValue) {
+	resetPassword(_, { newPassword }, contextValue) {
 		authService.isRole(["admin"], contextValue);
-		return resetPasswordDatamapper.resetPassword(_, { token, newPassword });
+		return resetPasswordDatamapper.resetPassword(_, { newPassword });
 	},
 	updatePassword(_, { input }, contextValue){
 		console.log({input});

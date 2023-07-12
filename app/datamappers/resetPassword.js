@@ -22,27 +22,38 @@ class ResetPassword extends CoreDatamapper {
   * @param {string} args.email - The email address of the user requesting a password reset.
   * @returns {Object} - An object with a message indicating that the password reset email has been sent.
 */
-    async askResetPassword(_, { email }) {
+async askResetPassword(_, { email }) {
+    // find the user by email
+    const user = await userDatamapper.findByEmail(email);
 
-        const user = await userDatamapper.findByEmail(email);
-        const token = jwt.sign({ userId: user.id }, config.jwtSecret, { expiresIn: "1h" });
-
-        await this.client.query(
-            "INSERT INTO password_reset_requests (user_id, reset_token, expiration) VALUES ($1, $2, NOW() + INTERVAL '1 hour')",
-            [user.id, token]
-        );
-
-        const mailOptions = {
-            from: "BataDev",
-            to: email,
-            subject: "Réinitialisation de votre mot de passe",
-            html: `<p>Pour réinitialiser votre mot de passe, veuillez suivre ce lien :</p><a href="http://front-lasso/reset-password?token=${token}">Réinitialiser mon mot de passe</a>`
-        };
-
-        await transporter.sendMail(mailOptions);
-
-        return { message: "Email sent" };
+    // if no such user exists, throw an error or return a message
+    if (!user) {
+        throw new Error("No user found with this email");
     }
+
+    // generate a new jwt token for the user
+    const token = jwt.sign({ userId: user.id }, config.jwtSecret, { expiresIn: "1h" });
+
+    // insert the token into the database
+    await client.query(
+        "INSERT INTO password_reset_requests (user_id, reset_token, expiration) VALUES ($1, $2, NOW() + INTERVAL '1 hour')",
+        [user.id, token]
+    );
+
+    // email details
+    const mailOptions = {
+        from: "BataDev",
+        to: email,
+        subject: "Réinitialisation de votre mot de passe",
+        html: `<p>Pour réinitialiser votre mot de passe, veuillez suivre ce lien :</p><a href="http://localhost:5173/ResetPassword?token=${token}&email=${email}">Réinitialiser mon mot de passe</a>`
+    };
+
+    // send the email with the reset link including the token
+    await transporter.sendMail(mailOptions);
+
+    // return a success message
+    return { message: "Email sent" };
+}
 
     /**
    * Verifies if a given password reset token is valid.
@@ -73,21 +84,11 @@ class ResetPassword extends CoreDatamapper {
    * Resets the password of a user with a given password reset token.
    * @param {*} _ - Unused parameter.
    * @param {Object} args - Arguments for the password reset operation.
-   * @param {string} args.token - The password reset token.
    * @param {string} args.newPassword - The new password for the user.
    * @returns {Object} - An object indicating if the password reset was successful or not.
    */
-    async resetPassword(_, { token, newPassword }) {
+    async resetPassword(_, { newPassword }) {
         try {
-            const decoded = jwt.verify(token, config.jwtSecret);
-
-            const request = await this.client.query("SELECT * FROM password_reset_requests WHERE reset_token = $1 AND expiration > NOW()", [
-                token
-            ]);
-
-            if (!request) {
-                throw new Error("Token not found or expired");
-            }
 
             /**
            * Hash the new password with bcrypt
