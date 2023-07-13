@@ -15,6 +15,7 @@ Definition of the user Type, based on the database value
 
 type Suit {
     id: ID! 
+    url_img: String
     label: String!
     gender: Gender
     observation: String 
@@ -32,6 +33,7 @@ type Suit {
 Type for the input, the necessary value are followed by the ! symbol
 """
 input SuitInput {
+    url_img: String
     label: String!
     gender: Gender
     observation: String 
