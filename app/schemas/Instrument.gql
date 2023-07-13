@@ -2,6 +2,7 @@
 
 type Instrument {
   id: ID!
+  url_img: String
   code: String!
   pupitre: String
   observation: String
@@ -19,6 +20,7 @@ type Instrument {
 Type for the input, the necessary value are followed by the ! symbol
 """
 input InstrumentInput {
+  url_img: String
   code: String!
   pupitre: String
   observation: String
