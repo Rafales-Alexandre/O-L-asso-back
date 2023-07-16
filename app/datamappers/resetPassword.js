@@ -45,7 +45,7 @@ async askResetPassword(_, { email }) {
         from: "BataDev",
         to: email,
         subject: "Réinitialisation de votre mot de passe",
-        html: `<p>Pour réinitialiser votre mot de passe, veuillez suivre ce lien :</p><a href="http://localhost:5173/ResetPassword?token=${token}&email=${email}">Réinitialiser mon mot de passe</a>`
+        html: `<p>Pour réinitialiser votre mot de passe, veuillez suivre ce lien :</p><a href="http://https://o-l-asso-front.vercel.app/ResetPassword?token=${token}&email=${email}">Réinitialiser mon mot de passe</a>`
     };
 
     // send the email with the reset link including the token
